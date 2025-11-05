@@ -1,0 +1,450 @@
+[gd_scene load_steps=24 format=3 uid="uid://bqiy83nwntkcr"]
+
+[ext_resource type="Texture2D" uid="uid://bo2mpfaomq1qi" path="res://Assets/Sprite/Player/Character Sprites/Sulkide/bras d 1.png" id="1_mpupo"]
+[ext_resource type="Texture2D" uid="uid://cbocu5iyjcpsv" path="res://Assets/Sprite/Player/Character Sprites/Sulkide/bras d 2.png" id="2_x2ynk"]
+[ext_resource type="Texture2D" uid="uid://csat3v0u786at" path="res://Assets/Sprite/Player/Character Sprites/Sulkide/pied g 1.png" id="3_a3ero"]
+[ext_resource type="Texture2D" uid="uid://c7y124n8q4voh" path="res://Assets/Sprite/Player/Character Sprites/Sulkide/pied g 2.png" id="4_ow40n"]
+[ext_resource type="Texture2D" uid="uid://dm0euvlai0ec" path="res://Assets/Sprite/Player/Character Sprites/Sulkide/haut jambe d.png" id="5_1d8hh"]
+[ext_resource type="Texture2D" uid="uid://ccvgx1qcuxp6f" path="res://Assets/Sprite/Player/Character Sprites/Sulkide/haut jambe g.png" id="6_ao2d2"]
+[ext_resource type="Texture2D" uid="uid://cnqxdo6dqr51o" path="res://Assets/Sprite/Player/Character Sprites/Sulkide/corps 1.png" id="7_meadg"]
+[ext_resource type="Texture2D" uid="uid://cn4nyv1g2anp6" path="res://Assets/Sprite/Player/Character Sprites/Sulkide/pelvis.png" id="8_mfoiv"]
+[ext_resource type="Texture2D" uid="uid://comj8b2y724uk" path="res://Assets/Sprite/Player/Character Sprites/Sulkide/bras g 2.png" id="9_y0hd3"]
+[ext_resource type="Texture2D" uid="uid://by0wxgxlwpkf2" path="res://Assets/Sprite/Player/Character Sprites/Sulkide/bras g 1.png" id="10_dwijb"]
+[ext_resource type="Texture2D" uid="uid://7nv66ebg8d8" path="res://Assets/Sprite/Player/Character Sprites/Sulkide/coup.png" id="11_55k7u"]
+[ext_resource type="Texture2D" uid="uid://dk7vn4rv7kowl" path="res://Assets/Sprite/Player/Character Sprites/Sulkide/tete.png" id="12_fhw12"]
+[ext_resource type="Texture2D" uid="uid://qvoq0d6s6wt7" path="res://Assets/Sprite/Player/Character Sprites/Sulkide/oeil d.png" id="13_qxqfw"]
+[ext_resource type="Texture2D" uid="uid://5evh1r2227e" path="res://Assets/Sprite/Player/Character Sprites/Sulkide/oeil g.png" id="14_jvcll"]
+[ext_resource type="Texture2D" uid="uid://ctk4uan8t8s3h" path="res://Assets/Sprite/Player/Character Sprites/Sulkide/bouche.png" id="15_a3hm8"]
+[ext_resource type="Texture2D" uid="uid://cr8c4b6b6wfy7" path="res://Assets/Sprite/Player/Character Sprites/Sulkide/grimace.png" id="16_h2v10"]
+[ext_resource type="Texture2D" uid="uid://do2q2e36rmi77" path="res://Assets/Sprite/Player/Character Sprites/Sulkide/dent.png" id="17_go3jo"]
+[ext_resource type="Script" uid="uid://3n2ir7g15yw5" path="res://addons/soupik/modifications/soup_group.gd" id="18_ow40n"]
+[ext_resource type="Script" uid="uid://bnso0mph1tb11" path="res://addons/soupik/modifications/soup_two_bone_ik.gd" id="19_1d8hh"]
+[ext_resource type="Script" uid="uid://b4u1tvhlw4d2g" path="res://addons/soupik/modifications/soup_look_at.gd" id="20_ao2d2"]
+[ext_resource type="Script" uid="uid://b5uiivwxcoics" path="res://addons/soupik/modifications/soup_stay_at.gd" id="21_1d8hh"]
+
+[sub_resource type="Animation" id="Animation_mpupo"]
+resource_name = "Sulkide_Animation_Test01"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x2ynk"]
+_data = {
+&"Sulkide_Animation_Test01": SubResource("Animation_mpupo")
+}
+
+[node name="Animation" type="Node2D" unique_id=1549078706]
+
+[node name="CharacterContainer" type="Node2D" parent="." unique_id=472805270]
+
+[node name="Body" type="Node2D" parent="CharacterContainer" unique_id=475982009]
+
+[node name="BrasD1" type="Sprite2D" parent="CharacterContainer/Body" unique_id=863769688]
+position = Vector2(584.60876, -418.01938)
+rotation = 0.035782788
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("1_mpupo")
+offset = Vector2(-145, 571)
+
+[node name="BrasD2" type="Sprite2D" parent="CharacterContainer/Body" unique_id=964370383]
+position = Vector2(541.5753, 308.9064)
+rotation = -0.13945973
+scale = Vector2(0.9999999, 0.9999999)
+texture = ExtResource("2_x2ynk")
+offset = Vector2(-128, -157)
+
+[node name="PiedD1" type="Sprite2D" parent="CharacterContainer/Body" unique_id=576216889]
+position = Vector2(393.34393, 1456.2051)
+rotation = -0.11347947
+scale = Vector2(0.9999999, 0.9999999)
+texture = ExtResource("3_a3ero")
+offset = Vector2(234.5, -1229.5)
+
+[node name="PiedD2" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1089376011]
+position = Vector2(415.74933, 2156.17)
+rotation = -0.031292465
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_ow40n")
+offset = Vector2(288.5, -1928.5)
+
+[node name="HautJambeD" type="Sprite2D" parent="CharacterContainer/Body" unique_id=930836906]
+position = Vector2(362, 477)
+rotation = 0.07429694
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("5_1d8hh")
+offset = Vector2(86.091675, -272.78363)
+
+[node name="PiedG1" type="Sprite2D" parent="CharacterContainer/Body" unique_id=564335014]
+position = Vector2(223.01234, 1476.9103)
+rotation = -0.07048274
+scale = Vector2(0.9999999, 0.9999999)
+texture = ExtResource("3_a3ero")
+offset = Vector2(236, -1249)
+
+[node name="PiedG2" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1561684883]
+position = Vector2(206.27359, 2162.792)
+rotation = -0.012017666
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("4_ow40n")
+offset = Vector2(296, -1930)
+
+[node name="HautJambeG" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1145172464]
+position = Vector2(247, 494)
+rotation = -0.016389132
+texture = ExtResource("6_ao2d2")
+offset = Vector2(188.90967, -287.23846)
+
+[node name="Corps1" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1249972269]
+position = Vector2(338, 345)
+rotation = 0.02660096
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("7_meadg")
+offset = Vector2(101, -188)
+
+[node name="Pelvis" type="Sprite2D" parent="CharacterContainer/Body" unique_id=923350264]
+position = Vector2(348, 416)
+texture = ExtResource("8_mfoiv")
+offset = Vector2(101, -268)
+
+[node name="BrasG2" type="Sprite2D" parent="CharacterContainer/Body" unique_id=801897583]
+position = Vector2(76.96387, -395.0066)
+rotation = -0.012813093
+scale = Vector2(0.9999999, 0.9999999)
+texture = ExtResource("9_y0hd3")
+offset = Vector2(364, 556)
+
+[node name="BrasG1" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1747690717]
+position = Vector2(26.655231, 361.7)
+rotation = 0.058881517
+scale = Vector2(0.9999999, 0.9999999)
+texture = ExtResource("10_dwijb")
+offset = Vector2(425, -200)
+
+[node name="Coup" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1776661715]
+position = Vector2(339.11035, -35.10492)
+rotation = -0.019716505
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("11_55k7u")
+offset = Vector2(110, 191)
+
+[node name="Tete" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1979959228]
+position = Vector2(340.65894, -565.23846)
+rotation = -0.092060216
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("12_fhw12")
+offset = Vector2(98, 721)
+
+[node name="OeilD" type="Sprite2D" parent="CharacterContainer/Body" unique_id=440661077]
+position = Vector2(450.46716, -702.9162)
+rotation = -0.092060216
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("13_qxqfw")
+offset = Vector2(-24, 846)
+
+[node name="OeilG" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1064512581]
+position = Vector2(369.81018, -695.46985)
+rotation = -0.092060216
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("14_jvcll")
+offset = Vector2(57, 848)
+
+[node name="Bouche" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1920024091]
+visible = false
+position = Vector2(459, -505)
+texture = ExtResource("15_a3hm8")
+offset = Vector2(98, 721)
+
+[node name="Grimace" type="Sprite2D" parent="CharacterContainer/Body" unique_id=629724224]
+visible = false
+position = Vector2(459, -505)
+texture = ExtResource("16_h2v10")
+offset = Vector2(98, 721)
+
+[node name="Dent" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1458834552]
+position = Vector2(340.65894, -565.23846)
+rotation = -0.092060216
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("17_go3jo")
+offset = Vector2(98, 721)
+
+[node name="Bones" type="Node2D" parent="CharacterContainer" unique_id=936273563]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="CharacterContainer/Bones" unique_id=1480161863]
+position = Vector2(5, 19)
+
+[node name="Pelvis" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D" unique_id=216369907]
+position = Vector2(343, 397)
+rest = Transform2D(1, 0, 0, 1, 457, 484)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis" unique_id=666471313]
+remote_path = NodePath("../../../../Body/Pelvis")
+
+[node name="HancheG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis" unique_id=1495938702]
+position = Vector2(-101, 78)
+rotation = -0.016389132
+rest = Transform2D(1, 0, 0, 1, -182, 81)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheG" unique_id=1473513753]
+remote_path = NodePath("../../../../../Body/HautJambeG")
+
+[node name="RotuleG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheG" unique_id=1551951345]
+position = Vector2(-40.09275, 982.38513)
+rotation = -0.054093603
+scale = Vector2(0.99999994, 0.99999994)
+rest = Transform2D(1, 0, 0, 1, 48, 898)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheG/RotuleG" unique_id=923789721]
+remote_path = NodePath("../../../../../../Body/PiedG1")
+
+[node name="ChevilleG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheG/RotuleG" unique_id=1420941238]
+position = Vector2(-65, 683)
+rotation = 0.05846507
+rest = Transform2D(1, 0, 0, 1, -65, 683)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheG/RotuleG/ChevilleG" unique_id=1856288680]
+remote_path = NodePath("../../../../../../../Body/PiedG2")
+
+[node name="PiedG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheG/RotuleG/ChevilleG" unique_id=963000006]
+position = Vector2(363, 14)
+rest = Transform2D(1, 0, 0, 1, 363, 14)
+
+[node name="Ventre" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis" unique_id=525747299]
+position = Vector2(-10, -71)
+rotation = 0.02660096
+scale = Vector2(0.99999994, 0.99999994)
+rest = Transform2D(1, 0, 0, 1, -1, -79)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre" unique_id=276402905]
+remote_path = NodePath("../../../../../Body/Corps1")
+
+[node name="Corps" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre" unique_id=1681440006]
+position = Vector2(-9, -380)
+rotation = -0.046317462
+rest = Transform2D(1, 0, 0, 1, -9, -380)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps" unique_id=237244213]
+remote_path = NodePath("../../../../../../Body/Coup")
+
+[node name="Coup" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps" unique_id=1180621693]
+position = Vector2(12, -530)
+rotation = -0.072343715
+scale = Vector2(0.99999994, 0.99999994)
+rest = Transform2D(1, 0, 0, 1, 12, -530)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/Coup" unique_id=1490848768]
+remote_path = NodePath("../../../../../../../Body/Tete")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/Coup" unique_id=619620085]
+remote_path = NodePath("../../../../../../../Body/Dent")
+
+[node name="Tete" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/Coup" unique_id=1261027833]
+position = Vector2(64, -90)
+rest = Transform2D(1, 0, 0, 1, 64, -90)
+
+[node name="OielG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/Coup/Tete" unique_id=1722765371]
+position = Vector2(-23, -37)
+rest = Transform2D(1, 0, 0, 1, -23, -37)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/Coup/Tete/OielG" unique_id=958782413]
+remote_path = NodePath("../../../../../../../../../Body/OeilG")
+
+[node name="OielD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/Coup/Tete" unique_id=768251699]
+position = Vector2(58, -37)
+rest = Transform2D(1, 0, 0, 1, 58, -37)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/Coup/Tete/OielD" unique_id=1024163781]
+remote_path = NodePath("../../../../../../../../../Body/OeilD")
+
+[node name="EpauleG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps" unique_id=121232497]
+position = Vector2(-255, -365)
+rotation = 0.0069034123
+rest = Transform2D(1, 0, 0, 1, -255, -365)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/EpauleG" unique_id=321141581]
+remote_path = NodePath("../../../../../../../Body/BrasG2")
+
+[node name="CoudeG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/EpauleG" unique_id=1448604806]
+position = Vector2(-60, 756)
+rotation = 0.07169461
+rest = Transform2D(1, 0, 0, 1, -60, 756)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/EpauleG/CoudeG" unique_id=281692627]
+remote_path = NodePath("../../../../../../../../Body/BrasG1")
+
+[node name="MainG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/EpauleG/CoudeG" unique_id=756704583]
+position = Vector2(-4, 533)
+rest = Transform2D(1, 0, 0, 1, -4, 533)
+
+[node name="EpauleD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps" unique_id=1168783182]
+position = Vector2(253, -378)
+rotation = 0.055499293
+rest = Transform2D(1, 0, 0, 1, 253, -378)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/EpauleD" unique_id=920545361]
+remote_path = NodePath("../../../../../../../Body/BrasD1")
+
+[node name="CoudeD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/EpauleD" unique_id=1887424845]
+position = Vector2(-17, 728)
+rotation = -0.17524253
+rest = Transform2D(1, 0, 0, 1, -17, 728)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/EpauleD/CoudeD" unique_id=157154376]
+remote_path = NodePath("../../../../../../../../Body/BrasD2")
+
+[node name="MainD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/EpauleD/CoudeD" unique_id=1528906625]
+position = Vector2(64, 619)
+rest = Transform2D(1, 0, 0, 1, 64, 619)
+
+[node name="HancheD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis" unique_id=1168485978]
+position = Vector2(13.999991, 61)
+rotation = 0.07429694
+scale = Vector2(0.99999994, 0.99999994)
+rest = Transform2D(1, 0, 0, 1, 105, 75)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheD" unique_id=2053517319]
+remote_path = NodePath("../../../../../Body/HautJambeD")
+
+[node name="RotuleD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheD" unique_id=1717227443]
+position = Vector2(103.94249, 974.17706)
+rotation = -0.18777642
+scale = Vector2(0.99999994, 0.99999994)
+rest = Transform2D(1, 0, 0, 1, 18, 886)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheD/RotuleD" unique_id=2007522585]
+remote_path = NodePath("../../../../../../Body/PiedD1")
+
+[node name="ChevilleD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheD/RotuleD" unique_id=670825734]
+position = Vector2(-57, 698)
+rotation = 0.08218701
+scale = Vector2(0.9999999, 0.9999999)
+rest = Transform2D(1, 0, 0, 1, -57, 698)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="PiedD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheD/RotuleD/ChevilleD" unique_id=349707555]
+position = Vector2(356, 27)
+rest = Transform2D(1, 0, 0, 1, 356, 27)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheD/RotuleD/ChevilleD" unique_id=548113158]
+remote_path = NodePath("../../../../../../../Body/PiedD2")
+
+[node name="Articulation" type="Node2D" parent="CharacterContainer/Bones/Skeleton2D" unique_id=1890226284]
+
+[node name="UpperBody" type="Node" parent="CharacterContainer/Bones/Skeleton2D/Articulation" unique_id=2035867345]
+script = ExtResource("18_ow40n")
+metadata/_custom_type_script = "uid://3n2ir7g15yw5"
+
+[node name="ArmRIK" type="Node" parent="CharacterContainer/Bones/Skeleton2D/Articulation/UpperBody" unique_id=300615264 node_paths=PackedStringArray("target_node", "joint_one_bone_node", "joint_two_bone_node")]
+script = ExtResource("19_1d8hh")
+target_node = NodePath("../../../../../IK Targets/ArmR Target")
+enabled = true
+joint_one_bone_node = NodePath("../../../Pelvis/Ventre/Corps/EpauleD")
+joint_two_bone_node = NodePath("../../../Pelvis/Ventre/Corps/EpauleD/CoudeD")
+metadata/_custom_type_script = "uid://bnso0mph1tb11"
+
+[node name="ArmGIK" type="Node" parent="CharacterContainer/Bones/Skeleton2D/Articulation/UpperBody" unique_id=1314895379 node_paths=PackedStringArray("target_node", "joint_one_bone_node", "joint_two_bone_node")]
+script = ExtResource("19_1d8hh")
+target_node = NodePath("../../../../../IK Targets/ArmL Target")
+enabled = true
+joint_one_bone_node = NodePath("../../../Pelvis/Ventre/Corps/EpauleG")
+joint_two_bone_node = NodePath("../../../Pelvis/Ventre/Corps/EpauleG/CoudeG")
+metadata/_custom_type_script = "uid://bnso0mph1tb11"
+
+[node name="SoupTwoBoneIK" type="Node" parent="CharacterContainer/Bones/Skeleton2D/Articulation/UpperBody" unique_id=1544755971 node_paths=PackedStringArray("target_node", "joint_one_bone_node", "joint_two_bone_node")]
+script = ExtResource("19_1d8hh")
+target_node = NodePath("../../../../../IK Targets/Body Target")
+enabled = true
+flip_bend_direction = true
+joint_one_bone_node = NodePath("../../../Pelvis/Ventre")
+joint_two_bone_node = NodePath("../../../Pelvis/Ventre/Corps")
+metadata/_custom_type_script = "uid://bnso0mph1tb11"
+
+[node name="HeadIK" type="Node" parent="CharacterContainer/Bones/Skeleton2D/Articulation/UpperBody" unique_id=237347041 node_paths=PackedStringArray("target_node", "bone_node")]
+script = ExtResource("20_ao2d2")
+target_node = NodePath("../../../../../IK Targets/Head Target")
+enabled = true
+bone_node = NodePath("../../../Pelvis/Ventre/Corps/Coup")
+metadata/_custom_type_script = "uid://b4u1tvhlw4d2g"
+
+[node name="LowerBody" type="Node" parent="CharacterContainer/Bones/Skeleton2D/Articulation" unique_id=28749753]
+script = ExtResource("18_ow40n")
+metadata/_custom_type_script = "uid://3n2ir7g15yw5"
+
+[node name="LegRIK" type="Node" parent="CharacterContainer/Bones/Skeleton2D/Articulation/LowerBody" unique_id=1894336091 node_paths=PackedStringArray("target_node", "joint_one_bone_node", "joint_two_bone_node")]
+script = ExtResource("19_1d8hh")
+target_node = NodePath("../../../../../IK Targets/FootR Target")
+enabled = true
+flip_bend_direction = true
+joint_one_bone_node = NodePath("../../../Pelvis/HancheD")
+joint_two_bone_node = NodePath("../../../Pelvis/HancheD/RotuleD")
+metadata/_custom_type_script = "uid://bnso0mph1tb11"
+
+[node name="LegRLookAt" type="Node" parent="CharacterContainer/Bones/Skeleton2D/Articulation/LowerBody" unique_id=905396337 node_paths=PackedStringArray("target_node", "bone_node")]
+script = ExtResource("20_ao2d2")
+target_node = NodePath("../../../../../IK Targets/FootR Target/FootLookat")
+enabled = true
+bone_node = NodePath("../../../Pelvis/HancheD/RotuleD/ChevilleD")
+metadata/_custom_type_script = "uid://b4u1tvhlw4d2g"
+
+[node name="LegGIK" type="Node" parent="CharacterContainer/Bones/Skeleton2D/Articulation/LowerBody" unique_id=1934250122 node_paths=PackedStringArray("target_node", "joint_one_bone_node", "joint_two_bone_node")]
+script = ExtResource("19_1d8hh")
+target_node = NodePath("../../../../../IK Targets/FootL Target")
+enabled = true
+flip_bend_direction = true
+joint_one_bone_node = NodePath("../../../Pelvis/HancheG")
+joint_two_bone_node = NodePath("../../../Pelvis/HancheG/RotuleG")
+metadata/_custom_type_script = "uid://bnso0mph1tb11"
+
+[node name="LegGLookAt" type="Node" parent="CharacterContainer/Bones/Skeleton2D/Articulation/LowerBody" unique_id=1158209570 node_paths=PackedStringArray("target_node", "bone_node")]
+script = ExtResource("20_ao2d2")
+target_node = NodePath("../../../../../IK Targets/FootL Target/FootLookat")
+enabled = true
+bone_node = NodePath("../../../Pelvis/HancheG/RotuleG/ChevilleG")
+metadata/_custom_type_script = "uid://b4u1tvhlw4d2g"
+
+[node name="SoupStayAt" type="Node" parent="CharacterContainer/Bones/Skeleton2D/Articulation/LowerBody" unique_id=624665504 node_paths=PackedStringArray("target_node", "bone_node")]
+script = ExtResource("21_1d8hh")
+target_node = NodePath("../../../../../IK Targets/Hip Target")
+enabled = true
+bone_node = NodePath("../../../Pelvis")
+metadata/_custom_type_script = "uid://b5uiivwxcoics"
+
+[node name="IK Targets" type="Node2D" parent="CharacterContainer" unique_id=1876627691]
+
+[node name="Hip Target" type="Node2D" parent="CharacterContainer/IK Targets" unique_id=969563572]
+position = Vector2(348, 416)
+
+[node name="FootR Target" type="Node2D" parent="CharacterContainer/IK Targets" unique_id=752152584]
+position = Vector2(416, 2164)
+
+[node name="FootLookat" type="Node2D" parent="CharacterContainer/IK Targets/FootR Target" unique_id=897371331]
+position = Vector2(356, 8)
+
+[node name="FootL Target" type="Node2D" parent="CharacterContainer/IK Targets" unique_id=1884978677]
+position = Vector2(206, 2174)
+
+[node name="FootLookat" type="Node2D" parent="CharacterContainer/IK Targets/FootL Target" unique_id=1392692576]
+position = Vector2(399, -16)
+
+[node name="Body Target" type="Node2D" parent="CharacterContainer/IK Targets" unique_id=2119175628]
+position = Vector2(341, -682)
+
+[node name="ArmR Target" type="Node2D" parent="CharacterContainer/IK Targets" unique_id=1711899926]
+position = Vector2(691, 913)
+
+[node name="ArmL Target" type="Node2D" parent="CharacterContainer/IK Targets" unique_id=1205659437]
+position = Vector2(-9, 898)
+
+[node name="Head Target" type="Node2D" parent="CharacterContainer/IK Targets" unique_id=275266238]
+position = Vector2(858, -613)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=551870619]
+libraries = {
+&"": SubResource("AnimationLibrary_x2ynk")
+}

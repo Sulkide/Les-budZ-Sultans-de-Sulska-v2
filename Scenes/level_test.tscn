@@ -1,0 +1,136 @@
+[gd_scene load_steps=13 format=3 uid="uid://bkay62k8fatoy"]
+
+[ext_resource type="PackedScene" uid="uid://s0jp0sp5duga" path="res://Scenes/player.tscn" id="1_10lpn"]
+[ext_resource type="PackedScene" uid="uid://dmdwgr1ahfwuw" path="res://Scenes/terrain_block.tscn" id="1_ovy8i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r0ivf"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ovy8i"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10lpn"]
+albedo_color = Color(0.11235619, 0.38632026, 0.42532596, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_10lpn"]
+size = Vector3(1, 16, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d8tg7"]
+size = Vector3(1, 16, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ovy8i"]
+size = Vector3(10, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vh5rs"]
+size = Vector3(10, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d8tg7"]
+size = Vector3(100, 100, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vh5rs"]
+albedo_color = Color(1.0765535e-06, 0.4748939, 0.3224398, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bxe70"]
+material = SubResource("StandardMaterial3D_vh5rs")
+size = Vector3(100, 100, 1)
+
+[node name="Level Test" type="Node3D" unique_id=816915117]
+
+[node name="Level" type="Node3D" parent="." unique_id=1620886585]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level" unique_id=1246124555]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StaticBody3D" unique_id=865799691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0654068, 0, 0)
+shape = SubResource("BoxShape3D_r0ivf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/StaticBody3D/CollisionShape3D" unique_id=1356996737]
+mesh = SubResource("BoxMesh_ovy8i")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_10lpn")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Level" unique_id=282661542]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.012737, 11.963942, 9.536743e-07)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StaticBody3D2" unique_id=640971568]
+shape = SubResource("BoxShape3D_10lpn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/StaticBody3D2/CollisionShape3D" unique_id=1957819938]
+mesh = SubResource("BoxMesh_d8tg7")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Level" unique_id=752764838]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0136356, 13.219467, -10.851439)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StaticBody3D3" unique_id=1210657517]
+shape = SubResource("BoxShape3D_10lpn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/StaticBody3D3/CollisionShape3D" unique_id=1107986895]
+mesh = SubResource("BoxMesh_d8tg7")
+skeleton = NodePath("../../../StaticBody3D3")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="Level" unique_id=1402876280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.047806, 5.1066628, 4.0386877)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StaticBody3D4" unique_id=2038880162]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0654068, 0, 0)
+shape = SubResource("BoxShape3D_ovy8i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/StaticBody3D4/CollisionShape3D" unique_id=89801278]
+mesh = SubResource("BoxMesh_vh5rs")
+skeleton = NodePath("../../../StaticBody3D4")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="Level" unique_id=2107624596]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.330679, 5.1066628, -21.006552)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StaticBody3D5" unique_id=1063720995]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0654068, 0, 0)
+shape = SubResource("BoxShape3D_ovy8i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/StaticBody3D5/CollisionShape3D" unique_id=1413308852]
+mesh = SubResource("BoxMesh_vh5rs")
+skeleton = NodePath("../../../StaticBody3D4")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="Level" unique_id=663400253]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.30912, 5.1066628, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StaticBody3D6" unique_id=1807096316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0654068, 0, 0)
+shape = SubResource("BoxShape3D_ovy8i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/StaticBody3D6/CollisionShape3D" unique_id=410081663]
+mesh = SubResource("BoxMesh_vh5rs")
+skeleton = NodePath("../../../StaticBody3D4")
+
+[node name="StaticBody3D7" type="StaticBody3D" parent="Level" unique_id=984283930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.01223, 17.58869, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StaticBody3D7" unique_id=1382693470]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0654068, 0, 0)
+shape = SubResource("BoxShape3D_ovy8i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/StaticBody3D7/CollisionShape3D" unique_id=329832341]
+mesh = SubResource("BoxMesh_vh5rs")
+skeleton = NodePath("../../../StaticBody3D4")
+
+[node name="StaticBody3D8" type="StaticBody3D" parent="Level" unique_id=1656650028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -62.739803)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StaticBody3D8" unique_id=1948634655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0654068, 0, 0)
+shape = SubResource("BoxShape3D_d8tg7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/StaticBody3D8/CollisionShape3D" unique_id=1425381919]
+mesh = SubResource("BoxMesh_bxe70")
+skeleton = NodePath("../..")
+
+[node name="TerrainBlock" parent="Level" unique_id=1387569953 instance=ExtResource("1_ovy8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.431592, 1.4741383, 8.33424)
+block_size = null
+
+[node name="Player" parent="." unique_id=598794534 instance=ExtResource("1_10lpn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6651468, 0)
+SPEED = 10.0
+JUMP_VELOCITY = 35.0
+DASH_DURATION = 0.03
+DASH_SPEED = 100.0

@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8usfwvcdaa76"]
+
+[ext_resource type="Script" uid="uid://cmxjiiyl4ebag" path="res://Scripts/Enemy/enemy.gd" id="1_hghv2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ne65n"]
+radius = 0.5151367
+height = 1.2197266
+
+[sub_resource type="Gradient" id="Gradient_ne65n"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hghv2"]
+gradient = SubResource("Gradient_ne65n")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hghv2"]
+height = 0.4003601
+radius = 0.5761719
+
+[node name="Enemy" type="CharacterBody3D" unique_id=630029366]
+script = ExtResource("1_hghv2")
+move_speed = 5.0
+ledge_check_distance = 0.5
+jump_strength = 20.0
+jump_chance = 0.4
+gravity = 100.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1207735717]
+shape = SubResource("CapsuleShape3D_ne65n")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=984612176]
+transform = Transform3D(1.6456294, 0, 0, 0, 1.9177331, 0, 0, 0, 1, 0, 0, 0)
+texture = SubResource("GradientTexture2D_hghv2")
+
+[node name="TryJumpTimer" type="Timer" parent="." unique_id=1329524800]
+autostart = true
+
+[node name="StompArea" type="Area3D" parent="." unique_id=898714513]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StompArea" unique_id=1362317666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.503006, 0)
+shape = SubResource("CylinderShape3D_hghv2")
+debug_color = Color(0.76, 0.456, 0, 0.8509804)
+
+[connection signal="timeout" from="TryJumpTimer" to="." method="_on_try_jump"]
+[connection signal="body_entered" from="StompArea" to="." method="_on_stomp_area_body_entered"]
