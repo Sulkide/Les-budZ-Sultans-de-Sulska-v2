@@ -6,7 +6,6 @@ extends CollisionShape3D
 
 func set_collision_bounds(front: float, back: float) -> void:
 	if shape is ConvexPolygonShape3D:
-		var points: Array = shape.points
 		for i in range(points_per_face):
-			points[i].z = front
-			points[i + points_per_face].z = back
+			shape.points[i].z = front
+			shape.points[i + points_per_face].z = back

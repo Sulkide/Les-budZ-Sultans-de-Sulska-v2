@@ -29,6 +29,9 @@ var is3D: bool
 @export var lock_z_plane := true
 
 @onready var camera: Cameraflip = $Camera3D
+
+@onready var collision: PlayerCollision2D = $CollisionShape2D
+
 var z_plane_value := 0.0
 
 var input_buffer : Timer
@@ -44,6 +47,8 @@ var wallOnLeft := false
 var wallOnRight := false
 
 func _ready():
+	collision.set_collision_bounds(1, -1)
+	
 	z_plane_value = global_position.z
 
 	input_buffer = Timer.new()
@@ -61,12 +66,7 @@ func _ready():
 	coyote_timer.one_shot = true
 	add_child(coyote_timer)
 	coyote_timer.timeout.connect(_on_coyote_timeout)
-	if startOn2D:
-		camera.flip2D(timeToFlip)
-		is3D = false
-	else :
-		camera.flip3D(timeToFlip)
-		is3D = true
+	camera.toggle_view()
 	
 
 func _physics_process(delta):
@@ -81,7 +81,7 @@ func _physics_process(delta):
 
 	var switch_dimension_pressed := Input.is_action_just_pressed("switch_dimension")
 	if switch_dimension_pressed:
-		_switch_dimension(timeToFlip)
+		camera.toggle_view()
 	
 	if Input.is_action_just_pressed("dash") && can_dash:
 		dash_timer.start()
@@ -166,14 +166,6 @@ func _gravity_2d(input_dir: float) -> float:
 	if is_on_wall_only() and velocity.y < 0.0 and input_dir != 0.0:
 		return WALL_GRAVITY
 	return GRAVITY if velocity.y > 0.0 else FALL_GRAVITY
-	
-func _switch_dimension(time: float):
-	if is3D:
-		camera.flip2D(time)
-		is3D = false
-	else :
-		camera.flip3D(time)
-		is3D = true
 
 func _dash():
 	hasDashed = true
@@ -211,6 +203,21 @@ func _on_wall_detect_left_body_exited(body: Node3D) -> void:
 func _on_wall_detect_right_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Wall"):
 		wallOnRight = true
+
 func _on_wall_detect_right_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Wall"):
 		wallOnRight = false
+
+#region 3D/2D Collision transitions
+
+@export var max_level_depth: float = 50
+
+func _check_collision(front: float, back: float) -> bool:
+	collision.set_collision_bounds(front, back)
+	return move_and_collide(Vector3.ZERO, true) != null
+
+func _process(_delta: float) -> void:
+	if Input.is_action_pressed("ui_down"):
+		print(_check_collision(50, -50))
+
+#endregion

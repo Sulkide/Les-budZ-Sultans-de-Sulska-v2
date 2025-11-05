@@ -125,7 +125,7 @@ mesh = SubResource("BoxMesh_bxe70")
 skeleton = NodePath("../..")
 
 [node name="TerrainBlock" parent="Level" unique_id=1387569953 instance=ExtResource("1_ovy8i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.431592, 1.4741383, 8.33424)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13604212, 1.7837372, 2.823752)
 
 [node name="Player" parent="." unique_id=598794534 instance=ExtResource("1_10lpn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6651468, 0)
