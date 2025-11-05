@@ -28,7 +28,8 @@ var is3D: bool
 
 @export var lock_z_plane := true
 
-@onready var camera: Cameraflip = $Camera3D
+@onready var flip_cam: CameraFlip = get_node_or_null("Camera3D") # adapte le chemin si besoin
+
 
 @onready var collision: PlayerCollision2D = $CollisionShape2D
 
@@ -66,7 +67,14 @@ func _ready():
 	coyote_timer.one_shot = true
 	add_child(coyote_timer)
 	coyote_timer.timeout.connect(_on_coyote_timeout)
-	camera.toggle_view()
+	if flip_cam:
+		flip_cam.target_plane_z = z_plane_value    # aligne le plan d'appariement
+		if startOn2D:
+			is3D = false
+			flip_cam.snap_to_2D()
+		else:
+			is3D = true
+			flip_cam.snap_to_3D()
 	
 
 func _physics_process(delta):
@@ -81,7 +89,13 @@ func _physics_process(delta):
 
 	var switch_dimension_pressed := Input.is_action_just_pressed("switch_dimension")
 	if switch_dimension_pressed:
-		camera.toggle_view()
+		print_debug("switched dimension")
+		if flip_cam:
+			if is3D:
+				flip_cam.to_2D()
+			else:
+				flip_cam.to_3D()
+			is3D = !is3D
 	
 	if Input.is_action_just_pressed("dash") && can_dash:
 		dash_timer.start()
