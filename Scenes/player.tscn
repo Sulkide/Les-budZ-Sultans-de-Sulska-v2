@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://s0jp0sp5duga"]
+[gd_scene load_steps=12 format=3 uid="uid://s0jp0sp5duga"]
 
 [ext_resource type="Script" uid="uid://dmli2hik7mqkn" path="res://Scripts/Player/PlayerMovement.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://7i0mf14xk2hr" path="res://Assets/Sprite/Player/1f344.png" id="1_v0iea"]
@@ -183,6 +183,9 @@ _data = {
 &"RESET": SubResource("Animation_fkybt")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_6t5aa"]
+size = Vector3(0.092174806, 1, 1)
+
 [node name="Player" type="CharacterBody3D" unique_id=598794534]
 script = ExtResource("1_cvnsp")
 GRAVITY = 75.0
@@ -212,3 +215,22 @@ script = ExtResource("3_6t5aa")
 libraries = {
 &"": SubResource("AnimationLibrary_x3wgy")
 }
+
+[node name="WallDetectLeft" type="Area3D" parent="." unique_id=1181686187]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 98.23704, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallDetectLeft" unique_id=1440259926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51936036, 0, 0)
+shape = SubResource("BoxShape3D_6t5aa")
+
+[node name="WallDetectRight" type="Area3D" parent="." unique_id=1046551275]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 98.23704, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallDetectRight" unique_id=1489347074]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, 0, 0)
+shape = SubResource("BoxShape3D_6t5aa")
+
+[connection signal="body_entered" from="WallDetectLeft" to="." method="_on_wall_detect_left_body_entered"]
+[connection signal="body_exited" from="WallDetectLeft" to="." method="_on_wall_detect_left_body_exited"]
+[connection signal="body_entered" from="WallDetectRight" to="." method="_on_wall_detect_right_body_entered"]
+[connection signal="body_exited" from="WallDetectRight" to="." method="_on_wall_detect_right_body_exited"]

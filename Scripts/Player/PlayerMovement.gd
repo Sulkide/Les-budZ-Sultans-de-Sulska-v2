@@ -206,12 +206,10 @@ func _on_wall_detect_left_body_entered(body: Node3D) -> void:
 
 func _on_wall_detect_left_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Wall"):
-		print("haha")
 		wallOnLeft = false
 
 func _on_wall_detect_right_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Wall"):
-		print("haha")
 		wallOnRight = true
 func _on_wall_detect_right_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Wall"):
