@@ -126,7 +126,6 @@ skeleton = NodePath("../..")
 
 [node name="TerrainBlock" parent="Level" unique_id=1387569953 instance=ExtResource("1_ovy8i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.431592, 1.4741383, 8.33424)
-block_size = null
 
 [node name="Player" parent="." unique_id=598794534 instance=ExtResource("1_10lpn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6651468, 0)

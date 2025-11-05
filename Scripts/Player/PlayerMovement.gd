@@ -1,6 +1,12 @@
 class_name Player
 extends CharacterBody3D
 
+@export_category("parametre flip")
+@export var startOn2D: bool = true
+@export var timeToFlip: float = 1
+var is3D: bool
+
+@export_category("Mouvement")
 @export var SPEED: float = 35.0
 @export var ACCELERATION: float = 120.0
 @export var FRICTION: float = 140.0
@@ -21,6 +27,8 @@ extends CharacterBody3D
 @export var COYOTE_TIME: float = 0.08
 
 @export var lock_z_plane := true
+
+@onready var camera: Cameraflip = $Camera3D
 var z_plane_value := 0.0
 
 var input_buffer : Timer
@@ -32,6 +40,8 @@ var can_dash := false
 var dash_dir :Vector3
 var hasJumped := false
 var hasDashed := false
+var wallOnLeft := false
+var wallOnRight := false
 
 func _ready():
 	z_plane_value = global_position.z
@@ -51,6 +61,13 @@ func _ready():
 	coyote_timer.one_shot = true
 	add_child(coyote_timer)
 	coyote_timer.timeout.connect(_on_coyote_timeout)
+	if startOn2D:
+		camera.flip2D(timeToFlip)
+		is3D = false
+	else :
+		camera.flip3D(timeToFlip)
+		is3D = true
+	
 
 func _physics_process(delta):
 	if lock_z_plane:
@@ -62,6 +79,9 @@ func _physics_process(delta):
 	var jump_pressed := Input.is_action_just_pressed("jump")
 	var try_jump := jump_pressed or input_buffer.time_left > 0.0
 
+	var switch_dimension_pressed := Input.is_action_just_pressed("switch_dimension")
+	if switch_dimension_pressed:
+		_switch_dimension(timeToFlip)
 	
 	if Input.is_action_just_pressed("dash") && can_dash:
 		dash_timer.start()
@@ -106,6 +126,16 @@ func _physics_process(delta):
 				velocity.x = WALL_JUMP_PUSHBACK * n.x
 				coyote_jump_available = false
 				input_buffer.stop()
+		elif wallOnLeft:
+			velocity.y = -WALL_JUMP_VELOCITY
+			velocity.x = WALL_JUMP_PUSHBACK
+			coyote_jump_available = false
+			input_buffer.stop()
+		elif wallOnRight:
+			velocity.y = -WALL_JUMP_VELOCITY
+			velocity.x = -WALL_JUMP_PUSHBACK
+			coyote_jump_available = false
+			input_buffer.stop()
 		elif jump_pressed:
 			input_buffer.start()
 
@@ -137,6 +167,14 @@ func _gravity_2d(input_dir: float) -> float:
 		return WALL_GRAVITY
 	return GRAVITY if velocity.y > 0.0 else FALL_GRAVITY
 	
+func _switch_dimension(time: float):
+	if is3D:
+		camera.flip2D(time)
+		is3D = false
+	else :
+		camera.flip3D(time)
+		is3D = true
+
 func _dash():
 	hasDashed = true
 	coyote_jump_available = false
@@ -160,3 +198,21 @@ func _on_coyote_timeout():
 
 func _get_dash_dir():
 	Input.get_vector("move_left", "move_right","move_approach","move_away")
+
+
+func _on_wall_detect_left_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Wall"):
+		wallOnLeft = true
+
+func _on_wall_detect_left_body_exited(body: Node3D) -> void:
+	if body.is_in_group("Wall"):
+		print("haha")
+		wallOnLeft = false
+
+func _on_wall_detect_right_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Wall"):
+		print("haha")
+		wallOnRight = true
+func _on_wall_detect_right_body_exited(body: Node3D) -> void:
+	if body.is_in_group("Wall"):
+		wallOnRight = false
