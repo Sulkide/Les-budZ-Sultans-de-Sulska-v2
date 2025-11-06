@@ -50,26 +50,26 @@ shape = SubResource("BoxShape3D_d8tg7")
 mesh = SubResource("BoxMesh_bxe70")
 skeleton = NodePath("../..")
 
-[node name="TerrainBlock" parent="Level" unique_id=1387569953 instance=ExtResource("1_ovy8i")]
+[node name="TerrainBlock" parent="Level" unique_id=1387569953 groups=["Wall"] instance=ExtResource("1_ovy8i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13604212, 1.7837372, 2.823752)
 collision_layer = 3
 
-[node name="TerrainBlock2" parent="Level" unique_id=3743884 instance=ExtResource("1_ovy8i")]
+[node name="TerrainBlock2" parent="Level" unique_id=3743884 groups=["Wall"] instance=ExtResource("1_ovy8i")]
 transform = Transform3D(-0.7768603, 0, 0.62967294, 0, 1, 0, -0.62967294, 0, -0.7768603, -40.919598, 13.984184, -32.1919)
 collision_layer = 3
 block_size = Vector3(1, 26.515, 24.86)
 
-[node name="TerrainBlock3" parent="Level" unique_id=360922056 instance=ExtResource("1_ovy8i")]
+[node name="TerrainBlock3" parent="Level" unique_id=360922056 groups=["Wall"] instance=ExtResource("1_ovy8i")]
 transform = Transform3D(-0.7768603, 0, 0.62967294, 0, 1, 0, -0.62967294, 0, -0.7768603, -41.953217, 13.984184, -39.848774)
 collision_layer = 3
 block_size = Vector3(1, 26.515, 24.86)
 
-[node name="TerrainBlock4" parent="Level" unique_id=765606619 instance=ExtResource("1_ovy8i")]
+[node name="TerrainBlock4" parent="Level" unique_id=765606619 groups=["Wall"] instance=ExtResource("1_ovy8i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.980767, 13.984184, -19.626453)
 collision_layer = 3
 block_size = Vector3(1, 26.515, 24.86)
 
-[node name="TerrainBlock5" parent="Level" unique_id=305035699 instance=ExtResource("1_ovy8i")]
+[node name="TerrainBlock5" parent="Level" unique_id=305035699 groups=["Wall"] instance=ExtResource("1_ovy8i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.288599, 13.984184, -14.328975)
 collision_layer = 3
 block_size = Vector3(1, 26.515, 24.86)
