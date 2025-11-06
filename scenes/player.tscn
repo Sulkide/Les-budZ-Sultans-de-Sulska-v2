@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://s0jp0sp5duga"]
+[gd_scene load_steps=9 format=3 uid="uid://s0jp0sp5duga"]
 
 [ext_resource type="Script" uid="uid://dmli2hik7mqkn" path="res://scripts/player/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://7i0mf14xk2hr" path="res://assets/textures/Player/1f344.png" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://dqj7llsipyuva" path="res://scripts/player/player_collision_2d.gd" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://dufiy0gv33ywb" path="res://scripts/player/camera.gd" id="4_vgqql"]
+[ext_resource type="PackedScene" uid="uid://dfo5h2ytn3qq0" path="res://scenes/collision_2d_raycasts.tscn" id="5_3smsa"]
+[ext_resource type="PackedScene" uid="uid://cajyuqh7f5bx4" path="res://scenes/weapon_bow.tscn" id="7_f1ek2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
 resource_local_to_scene = true
@@ -14,7 +16,7 @@ points = PackedVector3Array(0.355, 0.855, 50, -0.355, -0.855, 50, 0.355, -0.855,
 
 [node name="Player" type="CharacterBody3D" unique_id=598794534 node_paths=PackedStringArray("ray")]
 script = ExtResource("1_cvnsp")
-startOn2D = false
+is3D = true
 GRAVITY = 75.0
 FALL_GRAVITY = 150.0
 JUMP_VELOCITY = -35.0
@@ -46,3 +48,7 @@ preset_rot_3d_deg = Vector3(-15, 0, 0)
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1338336954]
 target_position = Vector3(0, 0, 0)
 collision_mask = 2
+
+[node name="PlayerCollision2DRaycasts" parent="." unique_id=280672917 instance=ExtResource("5_3smsa")]
+
+[node name="WeaponBow" parent="." unique_id=731021370 instance=ExtResource("7_f1ek2")]

@@ -25,7 +25,7 @@ extends CharacterBody3D
 @export var INPUT_BUFFER_PATIENCE: float = 0.1
 @export var COYOTE_TIME: float = 0.08
 
-@export var lock_z_plane := true
+
 @export var ray : RayCast3D
 @export var rayLength : float
 
@@ -33,7 +33,7 @@ extends CharacterBody3D
 
 
 @onready var collision: PlayerCollision2D = $CollisionShape2D
-@onready var collision2dRaycasts: PlayerCollision2DRaycasts = $Collision2DRaycasts
+@onready var collision2dRaycasts: PlayerCollision2DRaycasts = $PlayerCollision2DRaycasts
 
 
 
@@ -95,8 +95,7 @@ func _process(_delta: float) -> void:
 func _physics_process(delta):
 	_set_collision()
 	
-	if lock_z_plane:
-		velocity.z = 0.0
+
 
 	var horizontal_input := Input.get_axis("move_left", "move_right")
 	var vertical_input := Input.get_axis("move_away", "move_approach")
@@ -207,11 +206,10 @@ func _physics_process(delta):
 		var wn := get_wall_normal()
 		if abs(wn.x) > 0.1 and sign(velocity.x) == -sign(wn.x):
 			velocity.x = 0.0
-
+	print(velocity.z)
 	move_and_slide()
 
-	if lock_z_plane:
-		global_position.z = z_plane_value
+
 
 
 func _gravity_2d(input_dir: float) -> float:
@@ -273,11 +271,12 @@ func _toggle_dimension():
 	if is3D:
 		flip_cam.to_2D()
 		_set_base_collision()
+
 		_full_collision = false
 	else:
 		flip_cam.to_3D()
 		_set_base_collision()
-	
+
 	is3D = !is3D
 
 
