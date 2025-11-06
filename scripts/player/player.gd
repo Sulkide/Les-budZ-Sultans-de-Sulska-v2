@@ -54,7 +54,7 @@ var wallOnFront := false
 var wallOnBack := false
 var lastWall : Vector3
 
-@onready var bow: WeaponBow = $WeaponBow
+@onready var bow: Bow = $WeaponBow
 
 
 func _ready():
@@ -83,14 +83,12 @@ func _ready():
 
 
 func _process(_delta: float) -> void:
-	if bow:
-		if Input.is_action_just_pressed("shoot"):
-			bow.shoot()
-		if is3D:
-			bow.angle_bow_3d()
-		else:
-			bow.angle_bow_2d()
-
+	var direction: Vector2 = Input.get_vector("target_left", "target_right", "target_up", "target_down")
+	var shoot := Input.is_action_just_pressed("shoot")
+	if is3D: 
+		bow.angle_bow_3d(direction, shoot)
+	else:
+		bow.angle_bow_2d(direction, shoot)
 
 func _physics_process(delta):
 	_set_collision()

@@ -52,3 +52,12 @@ collision_mask = 2
 [node name="PlayerCollision2DRaycasts" parent="." unique_id=280672917 instance=ExtResource("5_3smsa")]
 
 [node name="WeaponBow" parent="." unique_id=731021370 instance=ExtResource("7_f1ek2")]
+spawn_at_reticle = true
+spawn_offset_back = 0.15
+reticle_is_screen_space = false
+force_layer_1 = true
+invert_x_3d = false
+invert_y_3d = true
+invert_x_2d = false
+invert_y_2d = true
+forward_is_positive_z = false

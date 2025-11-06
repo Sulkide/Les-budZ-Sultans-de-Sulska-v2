@@ -1,0 +1,2 @@
+#define USE_ALPHA_SCISSOR 1
+#define USE_ALPHA_HASH 0
