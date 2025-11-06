@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c46meqqqpj686"]
+
+[ext_resource type="Script" uid="uid://dnvkboby8eb0t" path="res://scripts/weapon/arrow.gd" id="1_23jat"]
+[ext_resource type="Texture2D" uid="uid://dk6a6etjp4a2b" path="res://assets/textures/bow/item_arrow.png" id="1_umosx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_23jat"]
+radius = 0.13761277
+
+[node name="Arrow" type="Area3D" unique_id=1222506322]
+script = ExtResource("1_23jat")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1106794974]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.5071311, 0, 0)
+shape = SubResource("SphereShape3D_23jat")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1533275578]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+texture = ExtResource("1_umosx")

@@ -2,9 +2,8 @@ class_name Player
 extends CharacterBody3D
 
 @export_category("parametre flip")
-@export var startOn2D: bool = true
+@export var is3D: bool
 @export var timeToFlip: float = 1
-var is3D: bool
 
 @export_category("Mouvement")
 @export var SPEED: float = 35.0
@@ -32,6 +31,7 @@ var is3D: bool
 
 
 @onready var collision: PlayerCollision2D = $CollisionShape2D
+@onready var collision2dRaycasts: PlayerCollision2DRaycasts = $Collision2DRaycasts
 
 var z_plane_value := 0.0
 
@@ -47,8 +47,11 @@ var hasDashed := false
 var wallOnLeft := false
 var wallOnRight := false
 
+@onready var bow: WeaponBow = $WeaponBow
+
+
 func _ready():
-	collision.set_collision_bounds(1, -1)
+	_set_base_collision()
 	
 	z_plane_value = global_position.z
 
@@ -69,15 +72,22 @@ func _ready():
 	coyote_timer.timeout.connect(_on_coyote_timeout)
 	if flip_cam:
 		flip_cam.target_plane_z = z_plane_value    # aligne le plan d'appariement
-		if startOn2D:
-			is3D = false
-			flip_cam.snap_to_2D()
+		_toggle_dimension()
+
+
+func _process(_delta: float) -> void:
+	if bow:
+		if Input.is_action_just_pressed("shoot"):
+			bow.shoot()
+		if is3D:
+			bow.angle_bow_3d()
 		else:
-			is3D = true
-			flip_cam.snap_to_3D()
-	
+			bow.angle_bow_2d()
+
 
 func _physics_process(delta):
+	_set_collision()
+	
 	if lock_z_plane:
 		velocity.z = 0.0
 
@@ -91,11 +101,7 @@ func _physics_process(delta):
 	if switch_dimension_pressed:
 		print_debug("switched dimension")
 		if flip_cam:
-			if is3D:
-				flip_cam.to_2D()
-			else:
-				flip_cam.to_3D()
-			is3D = !is3D
+			_toggle_dimension()
 	
 	if Input.is_action_just_pressed("dash") && can_dash:
 		dash_timer.start()
@@ -173,6 +179,7 @@ func _physics_process(delta):
 	if lock_z_plane:
 		global_position.z = z_plane_value
 
+
 func _gravity_2d(input_dir: float) -> float:
 	if is_dashing: return 0
 	if Input.is_action_pressed("fast_fall"):
@@ -222,16 +229,48 @@ func _on_wall_detect_right_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Wall"):
 		wallOnRight = false
 
+
+func _toggle_dimension():
+	if is3D:
+		flip_cam.to_2D()
+		_set_base_collision()
+		_full_collision = false
+	else:
+		flip_cam.to_3D()
+		_set_base_collision()
+	
+	is3D = !is3D
+
+
 #region 3D/2D Collision transitions
 
 @export var max_level_depth: float = 50
 
-func _check_collision(front: float, back: float) -> bool:
-	collision.set_collision_bounds(front, back)
-	return move_and_collide(Vector3.ZERO, true) != null
+const START_COLLISION_FRONT: float = 1
+const START_COLLISION_BACK: float = -1
 
-func _process(_delta: float) -> void:
-	if Input.is_action_pressed("ui_down"):
-		print(_check_collision(50, -50))
+var _collision_front: float = 1
+var _collision_back: float = 1
+
+var _full_collision: bool = false
+
+
+func _set_base_collision() -> void:
+	collision.set_collision_bounds(START_COLLISION_FRONT, START_COLLISION_BACK)
+	collision2dRaycasts.setup_raycasts(max_level_depth)
+
+
+func _set_collision() -> void:
+	if _full_collision or is3D:
+		return
+	
+	_collision_front = collision2dRaycasts.get_max_depth(global_position.z, true, max_level_depth)
+	_collision_back = -collision2dRaycasts.get_max_depth(global_position.z, false, max_level_depth)
+	
+	collision.set_collision_bounds(_collision_front, _collision_back)
+	
+	if _collision_front == max_level_depth and _collision_back == -max_level_depth:
+		_full_collision = true
+
 
 #endregion

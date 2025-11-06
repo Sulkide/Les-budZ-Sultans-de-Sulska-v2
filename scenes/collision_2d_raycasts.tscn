@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfo5h2ytn3qq0"]
+
+[ext_resource type="Script" uid="uid://cbjl0dutguk2u" path="res://scripts/player/collision_2d_raycasts.gd" id="1_2r5up"]
+
+[node name="PlayerCollision2DRaycasts" type="Node3D" unique_id=280672917 node_paths=PackedStringArray("front_raycasts_container", "back_raycasts_container")]
+script = ExtResource("1_2r5up")
+front_raycasts_container = NodePath("Collision2DRaycastsFront")
+back_raycasts_container = NodePath("Collision2DRaycastsBack")
+
+[node name="Collision2DRaycastsBack" type="Node3D" parent="." unique_id=562629527]
+
+[node name="RayCast3D" type="RayCast3D" parent="Collision2DRaycastsBack" unique_id=1844755536]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4712649, 0, 0)
+target_position = Vector3(0, 0, -1)
+
+[node name="RayCast3D2" type="RayCast3D" parent="Collision2DRaycastsBack" unique_id=806341157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.471, 0, 0)
+target_position = Vector3(0, 0, -1)
+
+[node name="RayCast3D3" type="RayCast3D" parent="Collision2DRaycastsBack" unique_id=93619716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93, 0)
+target_position = Vector3(0, 0, -1)
+
+[node name="RayCast3D4" type="RayCast3D" parent="Collision2DRaycastsBack" unique_id=1370203103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.93, 0)
+target_position = Vector3(0, 0, -1)
+
+[node name="Collision2DRaycastsFront" type="Node3D" parent="." unique_id=709634408]
+
+[node name="RayCast3D" type="RayCast3D" parent="Collision2DRaycastsFront" unique_id=349124176]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4712649, 0, 0)
+target_position = Vector3(0, 0, 1)
+
+[node name="RayCast3D2" type="RayCast3D" parent="Collision2DRaycastsFront" unique_id=1701144874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.471, 0, 0)
+target_position = Vector3(0, 0, 1)
+
+[node name="RayCast3D3" type="RayCast3D" parent="Collision2DRaycastsFront" unique_id=522009658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93, 0)
+target_position = Vector3(0, 0, 1)
+
+[node name="RayCast3D4" type="RayCast3D" parent="Collision2DRaycastsFront" unique_id=815495248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.93, 0)
+target_position = Vector3(0, 0, 1)
