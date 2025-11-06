@@ -55,12 +55,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13604212, 1.7837372, 2.823
 collision_layer = 3
 
 [node name="TerrainBlock2" parent="Level" unique_id=3743884 instance=ExtResource("1_ovy8i")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.574265, 13.984184, -13.324889)
+transform = Transform3D(-0.7768603, 0, 0.62967294, 0, 1, 0, -0.62967294, 0, -0.7768603, -0.4087143, 13.984184, -12.308605)
 collision_layer = 3
 block_size = Vector3(1, 26.515, 24.86)
 
 [node name="TerrainBlock3" parent="Level" unique_id=360922056 instance=ExtResource("1_ovy8i")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.7232156, 13.984184, -18.949196)
+transform = Transform3D(-0.7768603, 0, 0.62967294, 0, 1, 0, -0.62967294, 0, -0.7768603, -1.4423344, 13.984184, -19.96548)
 collision_layer = 3
 block_size = Vector3(1, 26.515, 24.86)
 

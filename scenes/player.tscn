@@ -14,6 +14,7 @@ points = PackedVector3Array(0.355, 0.855, 50, -0.355, -0.855, 50, 0.355, -0.855,
 
 [node name="Player" type="CharacterBody3D" unique_id=598794534 node_paths=PackedStringArray("ray")]
 script = ExtResource("1_cvnsp")
+startOn2D = false
 GRAVITY = 75.0
 FALL_GRAVITY = 150.0
 JUMP_VELOCITY = -35.0

@@ -176,7 +176,6 @@ func _physics_process(delta):
 	if(abs(velocity.z) < 0.1):
 		ray.target_position.z = 0
 	if ray.is_colliding():
-		print('hihi')
 		lastWall = ray.get_collision_normal()
 	else:
 		if(ray.target_position != Vector3.ZERO):
@@ -256,8 +255,8 @@ func _check_collision(front: float, back: float) -> bool:
 	collision.set_collision_bounds(front, back)
 	return move_and_collide(Vector3.ZERO, true) != null
 
-func _process(_delta: float) -> void:
-	if Input.is_action_pressed("ui_down"):
-		print(_check_collision(50, -50))
+#func _process(_delta: float) -> void:
+	#if Input.is_action_pressed("ui_down"):
+		#print(_check_collision(50, -50))
 
 #endregion
