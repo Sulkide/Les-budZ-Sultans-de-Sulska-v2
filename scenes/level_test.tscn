@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://bkay62k8fatoy"]
 
 [ext_resource type="PackedScene" uid="uid://s0jp0sp5duga" path="res://scenes/player.tscn" id="1_10lpn"]
+[ext_resource type="PackedScene" uid="uid://sa1fbhptpj1d" path="res://scenes/moving_platform.tscn" id="1_d8tg7"]
 [ext_resource type="PackedScene" uid="uid://dmdwgr1ahfwuw" path="res://scenes/terrain_block.tscn" id="1_ovy8i"]
-[ext_resource type="PackedScene" uid="uid://rujo2a8mccmn" path="res://scenes/terrain_block_movable.tscn" id="2_d8tg7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r0ivf"]
 size = Vector3(100, 1, 100)
@@ -125,12 +125,20 @@ shape = SubResource("BoxShape3D_d8tg7")
 mesh = SubResource("BoxMesh_bxe70")
 skeleton = NodePath("../..")
 
+[node name="Moving Platform2" parent="Level" unique_id=1999263113 instance=ExtResource("1_d8tg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.16168, 1.283922, 0)
+points = Array[NodePath]([NodePath("/root/@EditorNode@20375/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10754/@VSplitContainer@10399/@HSplitContainer@10401/@HSplitContainer@10403/@Control@10404/@SubViewportContainer@10405/@SubViewport@10406/Level Test/Level/Moving Platform2/PathPoint_00"), NodePath("/root/@EditorNode@20375/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10754/@VSplitContainer@10399/@HSplitContainer@10401/@HSplitContainer@10403/@Control@10404/@SubViewportContainer@10405/@SubViewport@10406/Level Test/Level/Moving Platform2/PathPoint_01")])
+loop_times = 0
+destroy_on_end = false
+
+[node name="PathPoint_00" type="Marker3D" parent="Level/Moving Platform2" unique_id=2128278882]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.005743, 0, 0)
+
+[node name="PathPoint_01" type="Marker3D" parent="Level/Moving Platform2" unique_id=1925123101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.742975, 4.958597, -8.806422)
+
 [node name="TerrainBlock" parent="Level" unique_id=1387569953 instance=ExtResource("1_ovy8i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13604212, 1.7837372, 2.823752)
-
-[node name="TerrainBlock2" parent="Level" unique_id=2125280505 instance=ExtResource("2_d8tg7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.019794, 2.9457426, 0)
-b = Vector3(4.27, 2.946, 0)
 
 [node name="Player" parent="." unique_id=598794534 instance=ExtResource("1_10lpn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6651468, 0)
