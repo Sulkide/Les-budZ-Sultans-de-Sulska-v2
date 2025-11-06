@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://qraeak3mrred"]
+
+[ext_resource type="Script" uid="uid://chi76gftgby7a" path="res://ethan/enemy.gd" id="1_7k104"]
+[ext_resource type="Texture2D" uid="uid://deu2gyxup21im" path="res://ethan/character_roundRed.png" id="2_4gyqm"]
+
+[node name="enemy" type="CharacterBody2D" unique_id=848693076]
+script = ExtResource("1_7k104")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=842856278]
+position = Vector2(132, 311)
+scale = Vector2(-1, 1)
+texture = ExtResource("2_4gyqm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=170838783]

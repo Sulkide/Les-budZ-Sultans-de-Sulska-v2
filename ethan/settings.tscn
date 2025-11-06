@@ -1,0 +1,201 @@
+[gd_scene load_steps=7 format=3 uid="uid://drxcugd2ta2am"]
+
+[ext_resource type="Script" uid="uid://bv3b6wb4kcq34" path="res://ethan/optionMenu.gd" id="1_cj1lu"]
+[ext_resource type="Texture2D" uid="uid://cadjeidg682si" path="res://ethan/W44_WVD_BlackScreen_SCR00.jpg" id="2_cj1lu"]
+[ext_resource type="Script" uid="uid://ds1l5b8uu1gy2" path="res://ethan/button_mainmenu.gd" id="2_gc0em"]
+[ext_resource type="Script" uid="uid://nq8awpayslwl" path="res://ethan/audio_options.gd" id="5_71mqq"]
+[ext_resource type="Script" uid="uid://bbqgdb245gmtk" path="res://ethan/input_settings.gd" id="6_3j6r5"]
+[ext_resource type="PackedScene" uid="uid://b0ilrr43tkl7i" path="res://ethan/input_button.tscn" id="6_71mqq"]
+
+[node name="optionMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cj1lu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(577.5, 322)
+scale = Vector2(1.1315789, 0.92462313)
+texture = ExtResource("2_cj1lu")
+
+[node name="InputSettings" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_3j6r5")
+
+[node name="PanelContainer" type="PanelContainer" parent="InputSettings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -197.0
+offset_right = 546.0
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InputSettings/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InputSettings/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionList" type="VBoxContainer" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputButton" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("6_71mqq")]
+layout_mode = 2
+
+[node name="InputButton2" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("6_71mqq")]
+layout_mode = 2
+
+[node name="InputButton3" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("6_71mqq")]
+layout_mode = 2
+
+[node name="InputButton4" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("6_71mqq")]
+layout_mode = 2
+
+[node name="InputButton5" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("6_71mqq")]
+layout_mode = 2
+
+[node name="resetButton" type="Button" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "reset to default"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -62.0
+offset_top = -102.0
+offset_right = -9.0
+offset_bottom = -71.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.8400012, 1.76)
+text = "Menu"
+flat = true
+script = ExtResource("2_gc0em")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -132.0
+offset_right = -20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+scale = Vector2(2.3999987, 2.2799997)
+text = "Game Settings"
+horizontal_alignment = 1
+max_lines_visible = 1
+visible_characters = 50
+visible_ratio = 3.8461537
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 214.0
+offset_top = 93.0
+offset_right = 326.0
+offset_bottom = 116.0
+grow_horizontal = 2
+scale = Vector2(1.0400012, 1)
+text = "Keybinds"
+horizontal_alignment = 1
+max_lines_visible = 1
+visible_characters = 50
+visible_ratio = 3.8461537
+
+[node name="MasterLabel2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 100.0
+offset_right = 272.0
+offset_bottom = 135.0
+size_flags_vertical = 3
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="AudioOptions" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_71mqq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AudioOptions"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 156.0
+offset_right = 447.0
+offset_bottom = 293.0
+
+[node name="MasterLabel" type="Label" parent="AudioOptions/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Master"
+
+[node name="MasterSlider" type="HSlider" parent="AudioOptions/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.05
+
+[node name="SFXLabel" type="Label" parent="AudioOptions/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="AudioOptions/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.05
+
+[node name="MusicLabel" type="Label" parent="AudioOptions/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="AudioOptions/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.05
+
+[node name="confirm" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="InputSettings/PanelContainer/MarginContainer/VBoxContainer/resetButton" to="InputSettings" method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="mouse_exited" from="AudioOptions/VBoxContainer/MasterSlider" to="AudioOptions" method="_on_master_slider_mouse_exited"]
+[connection signal="mouse_exited" from="AudioOptions/VBoxContainer/SFXSlider" to="AudioOptions" method="_on_sfx_slider_mouse_exited"]
+[connection signal="mouse_exited" from="AudioOptions/VBoxContainer/MusicSlider" to="AudioOptions" method="_on_music_slider_mouse_exited"]
+[connection signal="pressed" from="confirm" to="." method="_on_confirm_pressed"]

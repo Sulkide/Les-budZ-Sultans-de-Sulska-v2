@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://uxjkbeso2qln"]
+
+[ext_resource type="PackedScene" uid="uid://bw2eidells6qt" path="res://ethan/player.tscn" id="1_r0x5m"]
+[ext_resource type="PackedScene" uid="uid://bl3c50gx1yb70" path="res://ethan/pause_menu.tscn" id="3_joorw"]
+[ext_resource type="PackedScene" uid="uid://drxcugd2ta2am" path="res://ethan/settings.tscn" id="4_2vekm"]
+[ext_resource type="PackedScene" uid="uid://b7rydremos56q" path="res://ethan/Main_Menu.tscn" id="5_yx171"]
+[ext_resource type="PackedScene" uid="uid://c5jwaxr72gpw1" path="res://ethan/canvas_layer.tscn" id="6_yhmtn"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Control" parent="." instance=ExtResource("5_yx171")]
+
+[node name="pauseMenu" parent="." instance=ExtResource("3_joorw")]
+
+[node name="settings" parent="." instance=ExtResource("4_2vekm")]
+
+[node name="player" parent="." instance=ExtResource("1_r0x5m")]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("6_yhmtn")]
+visible = false

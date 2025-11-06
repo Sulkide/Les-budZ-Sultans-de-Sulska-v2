@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5jwaxr72gpw1"]
+
+[ext_resource type="Script" uid="uid://ds1l5b8uu1gy2" path="res://ethan/button_mainmenu.gd" id="1_37rai"]
+[ext_resource type="Script" uid="uid://b7r8rsqj3fbbd" path="res://ethan/button_resume.gd" id="2_0qrqu"]
+[ext_resource type="Script" uid="uid://c3d6luqxqa1rl" path="res://ethan/settings.gd" id="3_mx0kw"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Main_Menu" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = 59.0
+offset_right = 115.0
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Main Menu"
+script = ExtResource("1_37rai")
+
+[node name="resume_button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -64.0
+offset_right = 115.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "resume"
+script = ExtResource("2_0qrqu")
+
+[node name="Settings" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -4.0
+offset_right = 116.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Settings"
+script = ExtResource("3_mx0kw")
+
+[connection signal="pressed" from="Main_Menu" to="Main_Menu" method="_on_pressed"]
+[connection signal="pressed" from="resume_button" to="resume_button" method="_on_pressed"]
+[connection signal="pressed" from="Settings" to="Settings" method="_on_pressed"]
