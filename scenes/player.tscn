@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://s0jp0sp5duga"]
+[gd_scene load_steps=7 format=3 uid="uid://s0jp0sp5duga"]
 
 [ext_resource type="Script" uid="uid://dmli2hik7mqkn" path="res://scripts/player/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://7i0mf14xk2hr" path="res://assets/textures/Player/1f344.png" id="1_v0iea"]
@@ -12,16 +12,15 @@ resource_local_to_scene = true
 resource_local_to_scene = true
 points = PackedVector3Array(0.355, 0.855, 50, -0.355, -0.855, 50, 0.355, -0.855, 50, -0.355, 0.855, 50, 0.5, -0.5, 50, -0.5, 0.5, 50, 0.5, 0.5, 50, -0.5, -0.5, 50, 0, 1, 50, 0, -1, 50, 0.19, 0.96, 50, -0.19, -0.96, 50, -0.19, 0.96, 50, 0.19, -0.96, 50, 0.355, 0.855, 50, -0.355, -0.855, -50, 0.355, -0.855, -50, -0.355, 0.855, -50, 0, 1, -50, 0, -1, -50, 0.5, 0.5, -50, -0.5, -0.5, -50, -0.5, 0.5, -50, 0.5, -0.5, -50, 0.19, 0.96, -50, -0.19, -0.96, -50, -0.19, 0.96, -50, 0.19, -0.96, -50)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6t5aa"]
-size = Vector3(1, 1, 98.23704)
-
-[node name="Player" type="CharacterBody3D" unique_id=598794534]
+[node name="Player" type="CharacterBody3D" unique_id=598794534 node_paths=PackedStringArray("ray")]
 script = ExtResource("1_cvnsp")
 GRAVITY = 75.0
 FALL_GRAVITY = 150.0
 JUMP_VELOCITY = -35.0
 WALL_JUMP_VELOCITY = -30.0
 WALL_JUMP_PUSHBACK = 35.0
+ray = NodePath("RayCast3D")
+rayLength = 2.0
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=2131796268]
 transform = Transform3D(0.41, 0, 0, 0, 0.41, 0, 0, 0, 0.41, 0, 0, 0)
@@ -43,19 +42,6 @@ script = ExtResource("4_vgqql")
 preset_pos_3d = Vector3(0, 8, 17)
 preset_rot_3d_deg = Vector3(-15, 0, 0)
 
-[node name="WallDetectLeft" type="Area3D" parent="." unique_id=1181686187]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WallDetectLeft" unique_id=1440259926]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51936036, 0, 0)
-shape = SubResource("BoxShape3D_6t5aa")
-
-[node name="WallDetectRight" type="Area3D" parent="." unique_id=1046551275]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WallDetectRight" unique_id=1489347074]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, 0, 0)
-shape = SubResource("BoxShape3D_6t5aa")
-
-[connection signal="body_entered" from="WallDetectLeft" to="." method="_on_wall_detect_left_body_entered"]
-[connection signal="body_exited" from="WallDetectLeft" to="." method="_on_wall_detect_left_body_exited"]
-[connection signal="body_entered" from="WallDetectRight" to="." method="_on_wall_detect_right_body_entered"]
-[connection signal="body_exited" from="WallDetectRight" to="." method="_on_wall_detect_right_body_exited"]
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1338336954]
+target_position = Vector3(0, 0, 0)
+collision_mask = 2

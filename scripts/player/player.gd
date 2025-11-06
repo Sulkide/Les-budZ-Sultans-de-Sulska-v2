@@ -27,11 +27,15 @@ var is3D: bool
 @export var COYOTE_TIME: float = 0.08
 
 @export var lock_z_plane := true
+@export var ray : RayCast3D
+@export var rayLength : float
 
 @onready var flip_cam: CameraFlip = get_node_or_null("Camera3D") # adapte le chemin si besoin
 
 
 @onready var collision: PlayerCollision2D = $CollisionShape2D
+
+
 
 var z_plane_value := 0.0
 
@@ -46,8 +50,12 @@ var hasJumped := false
 var hasDashed := false
 var wallOnLeft := false
 var wallOnRight := false
+var wallOnFront := false
+var wallOnBack := false
+var lastWall : Vector3
 
 func _ready():
+	
 	collision.set_collision_bounds(1, -1)
 	
 	z_plane_value = global_position.z
@@ -82,6 +90,7 @@ func _physics_process(delta):
 		velocity.z = 0.0
 
 	var horizontal_input := Input.get_axis("move_left", "move_right")
+	var vertical_input := Input.get_axis("move_away", "move_approach")
 	var dash_multiplier := 1
 	#2.0 if Input.is_action_pressed("dash") else 1.0
 	var jump_pressed := Input.is_action_just_pressed("jump")
@@ -93,8 +102,10 @@ func _physics_process(delta):
 		if flip_cam:
 			if is3D:
 				flip_cam.to_2D()
+				lock_z_plane = true
 			else:
 				flip_cam.to_3D()
+				lock_z_plane = false
 			is3D = !is3D
 	
 	if Input.is_action_just_pressed("dash") && can_dash:
@@ -138,29 +149,56 @@ func _physics_process(delta):
 					velocity.x = 0.0
 				velocity.y = -WALL_JUMP_VELOCITY
 				velocity.x = WALL_JUMP_PUSHBACK * n.x
+				velocity.z = WALL_JUMP_PUSHBACK * n.z
 				coyote_jump_available = false
 				input_buffer.stop()
-		elif wallOnLeft:
-			velocity.y = -WALL_JUMP_VELOCITY
-			velocity.x = WALL_JUMP_PUSHBACK
+		elif lastWall != Vector3.ZERO:
+			velocity = Vector3(lastWall.x * WALL_JUMP_PUSHBACK, -WALL_JUMP_VELOCITY, lastWall.z * WALL_JUMP_PUSHBACK)
 			coyote_jump_available = false
 			input_buffer.stop()
-		elif wallOnRight:
-			velocity.y = -WALL_JUMP_VELOCITY
-			velocity.x = -WALL_JUMP_PUSHBACK
-			coyote_jump_available = false
-			input_buffer.stop()
+			lastWall = Vector3.ZERO
+		#elif wallOnLeft:
+			#velocity.y = -WALL_JUMP_VELOCITY
+			#velocity.x = WALL_JUMP_PUSHBACK
+			#coyote_jump_available = false
+			#input_buffer.stop()
+		#elif wallOnRight:
+			#velocity.y = -WALL_JUMP_VELOCITY
+			#velocity.x = -WALL_JUMP_PUSHBACK
+			#coyote_jump_available = false
+			#input_buffer.stop()
 		elif jump_pressed:
 			input_buffer.start()
-
+	
+	ray.target_position = Vector3(velocity.x, 0, velocity.z).normalized() * rayLength
+	if(abs(velocity.x) < 0.1):
+		ray.target_position.x = 0
+	if(abs(velocity.z) < 0.1):
+		ray.target_position.z = 0
+	if ray.is_colliding():
+		print('hihi')
+		lastWall = ray.get_collision_normal()
+	else:
+		if(ray.target_position != Vector3.ZERO):
+			lastWall = Vector3.ZERO
 
 	# amorti / friction
 	var floor_damping := 1.0 if is_on_floor() else 0.0
-	if horizontal_input != 0.0 && not is_dashing:
-		var target := horizontal_input * SPEED * dash_multiplier
-		velocity.x = move_toward(velocity.x, target, ACCELERATION * delta)
+	if is3D:
+		if (horizontal_input != 0 or vertical_input != 0) and not is_dashing:
+			var targetz := vertical_input * SPEED
+			var targetx := horizontal_input * SPEED
+			velocity.x = move_toward(velocity.x, targetx, ACCELERATION * delta)
+			velocity.z = move_toward(velocity.z, targetz, ACCELERATION * delta)
+		else:
+			velocity.x = move_toward(velocity.x, 0.0, FRICTION * delta * floor_damping)
+			velocity.z = move_toward(velocity.z, 0.0, FRICTION * delta * floor_damping)
 	else:
-		velocity.x = move_toward(velocity.x, 0.0, FRICTION * delta * floor_damping)
+		if horizontal_input != 0.0 && not is_dashing:
+			var target := horizontal_input * SPEED * dash_multiplier
+			velocity.x = move_toward(velocity.x, target, ACCELERATION * delta)
+		else:
+			velocity.x = move_toward(velocity.x, 0.0, FRICTION * delta * floor_damping)
 
 	# annule la composante qui pousse dans le mur pour éviter le "rebond"
 	if is_on_wall_only():
@@ -190,10 +228,15 @@ func _dash():
 	
 	var dir2D: Vector2 = Input.get_vector("move_left","move_right","move_approach","move_away")
 	var dir3D: Vector3 = Vector3.ZERO
-	dir3D.x = dir2D.x
-	dir3D.y = dir2D.y
-	dash_dir = dir3D
-	
+	if is3D:
+		dir3D.x = dir2D.x
+		dir3D.z = -dir2D.y
+		dash_dir = dir3D
+	else:
+		dir3D.x = dir2D.x
+		dir3D.y = dir2D.y
+		dash_dir = dir3D
+		
 func _dash_stop():
 	velocity *= 0.8
 	velocity.y *= 0.7
@@ -204,23 +247,6 @@ func _on_coyote_timeout():
 
 func _get_dash_dir():
 	Input.get_vector("move_left", "move_right","move_approach","move_away")
-
-
-func _on_wall_detect_left_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Wall"):
-		wallOnLeft = true
-
-func _on_wall_detect_left_body_exited(body: Node3D) -> void:
-	if body.is_in_group("Wall"):
-		wallOnLeft = false
-
-func _on_wall_detect_right_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Wall"):
-		wallOnRight = true
-
-func _on_wall_detect_right_body_exited(body: Node3D) -> void:
-	if body.is_in_group("Wall"):
-		wallOnRight = false
 
 #region 3D/2D Collision transitions
 
