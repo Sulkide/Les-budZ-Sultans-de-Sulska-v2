@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkay62k8fatoy"]
+[gd_scene load_steps=14 format=3 uid="uid://bkay62k8fatoy"]
 
 [ext_resource type="PackedScene" uid="uid://s0jp0sp5duga" path="res://scenes/player.tscn" id="1_10lpn"]
 [ext_resource type="PackedScene" uid="uid://dmdwgr1ahfwuw" path="res://scenes/terrain_block.tscn" id="1_ovy8i"]
+[ext_resource type="PackedScene" uid="uid://rujo2a8mccmn" path="res://scenes/terrain_block_movable.tscn" id="2_d8tg7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r0ivf"]
 size = Vector3(100, 1, 100)
@@ -126,6 +127,10 @@ skeleton = NodePath("../..")
 
 [node name="TerrainBlock" parent="Level" unique_id=1387569953 instance=ExtResource("1_ovy8i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13604212, 1.7837372, 2.823752)
+
+[node name="TerrainBlock2" parent="Level" unique_id=2125280505 instance=ExtResource("2_d8tg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.019794, 2.9457426, 0)
+b = Vector3(4.27, 2.946, 0)
 
 [node name="Player" parent="." unique_id=598794534 instance=ExtResource("1_10lpn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6651468, 0)
