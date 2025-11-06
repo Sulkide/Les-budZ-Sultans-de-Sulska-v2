@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://sa1fbhptpj1d"]
+
+[ext_resource type="Script" uid="uid://wedjsepjn5kd" path="res://scripts/terrain/terrain_block_movable.gd" id="1_ms375"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1tdcd"]
+resource_local_to_scene = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_mb26n"]
+resource_local_to_scene = true
+
+[node name="Moving Platform" type="AnimatableBody3D" unique_id=1999263113]
+script = ExtResource("1_ms375")
+step_offset = Vector3(0, 0, 0)
+loop_times = null
+destroy_on_end = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=888255777]
+shape = SubResource("BoxShape3D_1tdcd")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1593554923]
+mesh = SubResource("BoxMesh_mb26n")

@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://s0jp0sp5duga"]
+
+[ext_resource type="Script" uid="uid://dmli2hik7mqkn" path="res://scripts/player/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://7i0mf14xk2hr" path="res://assets/textures/Player/1f344.png" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://dqj7llsipyuva" path="res://scripts/player/player_collision_2d.gd" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://dufiy0gv33ywb" path="res://scripts/player/camera.gd" id="4_vgqql"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
+resource_local_to_scene = true
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cvnsp"]
+resource_local_to_scene = true
+points = PackedVector3Array(0.355, 0.855, 50, -0.355, -0.855, 50, 0.355, -0.855, 50, -0.355, 0.855, 50, 0.5, -0.5, 50, -0.5, 0.5, 50, 0.5, 0.5, 50, -0.5, -0.5, 50, 0, 1, 50, 0, -1, 50, 0.19, 0.96, 50, -0.19, -0.96, 50, -0.19, 0.96, 50, 0.19, -0.96, 50, 0.355, 0.855, 50, -0.355, -0.855, -50, 0.355, -0.855, -50, -0.355, 0.855, -50, 0, 1, -50, 0, -1, -50, 0.5, 0.5, -50, -0.5, -0.5, -50, -0.5, 0.5, -50, 0.5, -0.5, -50, 0.19, 0.96, -50, -0.19, -0.96, -50, -0.19, 0.96, -50, 0.19, -0.96, -50)
+
+[node name="Player" type="CharacterBody3D" unique_id=598794534 node_paths=PackedStringArray("ray")]
+script = ExtResource("1_cvnsp")
+startOn2D = false
+GRAVITY = 75.0
+FALL_GRAVITY = 150.0
+JUMP_VELOCITY = -35.0
+WALL_JUMP_VELOCITY = -30.0
+WALL_JUMP_PUSHBACK = 35.0
+ray = NodePath("RayCast3D")
+rayLength = 2.0
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=2131796268]
+transform = Transform3D(0.41, 0, 0, 0, 0.41, 0, 0, 0, 0.41, 0, 0, 0)
+texture = ExtResource("1_v0iea")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=110083878]
+shape = SubResource("CapsuleShape3D_cvnsp")
+
+[node name="CollisionShape2D" type="CollisionShape3D" parent="." unique_id=975230936]
+shape = SubResource("ConvexPolygonShape3D_cvnsp")
+script = ExtResource("3_6t5aa")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=361799049]
+transform = Transform3D(1, 0, 0, 0, 0.7004484, 0, 0, 0, 1, 0, 0, 17)
+projection = 1
+current = true
+size = 35.0
+script = ExtResource("4_vgqql")
+preset_pos_3d = Vector3(0, 8, 17)
+preset_rot_3d_deg = Vector3(-15, 0, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1338336954]
+target_position = Vector3(0, 0, 0)
+collision_mask = 2

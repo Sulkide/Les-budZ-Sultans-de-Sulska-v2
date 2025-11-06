@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkay62k8fatoy"]
+
+[ext_resource type="PackedScene" uid="uid://s0jp0sp5duga" path="res://scenes/player.tscn" id="1_10lpn"]
+[ext_resource type="PackedScene" uid="uid://dmdwgr1ahfwuw" path="res://scenes/terrain_block.tscn" id="1_ovy8i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r0ivf"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ovy8i"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10lpn"]
+albedo_color = Color(0.11235619, 0.38632026, 0.42532596, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d8tg7"]
+size = Vector3(100, 100, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vh5rs"]
+albedo_color = Color(1.0765535e-06, 0.4748939, 0.3224398, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bxe70"]
+material = SubResource("StandardMaterial3D_vh5rs")
+size = Vector3(100, 100, 1)
+
+[node name="Level Test" type="Node3D" unique_id=816915117]
+
+[node name="Level" type="Node3D" parent="." unique_id=1620886585]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level" unique_id=1246124555 groups=["Wall"]]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StaticBody3D" unique_id=865799691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0654068, 0, 0)
+shape = SubResource("BoxShape3D_r0ivf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/StaticBody3D/CollisionShape3D" unique_id=1356996737]
+mesh = SubResource("BoxMesh_ovy8i")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_10lpn")
+
+[node name="StaticBody3D8" type="StaticBody3D" parent="Level" unique_id=1656650028 groups=["Wall"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -62.739803)
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StaticBody3D8" unique_id=1948634655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0654068, 0, 0)
+shape = SubResource("BoxShape3D_d8tg7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/StaticBody3D8/CollisionShape3D" unique_id=1425381919]
+mesh = SubResource("BoxMesh_bxe70")
+skeleton = NodePath("../..")
+
+[node name="TerrainBlock" parent="Level" unique_id=1387569953 instance=ExtResource("1_ovy8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13604212, 1.7837372, 2.823752)
+collision_layer = 3
+
+[node name="TerrainBlock2" parent="Level" unique_id=3743884 instance=ExtResource("1_ovy8i")]
+transform = Transform3D(-0.7768603, 0, 0.62967294, 0, 1, 0, -0.62967294, 0, -0.7768603, -0.4087143, 13.984184, -12.308605)
+collision_layer = 3
+block_size = Vector3(1, 26.515, 24.86)
+
+[node name="TerrainBlock3" parent="Level" unique_id=360922056 instance=ExtResource("1_ovy8i")]
+transform = Transform3D(-0.7768603, 0, 0.62967294, 0, 1, 0, -0.62967294, 0, -0.7768603, -1.4423344, 13.984184, -19.96548)
+collision_layer = 3
+block_size = Vector3(1, 26.515, 24.86)
+
+[node name="TerrainBlock4" parent="Level" unique_id=765606619 instance=ExtResource("1_ovy8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.980767, 13.984184, -19.626453)
+collision_layer = 3
+block_size = Vector3(1, 26.515, 24.86)
+
+[node name="TerrainBlock5" parent="Level" unique_id=305035699 instance=ExtResource("1_ovy8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.288599, 13.984184, -14.328975)
+collision_layer = 3
+block_size = Vector3(1, 26.515, 24.86)
+
+[node name="Player" parent="." unique_id=598794534 instance=ExtResource("1_10lpn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6651468, 0)
+SPEED = 10.0
+JUMP_VELOCITY = 35.0
+DASH_DURATION = 0.03
+DASH_SPEED = 100.0
+rayLength = 1.3
