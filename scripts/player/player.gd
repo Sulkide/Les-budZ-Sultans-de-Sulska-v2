@@ -29,11 +29,18 @@ extends CharacterBody3D
 @export var ray : RayCast3D
 @export var rayLength : float
 
+@export var characterVisuals : Node3D
+
+var model : Node3D
+var animator : AnimationTree
+var state_machine : AnimationNodeStateMachinePlayback
+
 @onready var flip_cam: CameraFlip = get_node_or_null("Camera3D") # adapte le chemin si besoin
 
 
 @onready var collision: PlayerCollision2D = $CollisionShape2D
 @onready var collision2dRaycasts: PlayerCollision2DRaycasts = $PlayerCollision2DRaycasts
+
 
 
 
@@ -56,7 +63,20 @@ var lastWall : Vector3
 
 
 func _ready():
-	_respawn_point = global_position
+	animator = $"Node3D/Character/CharacterContainer/IK Targets/AnimationTree"
+	model = $"Node3D"
+	state_machine = animator.get("parameters/playback")
+	print(animator)
+	
+	animator.set("parameters/conditions/idle", true)
+	animator.set("parameters/conditions/jump", false)
+	animator.set("parameters/conditions/damaged", false)
+	animator.set("parameters/conditions/isWalking", false)
+	animator.set("parameters/conditions/shoot", false)
+	animator.set("parameters/conditions/dash", false)
+	animator.set("parameters/conditions/falling", false)
+	
+	
 	health = max_heatlh
 	_set_base_collision()
 	
@@ -86,13 +106,30 @@ func _process(_delta: float) -> void:
 	var direction: Vector2 = Input.get_vector("target_left", "target_right", "target_up", "target_down")
 	var shoot := Input.is_action_just_pressed("shoot")
 	if is3D: 
+		if shoot:
+			state_machine.travel("Shoot", true)
 		bow.angle_bow_3d(direction, shoot)
 	else:
+		if shoot:
+			state_machine.travel("Shoot", true)
 		bow.angle_bow_2d(direction, shoot)
 
 func _physics_process(delta):
 	_set_collision()
 
+		
+	if velocity.x < 0:
+		model.scale.x = -1
+	elif velocity.x > 0:
+		model.scale.x = 1
+	
+	if hasJumped:
+		if velocity.y < 0:
+			animator.set("parameters/conditions/falling", true)
+		animator.set("parameters/conditions/jump", true)
+		animator.set("parameters/conditions/isWalking", false)
+		animator.set("parameters/conditions/idle", false)
+	
 	var horizontal_input := Input.get_axis("move_left", "move_right")
 	var vertical_input := Input.get_axis("move_away", "move_approach")
 	var dash_multiplier := 1
@@ -125,6 +162,9 @@ func _physics_process(delta):
 		can_dash = true
 	
 	if is_on_floor():
+		animator.set("parameters/conditions/jump", false)
+		animator.set("parameters/conditions/falling", false)
+			
 		hasJumped = false
 		if(not hasDashed):coyote_jump_available = true
 		coyote_timer.stop()
@@ -183,18 +223,26 @@ func _physics_process(delta):
 	var floor_damping := 1.0 if is_on_floor() else 0.0
 	if is3D:
 		if (horizontal_input != 0 or vertical_input != 0) and not is_dashing:
+			if is_on_floor():
+				animator.set("parameters/conditions/isWalking", true)
+				animator.set("parameters/conditions/idle", false)
 			var targetz := vertical_input * SPEED
 			var targetx := horizontal_input * SPEED
 			velocity.x = move_toward(velocity.x, targetx, ACCELERATION * delta)
 			velocity.z = move_toward(velocity.z, targetz, ACCELERATION * delta)
 		else:
+			animator.set("parameters/conditions/isWalking", false)
 			velocity.x = move_toward(velocity.x, 0.0, FRICTION * delta * floor_damping)
 			velocity.z = move_toward(velocity.z, 0.0, FRICTION * delta * floor_damping)
 	else:
 		if horizontal_input != 0.0 && not is_dashing:
+			if is_on_floor():
+				animator.set("parameters/conditions/isWalking", true)
+				animator.set("parameters/conditions/idle", false)
 			var target := horizontal_input * SPEED * dash_multiplier
 			velocity.x = move_toward(velocity.x, target, ACCELERATION * delta)
 		else:
+			animator.set("parameters/conditions/isWalking", false)
 			velocity.x = move_toward(velocity.x, 0.0, FRICTION * delta * floor_damping)
 
 	# annule la composante qui pousse dans le mur pour éviter le "rebond"
@@ -208,6 +256,9 @@ func _physics_process(delta):
 	# Die if below death barrier
 	if global_position.y < death_barrier:
 		_respawn()
+	
+	if velocity == Vector3.ZERO and not hasJumped and not is_dashing:
+		animator.set("parameters/conditions/idle", true)
 
 
 func _gravity_2d(input_dir: float) -> float:
@@ -219,6 +270,7 @@ func _gravity_2d(input_dir: float) -> float:
 	return GRAVITY if velocity.y > 0.0 else FALL_GRAVITY
 
 func _dash():
+	animator.set("parameters/conditions/dash", true)
 	hasDashed = true
 	coyote_jump_available = false
 	hasJumped = false
@@ -237,6 +289,7 @@ func _dash():
 		dash_dir = dir3D
 		
 func _dash_stop():
+	animator.set("parameters/conditions/dash", false)
 	velocity *= 0.8
 	velocity.y *= 0.7
 	is_dashing = false

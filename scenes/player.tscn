@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://s0jp0sp5duga"]
+[gd_scene load_steps=12 format=3 uid="uid://s0jp0sp5duga"]
 
 [ext_resource type="Script" uid="uid://dmli2hik7mqkn" path="res://scripts/player/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://7i0mf14xk2hr" path="res://assets/textures/Player/1f344.png" id="1_v0iea"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dufiy0gv33ywb" path="res://scripts/player/camera.gd" id="4_vgqql"]
 [ext_resource type="PackedScene" uid="uid://dfo5h2ytn3qq0" path="res://scenes/collision_2d_raycasts.tscn" id="5_3smsa"]
 [ext_resource type="PackedScene" uid="uid://cajyuqh7f5bx4" path="res://scenes/weapon_bow.tscn" id="7_f1ek2"]
+[ext_resource type="PackedScene" uid="uid://5ntmnbyumw1c" path="res://scenes/character_base_model.tscn" id="8_smehm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tuyoq"]
 resource_local_to_scene = true
@@ -18,7 +19,7 @@ points = PackedVector3Array(0.355, 0.855, 50, -0.355, -0.855, 50, 0.355, -0.855,
 [sub_resource type="BoxShape3D" id="BoxShape3D_tuyoq"]
 size = Vector3(0.67211914, 1, 99.06976)
 
-[node name="Player" type="CharacterBody3D" unique_id=598794534 node_paths=PackedStringArray("ray")]
+[node name="Player" type="CharacterBody3D" unique_id=598794534 node_paths=PackedStringArray("ray", "characterVisuals")]
 script = ExtResource("1_cvnsp")
 SPEED = 10.0
 GRAVITY = 75.0
@@ -30,6 +31,7 @@ DASH_DURATION = 0.03
 DASH_SPEED = 100.0
 ray = NodePath("RayCast3D")
 rayLength = 1.3
+characterVisuals = NodePath("Node3D/Character")
 
 [node name="PlayerUI" parent="." unique_id=581209682 instance=ExtResource("2_fjrip")]
 
@@ -81,6 +83,11 @@ shape = SubResource("BoxShape3D_tuyoq")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallDetectRight" unique_id=88621326]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.627, 0, -0.274)
 shape = SubResource("BoxShape3D_tuyoq")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=847452535]
+
+[node name="Character" parent="Node3D" unique_id=404871862 instance=ExtResource("8_smehm")]
+transform = Transform3D(0.15520221, 0, 0, 0, 0.15520221, 0, 0, 0, 0.15520221, -0.5882974, 2.5059812, 0)
 
 [connection signal="body_entered" from="WallDetectLeft" to="." method="_on_wall_detect_left_body_entered"]
 [connection signal="body_exited" from="WallDetectLeft" to="." method="_on_wall_detect_left_body_exited"]
