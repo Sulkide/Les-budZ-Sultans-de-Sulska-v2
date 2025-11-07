@@ -2,6 +2,7 @@ class_name PlayerUI
 extends CanvasLayer
 
 @onready var health_bar: ProgressBar = $HealthBar
+@onready var points_display: Label = $PointsDisplay
 
 
 func init_health_ui(max_health: int) -> void:
@@ -11,3 +12,7 @@ func init_health_ui(max_health: int) -> void:
 
 func update_health_ui(health: int) -> void:
 	health_bar.value = health
+
+
+func update_points_display(points: int) -> void:
+	points_display.text = "Points : " + str(points)

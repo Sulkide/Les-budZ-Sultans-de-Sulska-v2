@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr1at07yu1iqt"]
+
+[ext_resource type="Script" uid="uid://mua0xn2jbvlu" path="res://scenes/checkpoint.gd" id="1_ywqth"]
+[ext_resource type="Texture2D" uid="uid://ils5myx73vi0" path="res://assets/textures/tile_flag.png" id="1_yyywg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xam77"]
+size = Vector3(2, 2, 2)
+
+[node name="Checkpoint" type="Area3D" unique_id=871455397]
+script = ExtResource("1_ywqth")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=218257413]
+shape = SubResource("BoxShape3D_xam77")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=2076711174]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+texture = ExtResource("1_yyywg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

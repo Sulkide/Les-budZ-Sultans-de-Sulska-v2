@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://s0jp0sp5duga" path="res://scenes/player.tscn" id="1_10lpn"]
 [ext_resource type="PackedScene" uid="uid://dmdwgr1ahfwuw" path="res://scenes/terrain_block.tscn" id="1_ovy8i"]
-[ext_resource type="PackedScene" uid="uid://c8usfwvcdaa76" path="res://scenes/enemy.tscn" id="3_d5kir"]
 [ext_resource type="PackedScene" uid="uid://b7g51jcxxljv2" path="res://scenes/enemy_3d.tscn" id="4_plvai"]
+[ext_resource type="PackedScene" uid="uid://cr1at07yu1iqt" path="res://scenes/checkpoint.tscn" id="4_vkcgd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r0ivf"]
 size = Vector3(100, 1, 100)
@@ -79,8 +79,14 @@ block_size = Vector3(1, 26.515, 24.86)
 [node name="Player" parent="." unique_id=598794534 instance=ExtResource("1_10lpn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6651468, 0)
 
-[node name="Enemy" parent="." unique_id=630029366 instance=ExtResource("3_d5kir")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 1, -6)
-
 [node name="Enemy3D" parent="." unique_id=1467177909 instance=ExtResource("4_plvai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.983441, 3.619441, -3.2191238)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.948864, 6.3147635, -5.279917)
+
+[node name="Enemy3D2" parent="." unique_id=1812762552 instance=ExtResource("4_plvai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.377275, 1.4452897, -15.643366)
+
+[node name="Checkpoint" parent="." unique_id=871455397 instance=ExtResource("4_vkcgd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.749043, 1.3125, 2.96883)
+
+[node name="Checkpoint2" parent="." unique_id=2074039632 instance=ExtResource("4_vkcgd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.56055, 1.312499, 10.748751)

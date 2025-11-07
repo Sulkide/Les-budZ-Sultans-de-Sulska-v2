@@ -56,6 +56,7 @@ var lastWall : Vector3
 
 
 func _ready():
+	_respawn_point = global_position
 	health = max_heatlh
 	_set_base_collision()
 	
@@ -321,18 +322,33 @@ var _respawn_point: Vector3
 @export var max_heatlh: int = 5
 @export var death_barrier: float = -20.
 
+var _current_checkpoint: Checkpoint
+
 var health: int:
 	set(value):
 		health = value
-		ui.update_health_ui(value)
+		ui.update_health_ui(health)
+		if health <= 0:
+			_respawn()
 
-
-func _set_respawn_point() -> void:
-	_respawn_point = global_position
+var points: int = 0:
+	set(value):
+		points = value
+		ui.update_points_display(points)
 
 
 func _respawn() -> void:
+	velocity = Vector3.ZERO
 	health = max_heatlh
 	global_position = _respawn_point
+
+
+func set_checkpoint(checkpoint: Checkpoint) -> void:
+	if _current_checkpoint and _current_checkpoint != checkpoint:
+			_current_checkpoint.untouch_checkpoint()
+	
+	_current_checkpoint = checkpoint
+	_respawn_point = _current_checkpoint.global_position
+
 
 #endregion
