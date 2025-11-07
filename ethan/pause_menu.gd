@@ -6,7 +6,7 @@ var pause = false
 func pause_unpaused():
 	pause = !pause
 	if pause:
-		get_tree().paused = true
+		get_tree().paused = false
 		show()
 	else: 
 		get_tree().paused = false

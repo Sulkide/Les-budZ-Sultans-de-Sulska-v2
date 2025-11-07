@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkay62k8fatoy"]
+[gd_scene load_steps=10 format=3 uid="uid://bkay62k8fatoy"]
 
 [ext_resource type="PackedScene" uid="uid://s0jp0sp5duga" path="res://scenes/player.tscn" id="1_10lpn"]
 [ext_resource type="PackedScene" uid="uid://dmdwgr1ahfwuw" path="res://scenes/terrain_block.tscn" id="1_ovy8i"]
+[ext_resource type="PackedScene" uid="uid://lmwpr8vn2epn" path="res://degat.tscn" id="3_d8tg7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r0ivf"]
 size = Vector3(100, 1, 100)
@@ -75,9 +76,12 @@ collision_layer = 3
 block_size = Vector3(1, 26.515, 24.86)
 
 [node name="Player" parent="." unique_id=598794534 instance=ExtResource("1_10lpn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6651468, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.302191, 1.7496443, 1.3473947)
 SPEED = 10.0
-JUMP_VELOCITY = 35.0
+FALL_GRAVITY = 300.0
 DASH_DURATION = 0.03
 DASH_SPEED = 100.0
 rayLength = 1.3
+
+[node name="bumper" parent="." unique_id=2000884570 instance=ExtResource("3_d8tg7")]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 18.09425, 1.3920231, 0)

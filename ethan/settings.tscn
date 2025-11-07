@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://bbqgdb245gmtk" path="res://ethan/input_settings.gd" id="6_3j6r5"]
 [ext_resource type="PackedScene" uid="uid://b0ilrr43tkl7i" path="res://ethan/input_button.tscn" id="6_71mqq"]
 
-[node name="optionMenu" type="Control"]
+[node name="optionMenu" type="Control" unique_id=1205815398]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,12 +16,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cj1lu")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(577.5, 322)
-scale = Vector2(1.1315789, 0.92462313)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=67182672]
+position = Vector2(577.5, 303.5)
+scale = Vector2(1.1315789, 0.8781407)
 texture = ExtResource("2_cj1lu")
 
-[node name="InputSettings" type="Control" parent="."]
+[node name="InputSettings" type="Control" parent="." unique_id=1505051460]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,7 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_3j6r5")
 
-[node name="PanelContainer" type="PanelContainer" parent="InputSettings"]
+[node name="PanelContainer" type="PanelContainer" parent="InputSettings" unique_id=302632439]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -43,45 +43,45 @@ offset_bottom = 161.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="InputSettings/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="InputSettings/PanelContainer" unique_id=1836686965]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InputSettings/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="InputSettings/PanelContainer/MarginContainer" unique_id=2034724902]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer" unique_id=1867193827]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ActionList" type="VBoxContainer" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="ActionList" type="VBoxContainer" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=1642944111]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="InputButton" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("6_71mqq")]
+[node name="InputButton" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" unique_id=1775545887 instance=ExtResource("6_71mqq")]
 layout_mode = 2
 
-[node name="InputButton2" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("6_71mqq")]
+[node name="InputButton2" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" unique_id=653063315 instance=ExtResource("6_71mqq")]
 layout_mode = 2
 
-[node name="InputButton3" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("6_71mqq")]
+[node name="InputButton3" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" unique_id=1055243511 instance=ExtResource("6_71mqq")]
 layout_mode = 2
 
-[node name="InputButton4" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("6_71mqq")]
+[node name="InputButton4" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" unique_id=274598043 instance=ExtResource("6_71mqq")]
 layout_mode = 2
 
-[node name="InputButton5" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("6_71mqq")]
+[node name="InputButton5" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList" unique_id=47440242 instance=ExtResource("6_71mqq")]
 layout_mode = 2
 
-[node name="resetButton" type="Button" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="resetButton" type="Button" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer" unique_id=329983600]
 layout_mode = 2
 focus_mode = 0
 text = "reset to default"
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=1834834752]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -99,7 +99,7 @@ text = "Menu"
 flat = true
 script = ExtResource("2_gc0em")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1951546474]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -115,7 +115,7 @@ max_lines_visible = 1
 visible_characters = 50
 visible_ratio = 3.8461537
 
-[node name="Label2" type="Label" parent="."]
+[node name="Label2" type="Label" parent="." unique_id=1691870868]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -129,10 +129,8 @@ scale = Vector2(1.0400012, 1)
 text = "Keybinds"
 horizontal_alignment = 1
 max_lines_visible = 1
-visible_characters = 50
-visible_ratio = 3.8461537
 
-[node name="MasterLabel2" type="Label" parent="."]
+[node name="MasterLabel2" type="Label" parent="." unique_id=1176490158]
 layout_mode = 0
 offset_left = 213.0
 offset_top = 100.0
@@ -142,53 +140,53 @@ size_flags_vertical = 3
 text = "Volume"
 horizontal_alignment = 1
 
-[node name="AudioOptions" type="Control" parent="."]
+[node name="AudioOptions" type="Control" parent="." unique_id=1925712055]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_71mqq")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="AudioOptions"]
+[node name="VBoxContainer" type="VBoxContainer" parent="AudioOptions" unique_id=983022425]
 layout_mode = 0
 offset_left = 47.0
 offset_top = 156.0
 offset_right = 447.0
 offset_bottom = 293.0
 
-[node name="MasterLabel" type="Label" parent="AudioOptions/VBoxContainer"]
+[node name="MasterLabel" type="Label" parent="AudioOptions/VBoxContainer" unique_id=2094494789]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Master"
 
-[node name="MasterSlider" type="HSlider" parent="AudioOptions/VBoxContainer"]
+[node name="MasterSlider" type="HSlider" parent="AudioOptions/VBoxContainer" unique_id=163237792]
 layout_mode = 2
 size_flags_vertical = 3
 max_value = 1.0
-step = 0.05
+step = 0.01
 
-[node name="SFXLabel" type="Label" parent="AudioOptions/VBoxContainer"]
+[node name="SFXLabel" type="Label" parent="AudioOptions/VBoxContainer" unique_id=1486586392]
 layout_mode = 2
 size_flags_vertical = 3
 text = "SFX"
 
-[node name="SFXSlider" type="HSlider" parent="AudioOptions/VBoxContainer"]
+[node name="SFXSlider" type="HSlider" parent="AudioOptions/VBoxContainer" unique_id=367658030]
 layout_mode = 2
 size_flags_vertical = 3
 max_value = 1.0
-step = 0.05
+step = 0.01
 
-[node name="MusicLabel" type="Label" parent="AudioOptions/VBoxContainer"]
+[node name="MusicLabel" type="Label" parent="AudioOptions/VBoxContainer" unique_id=1374910363]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Music"
 
-[node name="MusicSlider" type="HSlider" parent="AudioOptions/VBoxContainer"]
+[node name="MusicSlider" type="HSlider" parent="AudioOptions/VBoxContainer" unique_id=696768891]
 layout_mode = 2
 size_flags_vertical = 3
 max_value = 1.0
-step = 0.05
+step = 0.01
 
-[node name="confirm" type="Button" parent="."]
+[node name="confirm" type="Button" parent="." unique_id=644577937]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0

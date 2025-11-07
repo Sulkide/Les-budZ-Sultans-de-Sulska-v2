@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bw2eidells6qt"]
+[gd_scene load_steps=4 format=3 uid="uid://dsd3o4qeijsix"]
 
 [ext_resource type="Script" uid="uid://rvg6cm7bxtdp" path="res://ethan/player_health.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://bl3c50gx1yb70" path="res://ethan/pause_menu.tscn" id="2_onrkg"]
-[ext_resource type="PackedScene" uid="uid://qraeak3mrred" path="res://ethan/enemy.tscn" id="3_i3pqv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sh265"]
 bg_color = Color(0, 1, 0, 1)
@@ -23,16 +22,16 @@ expand_margin_right = 6.0
 expand_margin_bottom = 6.0
 shadow_size = 5
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" unique_id=54278916]
 script = ExtResource("1_4flbx")
 
-[node name="pauseMenu" parent="." instance=ExtResource("2_onrkg")]
+[node name="pauseMenu" parent="." unique_id=1258809301 instance=ExtResource("2_onrkg")]
 process_mode = 3
 visible = false
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1342458309]
 
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=440666973]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -43,12 +42,3 @@ offset_bottom = -53.0
 grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_sh265")
 show_percentage = false
-
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-
-[node name="enemy" parent="." instance=ExtResource("3_i3pqv")]
-position = Vector2(-665, -300)
