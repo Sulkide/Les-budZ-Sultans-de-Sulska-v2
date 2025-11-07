@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://f4lwc7whbtlo"]
+
+[ext_resource type="Texture2D" uid="uid://banyq3luftig7" path="res://assets/textures/tile_door.png" id="1_hpvv5"]
+[ext_resource type="Script" uid="uid://2twkaed00g14" path="res://scenes/door.gd" id="1_uvdjg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uvdjg"]
+size = Vector3(0.5878906, 0.6092529, 0.60913086)
+
+[node name="Door" type="Area3D" unique_id=760786149]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+script = ExtResource("1_uvdjg")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1974131568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.187563, 0)
+modulate = Color(0.67500573, 0.69117105, 0.723166, 1)
+texture = ExtResource("1_hpvv5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2044486857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19537354, 0)
+shape = SubResource("BoxShape3D_uvdjg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

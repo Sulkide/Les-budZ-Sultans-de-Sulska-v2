@@ -1,13 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://s0jp0sp5duga"]
+[gd_scene load_steps=11 format=3 uid="uid://s0jp0sp5duga"]
 
 [ext_resource type="Script" uid="uid://dmli2hik7mqkn" path="res://scripts/player/player.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://7i0mf14xk2hr" path="res://assets/textures/Player/1f344.png" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://c7r4grv8xspdq" path="res://scenes/player_ui.tscn" id="2_fjrip"]
 [ext_resource type="Script" uid="uid://dqj7llsipyuva" path="res://scripts/player/player_collision_2d.gd" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://dufiy0gv33ywb" path="res://scripts/player/camera.gd" id="4_vgqql"]
 [ext_resource type="PackedScene" uid="uid://dfo5h2ytn3qq0" path="res://scenes/collision_2d_raycasts.tscn" id="5_3smsa"]
 [ext_resource type="PackedScene" uid="uid://cajyuqh7f5bx4" path="res://scenes/weapon_bow.tscn" id="7_f1ek2"]
-[ext_resource type="PackedScene" uid="uid://5ntmnbyumw1c" path="res://scenes/character_base_model.tscn" id="8_smehm"]
+[ext_resource type="PackedScene" uid="uid://bqiy83nwntkcr" path="res://scenes/character_base_model.tscn" id="8_smehm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tuyoq"]
 resource_local_to_scene = true
@@ -34,10 +33,6 @@ rayLength = 1.3
 characterVisuals = NodePath("Node3D/Character")
 
 [node name="PlayerUI" parent="." unique_id=581209682 instance=ExtResource("2_fjrip")]
-
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=2131796268]
-transform = Transform3D(0.41, 0, 0, 0, 0.41, 0, 0, 0, 0.41, 0, 0, 0)
-texture = ExtResource("1_v0iea")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=110083878]
 shape = SubResource("CapsuleShape3D_tuyoq")

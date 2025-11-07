@@ -14,7 +14,7 @@ func _on_body_entered(body: Node3D) -> void:
 			Type.COIN:
 				body.points += 1
 			Type.DIAMOND:
-				body.points += 50
+				body.points += 15
 			_:
 				pass
-	queue_free()
+		queue_free()

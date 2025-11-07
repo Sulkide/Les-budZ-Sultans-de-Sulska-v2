@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://5ntmnbyumw1c"]
+[gd_scene load_steps=83 format=4 uid="uid://bqiy83nwntkcr"]
 
 [ext_resource type="Texture2D" uid="uid://bo2mpfaomq1qi" path="res://assets/textures/Player/Character Sprites/Sulkide/bras d 1.png" id="1_hu5q1"]
 [ext_resource type="Texture2D" uid="uid://cbocu5iyjcpsv" path="res://assets/textures/Player/Character Sprites/Sulkide/bras d 2.png" id="2_u5hm5"]
@@ -3054,7 +3054,7 @@ script = ExtResource("2_vkbkw")
 [node name="Skeleton2D" type="Skeleton2D" parent="CharacterContainer/Bones" unique_id=856820419]
 
 [node name="Pelvis" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D" unique_id=527390964]
-position = Vector2(800.479, 548.7173)
+position = Vector2(348, 474.11176)
 rotation = 1.5707964
 scale = Vector2(0.9999996, 0.9999996)
 rest = Transform2D(1, 0, 0, 1, 457, 484)
@@ -3062,15 +3062,15 @@ script = ExtResource("16_slawb")
 
 [node name="HancheG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis" unique_id=1015640692]
 position = Vector2(-101, 78)
-rotation = -1.2866226
-scale = Vector2(0.9999986, 0.9999986)
+rotation = -0.21318972
+scale = Vector2(0.9999987, 0.9999987)
 rest = Transform2D(1, 0, 0, 1, -182, 81)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
 
 [node name="RotuleG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheG" unique_id=828415333]
 position = Vector2(-40.09275, 982.38513)
-rotation = 1.8317544
+rotation = 0.4288738
 scale = Vector2(0.99999934, 0.99999934)
 rest = Transform2D(1, 0, 0, 1, 48, 898)
 script = ExtResource("16_slawb")
@@ -3078,7 +3078,7 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="ChevilleG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheG/RotuleG" unique_id=990598074]
 position = Vector2(-65, 683)
-rotation = -0.40553316
+rotation = -0.24962416
 scale = Vector2(0.99999803, 0.99999803)
 rest = Transform2D(1, 0, 0, 1, -65, 683)
 script = ExtResource("16_slawb")
@@ -3091,21 +3091,21 @@ script = ExtResource("16_slawb")
 
 [node name="Ventre" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis" unique_id=143761971]
 position = Vector2(-10, -71)
-rotation = -0.9802593
+rotation = 0.026444435
 scale = Vector2(0.99999684, 0.99999684)
 rest = Transform2D(1, 0, 0, 1, -1, -79)
 script = ExtResource("16_slawb")
 
 [node name="Corps" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre" unique_id=1192961258]
 position = Vector2(-9, -380)
-rotation = -0.046317477
-scale = Vector2(0.9999948, 0.9999948)
+rotation = -0.04631734
+scale = Vector2(0.9999947, 0.9999947)
 rest = Transform2D(1, 0, 0, 1, -9, -380)
 script = ExtResource("16_slawb")
 
 [node name="Coup" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps" unique_id=1277728798]
 position = Vector2(12, -530)
-rotation = 0.37151313
+rotation = 0.0041555194
 scale = Vector2(0.9999969, 0.9999969)
 rest = Transform2D(1, 0, 0, 1, 12, -530)
 script = ExtResource("16_slawb")
@@ -3128,7 +3128,7 @@ script = ExtResource("16_slawb")
 
 [node name="EpauleG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps" unique_id=801004939]
 position = Vector2(-255, -365)
-rotation = 1.8799489
+rotation = 0.033380866
 scale = Vector2(0.99999857, 0.99999857)
 rest = Transform2D(1, 0, 0, 1, -255, -365)
 script = ExtResource("16_slawb")
@@ -3136,7 +3136,7 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="CoudeG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/EpauleG" unique_id=337656715]
 position = Vector2(-60, 756)
-rotation = -1.091296
+rotation = 0.0716945
 scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(1, 0, 0, 1, -60, 756)
 script = ExtResource("16_slawb")
@@ -3149,16 +3149,16 @@ script = ExtResource("16_slawb")
 
 [node name="EpauleD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps" unique_id=1943680749]
 position = Vector2(253, -378)
-rotation = -2.0883784
-scale = Vector2(0.9999979, 0.9999979)
+rotation = -0.11610233
+scale = Vector2(0.99999785, 0.99999785)
 rest = Transform2D(1, 0, 0, 1, 253, -378)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
 
 [node name="CoudeD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/EpauleD" unique_id=850968131]
 position = Vector2(-17, 728)
-rotation = -2.0178022
-scale = Vector2(0.9999974, 0.9999974)
+rotation = 0.12637426
+scale = Vector2(0.99999726, 0.99999726)
 rest = Transform2D(1, 0, 0, 1, -17, 728)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
@@ -3170,7 +3170,7 @@ script = ExtResource("16_slawb")
 
 [node name="HancheD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis" unique_id=1562286361]
 position = Vector2(13.999991, 61)
-rotation = -0.61679816
+rotation = -0.13334516
 scale = Vector2(0.99999815, 0.99999815)
 rest = Transform2D(1, 0, 0, 1, 105, 75)
 script = ExtResource("16_slawb")
@@ -3178,16 +3178,16 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="RotuleD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheD" unique_id=590006153]
 position = Vector2(103.94249, 974.17706)
-rotation = 0.4029969
-scale = Vector2(0.999998, 0.999998)
+rotation = 0.30964482
+scale = Vector2(0.9999979, 0.9999979)
 rest = Transform2D(1, 0, 0, 1, 18, 886)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
 
 [node name="ChevilleD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheD/RotuleD" unique_id=929926005]
 position = Vector2(-57, 698)
-rotation = -0.53756005
-scale = Vector2(0.9999964, 0.9999964)
+rotation = -0.22952963
+scale = Vector2(0.9999965, 0.9999965)
 rest = Transform2D(1, 0, 0, 1, -57, 698)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
@@ -3400,7 +3400,7 @@ NodePath("../CharacterContainer/Body/Dent"): PackedFloat32Array(1, 1, 1, 1, 1, 1
 global_next_pass_shaders = Array[Shader]([null])
 global_next_pass_params = Array[Dictionary]([Dictionary[StringName, Variant]({})])
 hide_polygons = true
-cast_shadow = 2
+cast_shadow = 0
 global_illumination_mode = 0
 size = 1.0
 layer_space = 1.0
