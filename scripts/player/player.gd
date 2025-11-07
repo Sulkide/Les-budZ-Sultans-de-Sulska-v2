@@ -382,6 +382,7 @@ var health: int:
 	set(value):
 		health = value
 		ui.update_health_ui(health)
+		state_machine.travel("damaged", true)
 		if health <= 0:
 			_respawn()
 
