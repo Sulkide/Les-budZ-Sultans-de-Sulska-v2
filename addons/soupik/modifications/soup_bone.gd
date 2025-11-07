@@ -306,14 +306,9 @@ func _draw() -> void:
 					offset - position +\
 					(constraint_data.proportions * Vector2.DOWN).rotated(rotation_offset),
 					Color.LIME, size/40)
-			draw_ellipse(offset - position,
-					constraint_data.proportions, 
-					rotation_offset, 
-					Color.BLACK, size/20, 16)
-			draw_ellipse(offset - position,
-					constraint_data.proportions, 
-					rotation_offset, 
-					Color.DARK_ORANGE, size/40, 16)
+			draw_ellipse_custom(offset - position, constraint_data.proportions, rotation_offset, Color.BLACK, size/20, 16)
+			draw_ellipse_custom(offset - position, constraint_data.proportions, rotation_offset, Color.DARK_ORANGE, size/40, 16)
+
 			
 		if limit_rotation:
 			var a1: float = constraint_data.rotation_direction \
@@ -342,11 +337,12 @@ func draw_angle_indicator(angle: float, full_scale: float, y_scale: float):
 	draw_colored_polygon(poly, Color.ORANGE)
 
 
-func draw_ellipse(offset: Vector2, proportions: Vector2, angle: float, color: Color, width: float, segment_count: int) -> void:
+func draw_ellipse_custom(offset: Vector2, proportions: Vector2, angle: float, color: Color, width: float, segment_count: int) -> void:
 	var poly: PackedVector2Array
-	for i: int in segment_count+1:
-		var this_vec: Vector2 = Vector2.from_angle(2*PI * i / segment_count)
-		this_vec = (this_vec * proportions).rotated(angle)
-		poly.append(this_vec + offset)
+	for i: int in range(segment_count + 1):
+		var v := Vector2.from_angle(TAU * i / float(segment_count))
+		v = (v * proportions).rotated(angle)
+		poly.append(v + offset)
 	draw_polyline(poly, color, width)
+
 #endregion

@@ -50,11 +50,9 @@ var hasJumped := false
 var hasDashed := false
 var wallOnLeft := false
 var wallOnRight := false
-var wallOnFront := false
-var wallOnBack := false
 var lastWall : Vector3
 
-@onready var bow: WeaponBow = $WeaponBow
+@onready var bow: Bow = $WeaponBow
 
 
 func _ready():
@@ -83,14 +81,12 @@ func _ready():
 
 
 func _process(_delta: float) -> void:
-	if bow:
-		if Input.is_action_just_pressed("shoot"):
-			bow.shoot()
-		if is3D:
-			bow.angle_bow_3d()
-		else:
-			bow.angle_bow_2d()
-
+	var direction: Vector2 = Input.get_vector("target_left", "target_right", "target_up", "target_down")
+	var shoot := Input.is_action_just_pressed("shoot")
+	if is3D: 
+		bow.angle_bow_3d(direction, shoot)
+	else:
+		bow.angle_bow_2d(direction, shoot)
 
 func _physics_process(delta):
 	_set_collision()
@@ -154,21 +150,21 @@ func _physics_process(delta):
 				velocity.z = WALL_JUMP_PUSHBACK * n.z
 				coyote_jump_available = false
 				input_buffer.stop()
+		elif wallOnLeft and not is3D:
+			velocity.y = -WALL_JUMP_VELOCITY
+			velocity.x = WALL_JUMP_PUSHBACK
+			coyote_jump_available = false
+			input_buffer.stop()
+		elif wallOnRight and not is3D:
+			velocity.y = -WALL_JUMP_VELOCITY
+			velocity.x = -WALL_JUMP_PUSHBACK
+			coyote_jump_available = false
+			input_buffer.stop()
 		elif lastWall != Vector3.ZERO:
 			velocity = Vector3(lastWall.x * WALL_JUMP_PUSHBACK, -WALL_JUMP_VELOCITY, lastWall.z * WALL_JUMP_PUSHBACK)
 			coyote_jump_available = false
 			input_buffer.stop()
 			lastWall = Vector3.ZERO
-		#elif wallOnLeft:
-			#velocity.y = -WALL_JUMP_VELOCITY
-			#velocity.x = WALL_JUMP_PUSHBACK
-			#coyote_jump_available = false
-			#input_buffer.stop()
-		#elif wallOnRight:
-			#velocity.y = -WALL_JUMP_VELOCITY
-			#velocity.x = -WALL_JUMP_PUSHBACK
-			#coyote_jump_available = false
-			#input_buffer.stop()
 		elif jump_pressed:
 			input_buffer.start()
 	
@@ -276,6 +272,8 @@ func _toggle_dimension():
 		_set_base_collision()
 
 	is3D = !is3D
+
+
 
 
 #region 3D/2D Collision transitions

@@ -1,0 +1,54 @@
+PAPERSKELETON - COMMERCIAL LICENSE - VERSION 1
+Copyright (c) 2025 - BunkWire2X8
+
+DEFINITIONS:
+- "Addon" refers to PaperSkeleton's GDScript (*.gd) files only. All other file types
+  (including but not limited to shader, shader includes, config, and texture files)
+  are freely shareable and modifiable without restriction.
+- "Development Team" means a formally organized group of individuals or entities
+  working together under common management of a specific project using the Godot
+  Engine.
+- "License Holder" refers to the individual or entity that purchased this license.
+
+1. LICENSE GRANT
+   This addon is licensed, not sold. Upon purchase, the License Holder is granted a
+   non-exclusive, non-transferable license to:
+   a) Use the addon in Godot Engine projects
+   b) Modify the addon, provided that:
+      - Modified versions remain subject to all terms of this license
+      - Modifications are solely used within projects owned or managed by the License
+        Holder or their Development Team
+
+2. RESTRICTIONS
+   The License Holder shall NOT:
+   a) Redistribute or resell this code, any portion thereof, or any derivative work
+      based on this code as independent or minimally modified software. This includes
+      but is not limited to: standalone tools, libraries, frameworks, or templates.
+      The addon may only be distributed as an integrated component of a complete
+      application.
+   b) Upon dissolution of a Development Team or termination of a member's involvement,
+	  all rights to use, modify, or access the addon immediately transfer back to the
+	  License Holder, who must reauthorize any continuing users.
+   c) Implement this addon in open-source projects where the source code would
+	  become publicly accessible.
+   d) Remove, modify, or obscure this license notice or any included copyright
+	  information.
+   e) Use the addon or its code as training data for machine learning models,
+	  code generation tools, or similar technologies without explicit written
+	  permission.
+
+3. WARRANTY AND LIABILITY
+   This addon is provided "as is" without warranty of any kind, either express or
+   implied. The author disclaims all liability for damages resulting from any use,
+   modification, or distribution of this addon.
+
+4. TERMINATION
+   This license terminates automatically upon any violation of its terms.
+
+5. GOVERNING LAW
+   This license shall be governed by and construed in accordance with the laws
+   of the State of Washington and the federal laws of the United States of America.
+   Any disputes shall be resolved in the courts of Washington.
+
+By using this addon, you acknowledge that you have read and agree to these terms.
+For inquiries: Goi2X8@gmail.com
