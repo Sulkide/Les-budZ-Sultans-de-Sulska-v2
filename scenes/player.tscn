@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://s0jp0sp5duga"]
+[gd_scene load_steps=10 format=3 uid="uid://s0jp0sp5duga"]
 
 [ext_resource type="Script" uid="uid://dmli2hik7mqkn" path="res://scripts/player/player.gd" id="1_cvnsp"]
-[ext_resource type="PackedScene" uid="uid://bqiy83nwntkcr" path="res://scenes/character_base_model.tscn" id="2_x3wgy"]
+[ext_resource type="Texture2D" uid="uid://7i0mf14xk2hr" path="res://assets/textures/Player/1f344.png" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://dqj7llsipyuva" path="res://scripts/player/player_collision_2d.gd" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://dufiy0gv33ywb" path="res://scripts/player/camera.gd" id="4_vgqql"]
 [ext_resource type="PackedScene" uid="uid://dfo5h2ytn3qq0" path="res://scenes/collision_2d_raycasts.tscn" id="5_3smsa"]
@@ -14,6 +14,9 @@ resource_local_to_scene = true
 resource_local_to_scene = true
 points = PackedVector3Array(0.355, 0.855, 50, -0.355, -0.855, 50, 0.355, -0.855, 50, -0.355, 0.855, 50, 0.5, -0.5, 50, -0.5, 0.5, 50, 0.5, 0.5, 50, -0.5, -0.5, 50, 0, 1, 50, 0, -1, 50, 0.19, 0.96, 50, -0.19, -0.96, 50, -0.19, 0.96, 50, 0.19, -0.96, 50, 0.355, 0.855, 50, -0.355, -0.855, -50, 0.355, -0.855, -50, -0.355, 0.855, -50, 0, 1, -50, 0, -1, -50, 0.5, 0.5, -50, -0.5, -0.5, -50, -0.5, 0.5, -50, 0.5, -0.5, -50, 0.19, 0.96, -50, -0.19, -0.96, -50, -0.19, 0.96, -50, 0.19, -0.96, -50)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_tuyoq"]
+size = Vector3(0.67211914, 1, 99.06976)
+
 [node name="Player" type="CharacterBody3D" unique_id=598794534 node_paths=PackedStringArray("ray")]
 script = ExtResource("1_cvnsp")
 is3D = true
@@ -25,8 +28,9 @@ WALL_JUMP_PUSHBACK = 35.0
 ray = NodePath("RayCast3D")
 rayLength = 2.0
 
-[node name="Character" parent="." unique_id=404871862 instance=ExtResource("2_x3wgy")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.1502469, 0.13675177, 0)
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=2131796268]
+transform = Transform3D(0.41, 0, 0, 0, 0.41, 0, 0, 0, 0.41, 0, 0, 0)
+texture = ExtResource("1_v0iea")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=110083878]
 shape = SubResource("CapsuleShape3D_cvnsp")
@@ -51,12 +55,20 @@ collision_mask = 2
 [node name="PlayerCollision2DRaycasts" parent="." unique_id=280672917 instance=ExtResource("5_3smsa")]
 
 [node name="WeaponBow" parent="." unique_id=731021370 instance=ExtResource("7_f1ek2")]
-spawn_at_reticle = true
-spawn_offset_back = 0.15
-reticle_is_screen_space = false
-force_layer_1 = true
-invert_x_3d = false
-invert_y_3d = true
-invert_x_2d = false
-invert_y_2d = true
-forward_is_positive_z = false
+
+[node name="WallDetectLeft" type="Area3D" parent="." unique_id=146639093]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallDetectLeft" unique_id=111278060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6265869, 0, -0.27426147)
+shape = SubResource("BoxShape3D_tuyoq")
+
+[node name="WallDetectRight" type="Area3D" parent="." unique_id=895907360]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallDetectRight" unique_id=88621326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.627, 0, -0.274)
+shape = SubResource("BoxShape3D_tuyoq")
+
+[connection signal="body_entered" from="WallDetectLeft" to="." method="_on_wall_detect_left_body_entered"]
+[connection signal="body_exited" from="WallDetectLeft" to="." method="_on_wall_detect_left_body_exited"]
+[connection signal="body_entered" from="WallDetectRight" to="." method="_on_wall_detect_right_body_entered"]
+[connection signal="body_exited" from="WallDetectRight" to="." method="_on_wall_detect_right_body_exited"]
