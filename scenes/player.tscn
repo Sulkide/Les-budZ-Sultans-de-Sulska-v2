@@ -31,7 +31,7 @@ DASH_DURATION = 0.03
 DASH_SPEED = 100.0
 ray = NodePath("RayCast3D")
 rayLength = 1.3
-characterVisuals = NodePath("Character")
+characterVisuals = NodePath("Node3D/Character")
 
 [node name="PlayerUI" parent="." unique_id=581209682 instance=ExtResource("2_fjrip")]
 
@@ -84,8 +84,10 @@ shape = SubResource("BoxShape3D_tuyoq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.627, 0, -0.274)
 shape = SubResource("BoxShape3D_tuyoq")
 
-[node name="Character" parent="." unique_id=404871862 instance=ExtResource("8_smehm")]
-transform = Transform3D(0.15520221, 0, 0, 0, 0.15520221, 0, 0, 0, 0.15520221, 0, 0, 0)
+[node name="Node3D" type="Node3D" parent="." unique_id=847452535]
+
+[node name="Character" parent="Node3D" unique_id=404871862 instance=ExtResource("8_smehm")]
+transform = Transform3D(0.15520221, 0, 0, 0, 0.15520221, 0, 0, 0, 0.15520221, -0.5882974, 2.5059812, 0)
 
 [connection signal="body_entered" from="WallDetectLeft" to="." method="_on_wall_detect_left_body_entered"]
 [connection signal="body_exited" from="WallDetectLeft" to="." method="_on_wall_detect_left_body_exited"]

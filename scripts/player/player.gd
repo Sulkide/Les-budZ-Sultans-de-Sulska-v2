@@ -31,6 +31,7 @@ extends CharacterBody3D
 
 @export var characterVisuals : Node3D
 
+var model : Node3D
 var animator : AnimationTree
 var state_machine : AnimationNodeStateMachinePlayback
 
@@ -62,7 +63,8 @@ var lastWall : Vector3
 
 
 func _ready():
-	animator = $"Character/CharacterContainer/IK Targets/AnimationTree"
+	animator = $"Node3D/Character/CharacterContainer/IK Targets/AnimationTree"
+	model = $"Node3D"
 	state_machine = animator.get("parameters/playback")
 	print(animator)
 	
@@ -116,7 +118,11 @@ func _physics_process(delta):
 	_set_collision()
 
 		
-		
+	if velocity.x < 0:
+		model.scale.x = -1
+	elif velocity.x > 0:
+		model.scale.x = 1
+	
 	if hasJumped:
 		if velocity.y < 0:
 			animator.set("parameters/conditions/falling", true)
