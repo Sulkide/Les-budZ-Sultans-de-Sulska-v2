@@ -2,13 +2,13 @@ extends RigidBody3D
 class_name Arrow
 
 @export_group("Physique")
-@export var mass_override: float = 0.2          # masse pour les collisions
-@export var gravity_mult: float = 1.0           # multiplicateur de gravité (appliqué à gravity_scale intégré)
-@export var linear_damp_override: float = 0.0   # traînée (si besoin)
-@export var align_to_velocity: bool = true      # orienter la flèche selon sa vitesse
+@export var mass_override: float = 0.2        
+@export var gravity_mult: float = 1.0          
+@export var linear_damp_override: float = 0.0   
+@export var align_to_velocity: bool = true     
 
 @export_group("Gameplay")
-@export var life_time: float = 4.0              # auto-destruction (s)
+@export var life_time: float = 4.0            
 
 var _launched := false
 
@@ -17,11 +17,10 @@ func _ready() -> void:
 	gravity_scale = gravity_mult
 	linear_damp = linear_damp_override
 	contact_monitor = true
-	set_physics_process(true)                   # Godot 4
+	set_physics_process(true)              
 	if life_time > 0.0:
 		_start_ttl_timer(life_time)
 
-# Appelée par le Bow pour lancer la flèche
 func launch(dir_world: Vector3, speed: float) -> void:
 	_launched = true
 	linear_velocity = dir_world.normalized() * speed
@@ -37,7 +36,6 @@ func _face_velocity() -> void:
 	var v := linear_velocity
 	if v.length_squared() > 0.01:
 		var from := global_transform.origin
-		# Oriente -Z vers la direction de déplacement (convention Godot)
 		var xf := global_transform
 		xf = xf.looking_at(from + v.normalized(), Vector3.UP)
 		global_transform = xf
@@ -47,7 +45,6 @@ func _start_ttl_timer(seconds: float) -> void:
 	if is_inside_tree():
 		queue_free()
 
-# (Optionnel) coller à l’impact : connecte le signal "body_entered" en éditeur si tu veux
 func _on_body_entered(_body: Node) -> void:
 	if _launched:
 		_launched = false

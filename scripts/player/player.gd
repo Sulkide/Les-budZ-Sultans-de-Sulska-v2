@@ -98,8 +98,9 @@ func _ready():
 	add_child(coyote_timer)
 	coyote_timer.timeout.connect(_on_coyote_timeout)
 	if flip_cam:
-		flip_cam.target_plane_z = z_plane_value    # aligne le plan d'appariement
+		flip_cam.target_plane_z = z_plane_value  
 		_toggle_dimension()
+	AudioManager._play_sfx("Bourée (Steven Wilson Remix)", 1, 1, 1, true)
 
 
 
@@ -107,12 +108,16 @@ func _process(_delta: float) -> void:
 	var direction: Vector2 = Input.get_vector("target_left", "target_right", "target_up", "target_down")
 	var shoot := Input.is_action_just_pressed("shoot")
 	if is3D: 
+
+		
 		if shoot:
 			state_machine.travel("Shoot", true)
+			AudioManager._play_sfx("bongo1", 1, 0.9, 1.1, false)
 		bow.angle_bow_3d(direction, shoot)
 	else:
 		if shoot:
 			state_machine.travel("Shoot", true)
+			AudioManager._play_sfx("bongo1", 1, 0.9, 1.1, false)
 		bow.angle_bow_2d(direction, shoot)
 
 func _physics_process(delta):
@@ -134,8 +139,8 @@ func _physics_process(delta):
 	var horizontal_input := Input.get_axis("move_left", "move_right")
 	var vertical_input := Input.get_axis("move_away", "move_approach")
 	var dash_multiplier := 1
-	#2.0 if Input.is_action_pressed("dash") else 1.0
 	var jump_pressed := Input.is_action_just_pressed("jump")
+
 	var try_jump := jump_pressed or input_buffer.time_left > 0.0
 
 	var switch_dimension_pressed := Input.is_action_just_pressed("switch_dimension")
@@ -146,6 +151,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("dash") && can_dash:
 		dash_timer.start()
+		AudioManager._play_sfx("dash1", 1, 0.9, 1.1, false)
 		_dash()
 	
 	if Input.is_action_just_released("jump") and velocity.y > 0.0:
@@ -177,6 +183,7 @@ func _physics_process(delta):
 	if try_jump:
 		if is_on_floor() or coyote_jump_available:
 			hasJumped = true
+			AudioManager._play_sfx("jump1", 1, 0.9, 1.1, false)
 			velocity.y = JUMP_VELOCITY
 			coyote_jump_available = false
 			input_buffer.stop()
@@ -220,7 +227,6 @@ func _physics_process(delta):
 		if(ray.target_position != Vector3.ZERO):
 			lastWall = Vector3.ZERO
 
-	# amorti / friction
 	var floor_damping := 1.0 if is_on_floor() else 0.0
 	if is3D:
 		if (horizontal_input != 0 or vertical_input != 0) and not is_dashing:
@@ -246,7 +252,6 @@ func _physics_process(delta):
 			animator.set("parameters/conditions/isWalking", false)
 			velocity.x = move_toward(velocity.x, 0.0, FRICTION * delta * floor_damping)
 
-	# annule la composante qui pousse dans le mur pour éviter le "rebond"
 	if is_on_wall_only():
 		var wn := get_wall_normal()
 		if abs(wn.x) > 0.1 and sign(velocity.x) == -sign(wn.x):
@@ -254,7 +259,6 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-	# Die if below death barrier
 	if global_position.y < death_barrier:
 		_respawn()
 	
@@ -334,7 +338,6 @@ func _toggle_dimension():
 
 
 
-#region 3D/2D Collision transitions
 
 @export var max_level_depth: float = 100
 
@@ -365,7 +368,6 @@ func _set_collision() -> void:
 		_full_collision = true
 
 
-#endregion
 
 #region Health and death
 
@@ -396,6 +398,7 @@ func _respawn() -> void:
 	velocity = Vector3.ZERO
 	health = max_heatlh
 	global_position = _respawn_point
+	AudioManager._play_sfx("deathBell1", 1, 0.9, 1.1, false)
 
 
 func set_checkpoint(checkpoint: Checkpoint) -> void:
