@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://s0jp0sp5duga"]
+[gd_scene load_steps=17 format=3 uid="uid://s0jp0sp5duga"]
 
 [ext_resource type="Script" uid="uid://dmli2hik7mqkn" path="res://scripts/player/player.gd" id="1_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://c7r4grv8xspdq" path="res://scenes/player_ui.tscn" id="2_fjrip"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cajyuqh7f5bx4" path="res://scenes/weapon_bow.tscn" id="7_f1ek2"]
 [ext_resource type="PackedScene" uid="uid://5ntmnbyumw1c" path="res://scenes/character_base_model.tscn" id="8_smehm"]
 [ext_resource type="PackedScene" uid="uid://b64tvpgtwl6do" path="res://scenes/audio_manager_scene.tscn" id="9_f1ek2"]
+[ext_resource type="Texture2D" uid="uid://dqdhrv2qjf8nq" path="res://assets/Skybox/ablaze/2d.png" id="9_y4r1p"]
+[ext_resource type="Texture2D" uid="uid://bec76qdms11g2" path="res://assets/Skybox/ablaze/panorama_image.png" id="10_y4r1p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tuyoq"]
 resource_local_to_scene = true
@@ -18,6 +20,16 @@ points = PackedVector3Array(0.355, 0.855, 50, -0.355, -0.855, 50, 0.355, -0.855,
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tuyoq"]
 size = Vector3(0.67211914, 1, 99.06976)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_d2wvv"]
+panorama = ExtResource("10_y4r1p")
+
+[sub_resource type="Sky" id="Sky_bk3uc"]
+sky_material = SubResource("PanoramaSkyMaterial_d2wvv")
+
+[sub_resource type="Environment" id="Environment_3v2ag"]
+background_mode = 2
+sky = SubResource("Sky_bk3uc")
 
 [node name="Player" type="CharacterBody3D" unique_id=598794534 node_paths=PackedStringArray("ray", "characterVisuals")]
 script = ExtResource("1_cvnsp")
@@ -86,6 +98,13 @@ shape = SubResource("BoxShape3D_tuyoq")
 
 [node name="Character" parent="Node3D" unique_id=404871862 instance=ExtResource("8_smehm")]
 transform = Transform3D(0.15520221, 0, 0, 0, 0.15520221, 0, 0, 0, 0.15520221, -0.5882974, 2.5059812, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=244993109]
+transform = Transform3D(30.413614, 0, 0, 0, 21.512054, 0, 0, 0, 1, 0.2702217, -5.4477606, -1150.3138)
+texture = ExtResource("9_y4r1p")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=152281447]
+environment = SubResource("Environment_3v2ag")
 
 [connection signal="body_entered" from="WallDetectLeft" to="." method="_on_wall_detect_left_body_entered"]
 [connection signal="body_exited" from="WallDetectLeft" to="." method="_on_wall_detect_left_body_exited"]

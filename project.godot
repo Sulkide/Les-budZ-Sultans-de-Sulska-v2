@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Les budZ : Sultans de Sulska"
-run/main_scene="uid://b7rydremos56q"
+run/main_scene="uid://dv3p4lha25emf"
 config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=60
 config/icon="res://icon.svg"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8astvg6hltoe"]
+[gd_scene load_steps=12 format=3 uid="uid://c4yj6epmxgfv2"]
 
 [ext_resource type="MeshLibrary" uid="uid://bcsqfvlw0ijmd" path="res://assets/tiles/tiles_col.tres" id="1_ak5vt"]
 [ext_resource type="PackedScene" uid="uid://s0jp0sp5duga" path="res://scenes/player.tscn" id="2_ij176"]
@@ -7,6 +7,17 @@
 [ext_resource type="PackedScene" uid="uid://b7g51jcxxljv2" path="res://scenes/enemy_3d.tscn" id="5_tbt7t"]
 [ext_resource type="PackedScene" uid="uid://f4lwc7whbtlo" path="res://scenes/door.tscn" id="6_e4ab4"]
 [ext_resource type="PackedScene" uid="uid://bkay62k8fatoy" path="res://scenes/level_test.tscn" id="7_xxvx7"]
+[ext_resource type="Texture2D" uid="uid://bec76qdms11g2" path="res://assets/Skybox/ablaze/panorama_image.png" id="8_ij176"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_uva14"]
+panorama = ExtResource("8_ij176")
+
+[sub_resource type="Sky" id="Sky_vqwqk"]
+sky_material = SubResource("PanoramaSkyMaterial_uva14")
+
+[sub_resource type="Environment" id="Environment_1q3ip"]
+background_mode = 2
+sky = SubResource("Sky_vqwqk")
 
 [node name="Level 1" type="Node3D" unique_id=491929741]
 
@@ -52,3 +63,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.479816, -1.6051842, -73.1
 
 [node name="Enemy3D3" parent="Enemy" unique_id=1802175930 instance=ExtResource("5_tbt7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.706078, -1.6051842, -63.436253)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=753686544]
+environment = SubResource("Environment_1q3ip")

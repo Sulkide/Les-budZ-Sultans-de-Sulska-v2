@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bw1truk5wnmw" path="res://ethan/fhf.png" id="2_3mro0"]
 [ext_resource type="Script" uid="uid://c3d6luqxqa1rl" path="res://ethan/settings.gd" id="2_gtid3"]
 [ext_resource type="Texture2D" uid="uid://c1cke5njvp4le" path="res://ethan/Capture d'écran 2025-11-05 170404.png" id="4_5cvai"]
-[ext_resource type="PackedScene" uid="uid://bnyjaodrtlk4d" path="res://scenes/level_1.tscn" id="4_l3qm1"]
+[ext_resource type="PackedScene" uid="uid://bnyjaodrtlk4d" path="res://scenes/levels/level_1.tscn" id="4_l3qm1"]
 [ext_resource type="Texture2D" uid="uid://c3n0h4sky44y2" path="res://ethan/fjv.png" id="4_tu7k8"]
 [ext_resource type="PackedScene" uid="uid://drxcugd2ta2am" path="res://ethan/settings.tscn" id="7_w562j"]
 
