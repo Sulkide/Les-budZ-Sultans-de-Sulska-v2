@@ -75,3 +75,6 @@ func _on_stomp_area_body_entered(body: Node3D) -> void:
 func _on_damage_area_body_entered(body: Node3D) -> void:
 	if body is Player:
 		body.health -= 1
+	if body is Arrow:
+		_die()
+		body.queue_free()

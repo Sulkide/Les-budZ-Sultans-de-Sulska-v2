@@ -52,11 +52,11 @@ func _on_try_jump() -> void:
 		_jump()
 
 
-func _die() -> void:
+func die() -> void:
 	queue_free()
 
 
 func _on_stomp_area_body_entered(body: Node3D) -> void:
 	if body is Player:
 		if body.velocity.y <= 0:
-			_die()
+			die()

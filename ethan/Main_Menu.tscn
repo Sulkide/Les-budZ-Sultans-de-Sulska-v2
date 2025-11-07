@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7rydremos56q"]
+[gd_scene load_steps=10 format=3 uid="uid://b7rydremos56q"]
 
 [ext_resource type="Texture2D" uid="uid://bu2aidcc35inb" path="res://ethan/1kJzkqyqgDNJjS0xv8fHV4ZqDtpbNvl19w8srE1xqzs.webp" id="1_dnfjo"]
 [ext_resource type="Script" uid="uid://bs58i87c2duxf" path="res://ethan/buttonquit.gd" id="1_m625n"]
@@ -6,9 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://bw1truk5wnmw" path="res://ethan/fhf.png" id="2_3mro0"]
 [ext_resource type="Script" uid="uid://c3d6luqxqa1rl" path="res://ethan/settings.gd" id="2_gtid3"]
 [ext_resource type="Texture2D" uid="uid://c1cke5njvp4le" path="res://ethan/Capture d'écran 2025-11-05 170404.png" id="4_5cvai"]
+[ext_resource type="PackedScene" uid="uid://bnyjaodrtlk4d" path="res://scenes/level_1.tscn" id="4_l3qm1"]
 [ext_resource type="Texture2D" uid="uid://c3n0h4sky44y2" path="res://ethan/fjv.png" id="4_tu7k8"]
+[ext_resource type="PackedScene" uid="uid://drxcugd2ta2am" path="res://ethan/settings.tscn" id="7_w562j"]
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" unique_id=683983391]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,61 +18,67 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(575, 324)
-scale = Vector2(0.8984375, 0.9)
+[node name="TextureRect" type="TextureRect" parent="." unique_id=593435500]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_dnfjo")
 
-[node name="Button_play" type="Button" parent="."]
+[node name="Button_play" type="Button" parent="." unique_id=1857232139]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -18.0
-offset_top = -132.0
-offset_right = 271.0
-offset_bottom = 27.0
+offset_left = -125.99997
+offset_top = -226.0
+offset_right = 163.0
+offset_bottom = -67.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.36000168, 0.39999998)
+scale = Vector2(0.9, 1)
 icon = ExtResource("2_3mro0")
 flat = true
 script = ExtResource("1_wugcc")
+level1 = ExtResource("4_l3qm1")
 
-[node name="Button_Settings" type="Button" parent="."]
+[node name="Button_Settings" type="Button" parent="." unique_id=937859232]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -41.0
-offset_right = 449.0
-offset_bottom = 130.0
+offset_left = -187.99997
+offset_top = -79.0
+offset_right = 239.0
+offset_bottom = 92.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.3600006, 0.39999986)
+scale = Vector2(0.9, 1)
 icon = ExtResource("4_5cvai")
 flat = true
 script = ExtResource("2_gtid3")
+settings = ExtResource("7_w562j")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=1289978492]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -18.0
-offset_top = 59.0
-offset_right = 313.0
-offset_bottom = 223.0
+offset_left = -119.0
+offset_top = 101.0
+offset_right = 174.0
+offset_bottom = 265.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.36000007, 0.4400003)
+scale = Vector2(0.818, 1)
 icon = ExtResource("4_tu7k8")
 flat = true
 script = ExtResource("1_m625n")

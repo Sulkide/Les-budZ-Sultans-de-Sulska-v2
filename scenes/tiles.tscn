@@ -239,16 +239,18 @@ visible = false
 [node name="block-grass-large-tall2" parent="." unique_id=2072322612 instance=ExtResource("17_qn3w5")]
 visible = false
 
-[node name="block-grass-large2" type="Node3D" parent="." unique_id=1077663425]
+[node name="block-grass-large2" type="Node3D" parent="." unique_id=1077663425 groups=["Wall"]]
 visible = false
 
-[node name="block-grass-large" type="MeshInstance3D" parent="block-grass-large2" unique_id=1010490525]
+[node name="block-grass-large" type="MeshInstance3D" parent="block-grass-large2" unique_id=1010490525 groups=["Wall"]]
+layers = 3
 mesh = SubResource("ArrayMesh_yg8fs")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="block-grass-large2/block-grass-large" unique_id=528262546]
+[node name="StaticBody3D" type="StaticBody3D" parent="block-grass-large2/block-grass-large" unique_id=528262546 groups=["Wall"]]
+collision_layer = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="block-grass-large2/block-grass-large/StaticBody3D" unique_id=1777658866]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="block-grass-large2/block-grass-large/StaticBody3D" unique_id=1777658866 groups=["Wall"]]
 shape = SubResource("ConvexPolygonShape3D_64bwd")
 
 [node name="block-grass-long2" parent="." unique_id=96851359 instance=ExtResource("19_w4u0r")]
