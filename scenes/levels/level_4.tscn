@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dx1ixuyj2elhi"]
+[gd_scene load_steps=10 format=3 uid="uid://c8ng5vd8ye17a"]
 
-[ext_resource type="PackedScene" uid="uid://s0jp0sp5duga" path="res://Scenes/player.tscn" id="1_w6h2s"]
-[ext_resource type="PackedScene" path="res://scenes/level_grid_map.tscn" id="2_ogj6a"]
+[ext_resource type="PackedScene" uid="uid://s0jp0sp5duga" path="res://scenes/player.tscn" id="1_w6h2s"]
+[ext_resource type="PackedScene" uid="uid://0cmbkq0esdcu" path="res://scenes/level_grid_map.tscn" id="2_ogj6a"]
 [ext_resource type="PackedScene" uid="uid://sa1fbhptpj1d" path="res://scenes/moving_platform.tscn" id="3_anwe6"]
-[ext_resource type="PackedScene" path="res://scenes/coin.tscn" id="4_rej77"]
-[ext_resource type="PackedScene" path="res://scenes/diamond.tscn" id="5_5vn0v"]
+[ext_resource type="PackedScene" uid="uid://bjta6q5ccyj5c" path="res://scenes/coin.tscn" id="4_rej77"]
+[ext_resource type="PackedScene" uid="uid://b1runnlcu4st6" path="res://scenes/diamond.tscn" id="5_5vn0v"]
 [ext_resource type="PackedScene" uid="uid://b7g51jcxxljv2" path="res://scenes/enemy_3d.tscn" id="6_ts8eg"]
-[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="7_5vn0v"]
+[ext_resource type="PackedScene" uid="uid://f4lwc7whbtlo" path="res://scenes/door.tscn" id="7_5vn0v"]
 [ext_resource type="PackedScene" uid="uid://cr1at07yu1iqt" path="res://scenes/checkpoint.tscn" id="8_ts8eg"]
+[ext_resource type="PackedScene" uid="uid://c4yj6epmxgfv2" path="res://scenes/levels/level_5.tscn" id="8_um320"]
 
 [node name="level_4" type="Node3D" unique_id=117874038]
 
@@ -231,6 +232,7 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 139, 19, -19)
 
 [node name="Door" parent="." unique_id=760786149 instance=ExtResource("7_5vn0v")]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 303, 26, 13)
+next_level = ExtResource("8_um320")
 
 [node name="Checkpoint" parent="." unique_id=871455397 instance=ExtResource("8_ts8eg")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 125, 0, 0)

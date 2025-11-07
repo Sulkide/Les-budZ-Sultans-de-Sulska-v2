@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://m24otvmpq0dd"]
 
-[ext_resource type="PackedScene" path="res://scenes/level_grid_map.tscn" id="1_0ljxa"]
-[ext_resource type="PackedScene" uid="uid://s0jp0sp5duga" path="res://Scenes/player.tscn" id="2_0qepi"]
+[ext_resource type="PackedScene" uid="uid://0cmbkq0esdcu" path="res://scenes/level_grid_map.tscn" id="1_0ljxa"]
+[ext_resource type="PackedScene" uid="uid://s0jp0sp5duga" path="res://scenes/player.tscn" id="2_0qepi"]
 [ext_resource type="PackedScene" uid="uid://b7g51jcxxljv2" path="res://scenes/enemy_3d.tscn" id="3_fmg3e"]
 [ext_resource type="PackedScene" uid="uid://cr1at07yu1iqt" path="res://scenes/checkpoint.tscn" id="4_0qepi"]
 [ext_resource type="PackedScene" uid="uid://bjta6q5ccyj5c" path="res://scenes/coin.tscn" id="5_fmg3e"]
 [ext_resource type="PackedScene" uid="uid://b1runnlcu4st6" path="res://scenes/diamond.tscn" id="6_ftfob"]
 [ext_resource type="PackedScene" uid="uid://f4lwc7whbtlo" path="res://scenes/door.tscn" id="7_fkk1g"]
-[ext_resource type="PackedScene" uid="uid://c4yj6epmxgfv2" path="res://scenes/levels/level_5.tscn" id="8_ugcn1"]
+[ext_resource type="PackedScene" uid="uid://c8ng5vd8ye17a" path="res://scenes/levels/level_4.tscn" id="8_ugcn1"]
 
 [node name="Level3" type="Node3D" unique_id=1021538075]
 
