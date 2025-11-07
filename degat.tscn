@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://lmwpr8vn2epn"]
+
+[ext_resource type="Script" uid="uid://cqxt28h4642jo" path="res://degat.gd" id="1_5acnw"]
+[ext_resource type="Texture2D" uid="uid://deu2gyxup21im" path="res://ethan/character_roundRed.png" id="2_nvg58"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5acnw"]
+height = 1.1435664
+radius = 0.5205078
+
+[node name="enemmyTEsting" type="Node3D" unique_id=2000884570]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9091759, 0)
+script = ExtResource("1_5acnw")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1146515931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9260993, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1495502297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9497129, 0)
+shape = SubResource("CylinderShape3D_5acnw")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1093484296]
+transform = Transform3D(1.3560802, 0, 0, 0, 1.2617083, 0, 0, 0, 1, 0, 0, 0)
+flip_h = true
+modulate = Color(1, 0.3137255, 0.25882354, 1)
+texture = ExtResource("2_nvg58")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

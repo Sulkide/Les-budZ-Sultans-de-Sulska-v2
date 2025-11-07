@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://bqiy83nwntkcr"]
+[gd_scene load_steps=82 format=4 uid="uid://5ntmnbyumw1c"]
 
 [ext_resource type="Texture2D" uid="uid://bo2mpfaomq1qi" path="res://assets/textures/Player/Character Sprites/Sulkide/bras d 1.png" id="1_hu5q1"]
 [ext_resource type="Texture2D" uid="uid://cbocu5iyjcpsv" path="res://assets/textures/Player/Character Sprites/Sulkide/bras d 2.png" id="2_u5hm5"]
@@ -2547,11 +2547,6 @@ advance_condition = &"shoot"
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_11gsq"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"isWalking"
-
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vkbkw"]
 states/BlendTree/node = SubResource("AnimationNodeBlendTree_b46u7")
 states/BlendTree/position = Vector2(687, 85)
@@ -2568,8 +2563,8 @@ states/Start/position = Vector2(63, 85)
 "states/Sulkide Animation_idle/position" = Vector2(305, 85)
 "states/Sulkide Animation_jump/node" = SubResource("AnimationNodeAnimation_7d5s4")
 "states/Sulkide Animation_jump/position" = Vector2(672, -67)
-transitions = ["Start", "Sulkide Animation_idle", SubResource("AnimationNodeStateMachineTransition_v67ej"), "Sulkide Animation_idle", "Sulkide Animation_dash", SubResource("AnimationNodeStateMachineTransition_7d5s4"), "Sulkide Animation_dash", "Sulkide Animation_idle", SubResource("AnimationNodeStateMachineTransition_ujy3y"), "Sulkide Animation_idle", "Sulkide Animation_damage", SubResource("AnimationNodeStateMachineTransition_jehrx"), "Sulkide Animation_damage", "Sulkide Animation_idle", SubResource("AnimationNodeStateMachineTransition_2pxas"), "Sulkide Animation_idle", "BlendTree", SubResource("AnimationNodeStateMachineTransition_j4j08"), "BlendTree", "Sulkide Animation_idle", SubResource("AnimationNodeStateMachineTransition_2a001"), "Sulkide Animation_idle", "Sulkide Animation_jump", SubResource("AnimationNodeStateMachineTransition_wdmx4"), "Sulkide Animation_jump", "Sulkide Animation_fall", SubResource("AnimationNodeStateMachineTransition_x0ick"), "Sulkide Animation_fall", "Sulkide Animation_idle", SubResource("AnimationNodeStateMachineTransition_8wnh6"), "BlendTree", "Sulkide Animation_jump", SubResource("AnimationNodeStateMachineTransition_vkbkw"), "BlendTree", "Sulkide Animation_dash", SubResource("AnimationNodeStateMachineTransition_slawb"), "Sulkide Animation_jump", "Sulkide Animation_dash", SubResource("AnimationNodeStateMachineTransition_oh8ui"), "Sulkide Animation_fall", "Sulkide Animation_dash", SubResource("AnimationNodeStateMachineTransition_yku22"), "Sulkide Animation_dash", "Sulkide Animation_fall", SubResource("AnimationNodeStateMachineTransition_o2gdc"), "Sulkide Animation_fall", "BlendTree", SubResource("AnimationNodeStateMachineTransition_ev0d4"), "Sulkide Animation_idle", "Shoot", SubResource("AnimationNodeStateMachineTransition_4netu"), "Shoot", "Sulkide Animation_idle", SubResource("AnimationNodeStateMachineTransition_olma5"), "Shoot", "BlendTree", SubResource("AnimationNodeStateMachineTransition_11gsq")]
-graph_offset = Vector2(-145, -93)
+transitions = ["Start", "Sulkide Animation_idle", SubResource("AnimationNodeStateMachineTransition_v67ej"), "Sulkide Animation_idle", "Sulkide Animation_dash", SubResource("AnimationNodeStateMachineTransition_7d5s4"), "Sulkide Animation_dash", "Sulkide Animation_idle", SubResource("AnimationNodeStateMachineTransition_ujy3y"), "Sulkide Animation_idle", "Sulkide Animation_damage", SubResource("AnimationNodeStateMachineTransition_jehrx"), "Sulkide Animation_damage", "Sulkide Animation_idle", SubResource("AnimationNodeStateMachineTransition_2pxas"), "Sulkide Animation_idle", "BlendTree", SubResource("AnimationNodeStateMachineTransition_j4j08"), "BlendTree", "Sulkide Animation_idle", SubResource("AnimationNodeStateMachineTransition_2a001"), "Sulkide Animation_idle", "Sulkide Animation_jump", SubResource("AnimationNodeStateMachineTransition_wdmx4"), "Sulkide Animation_jump", "Sulkide Animation_fall", SubResource("AnimationNodeStateMachineTransition_x0ick"), "Sulkide Animation_fall", "Sulkide Animation_idle", SubResource("AnimationNodeStateMachineTransition_8wnh6"), "BlendTree", "Sulkide Animation_jump", SubResource("AnimationNodeStateMachineTransition_vkbkw"), "BlendTree", "Sulkide Animation_dash", SubResource("AnimationNodeStateMachineTransition_slawb"), "Sulkide Animation_jump", "Sulkide Animation_dash", SubResource("AnimationNodeStateMachineTransition_oh8ui"), "Sulkide Animation_fall", "Sulkide Animation_dash", SubResource("AnimationNodeStateMachineTransition_yku22"), "Sulkide Animation_dash", "Sulkide Animation_fall", SubResource("AnimationNodeStateMachineTransition_o2gdc"), "Sulkide Animation_fall", "BlendTree", SubResource("AnimationNodeStateMachineTransition_ev0d4"), "Sulkide Animation_idle", "Shoot", SubResource("AnimationNodeStateMachineTransition_4netu"), "Shoot", "Sulkide Animation_idle", SubResource("AnimationNodeStateMachineTransition_olma5")]
+graph_offset = Vector2(-165, 46)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_vkbkw"]
 _surfaces = [{
@@ -3054,7 +3049,7 @@ script = ExtResource("2_vkbkw")
 [node name="Skeleton2D" type="Skeleton2D" parent="CharacterContainer/Bones" unique_id=856820419]
 
 [node name="Pelvis" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D" unique_id=527390964]
-position = Vector2(348, 474.11176)
+position = Vector2(348, 469.37665)
 rotation = 1.5707964
 scale = Vector2(0.9999996, 0.9999996)
 rest = Transform2D(1, 0, 0, 1, 457, 484)
@@ -3062,15 +3057,15 @@ script = ExtResource("16_slawb")
 
 [node name="HancheG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis" unique_id=1015640692]
 position = Vector2(-101, 78)
-rotation = -0.21318972
-scale = Vector2(0.9999987, 0.9999987)
+rotation = -0.19962208
+scale = Vector2(0.99999857, 0.99999857)
 rest = Transform2D(1, 0, 0, 1, -182, 81)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
 
 [node name="RotuleG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheG" unique_id=828415333]
 position = Vector2(-40.09275, 982.38513)
-rotation = 0.4288738
+rotation = 0.39522886
 scale = Vector2(0.99999934, 0.99999934)
 rest = Transform2D(1, 0, 0, 1, 48, 898)
 script = ExtResource("16_slawb")
@@ -3078,7 +3073,7 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="ChevilleG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheG/RotuleG" unique_id=990598074]
 position = Vector2(-65, 683)
-rotation = -0.24962416
+rotation = -0.22954692
 scale = Vector2(0.99999803, 0.99999803)
 rest = Transform2D(1, 0, 0, 1, -65, 683)
 script = ExtResource("16_slawb")
@@ -3091,21 +3086,21 @@ script = ExtResource("16_slawb")
 
 [node name="Ventre" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis" unique_id=143761971]
 position = Vector2(-10, -71)
-rotation = 0.026444435
+rotation = 0.026460527
 scale = Vector2(0.99999684, 0.99999684)
 rest = Transform2D(1, 0, 0, 1, -1, -79)
 script = ExtResource("16_slawb")
 
 [node name="Corps" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre" unique_id=1192961258]
 position = Vector2(-9, -380)
-rotation = -0.04631734
+rotation = -0.046317454
 scale = Vector2(0.9999947, 0.9999947)
 rest = Transform2D(1, 0, 0, 1, -9, -380)
 script = ExtResource("16_slawb")
 
 [node name="Coup" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps" unique_id=1277728798]
 position = Vector2(12, -530)
-rotation = 0.0041555194
+rotation = 0.0068476796
 scale = Vector2(0.9999969, 0.9999969)
 rest = Transform2D(1, 0, 0, 1, 12, -530)
 script = ExtResource("16_slawb")
@@ -3128,7 +3123,7 @@ script = ExtResource("16_slawb")
 
 [node name="EpauleG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps" unique_id=801004939]
 position = Vector2(-255, -365)
-rotation = 0.033380866
+rotation = 0.030894276
 scale = Vector2(0.99999857, 0.99999857)
 rest = Transform2D(1, 0, 0, 1, -255, -365)
 script = ExtResource("16_slawb")
@@ -3136,7 +3131,7 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="CoudeG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/EpauleG" unique_id=337656715]
 position = Vector2(-60, 756)
-rotation = 0.0716945
+rotation = 0.07169473
 scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(1, 0, 0, 1, -60, 756)
 script = ExtResource("16_slawb")
@@ -3149,16 +3144,16 @@ script = ExtResource("16_slawb")
 
 [node name="EpauleD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps" unique_id=1943680749]
 position = Vector2(253, -378)
-rotation = -0.11610233
-scale = Vector2(0.99999785, 0.99999785)
+rotation = -0.1137538
+scale = Vector2(0.9999978, 0.9999978)
 rest = Transform2D(1, 0, 0, 1, 253, -378)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
 
 [node name="CoudeD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/EpauleD" unique_id=850968131]
 position = Vector2(-17, 728)
-rotation = 0.12637426
-scale = Vector2(0.99999726, 0.99999726)
+rotation = 0.12637424
+scale = Vector2(0.9999973, 0.9999973)
 rest = Transform2D(1, 0, 0, 1, -17, 728)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
@@ -3170,7 +3165,7 @@ script = ExtResource("16_slawb")
 
 [node name="HancheD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis" unique_id=1562286361]
 position = Vector2(13.999991, 61)
-rotation = -0.13334516
+rotation = -0.11993018
 scale = Vector2(0.99999815, 0.99999815)
 rest = Transform2D(1, 0, 0, 1, 105, 75)
 script = ExtResource("16_slawb")
@@ -3178,7 +3173,7 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="RotuleD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheD" unique_id=590006153]
 position = Vector2(103.94249, 974.17706)
-rotation = 0.30964482
+rotation = 0.27739167
 scale = Vector2(0.9999979, 0.9999979)
 rest = Transform2D(1, 0, 0, 1, 18, 886)
 script = ExtResource("16_slawb")
@@ -3186,8 +3181,8 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="ChevilleD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheD/RotuleD" unique_id=929926005]
 position = Vector2(-57, 698)
-rotation = -0.22952963
-scale = Vector2(0.9999965, 0.9999965)
+rotation = -0.21069148
+scale = Vector2(0.99999636, 0.99999636)
 rest = Transform2D(1, 0, 0, 1, -57, 698)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
@@ -3400,7 +3395,7 @@ NodePath("../CharacterContainer/Body/Dent"): PackedFloat32Array(1, 1, 1, 1, 1, 1
 global_next_pass_shaders = Array[Shader]([null])
 global_next_pass_params = Array[Dictionary]([Dictionary[StringName, Variant]({})])
 hide_polygons = true
-cast_shadow = 0
+cast_shadow = 2
 global_illumination_mode = 0
 size = 1.0
 layer_space = 1.0

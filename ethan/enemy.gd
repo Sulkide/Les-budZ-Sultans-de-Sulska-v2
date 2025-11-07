@@ -47,7 +47,7 @@ func _physics_process(delta: float):
 	# TEST
 	if Input.is_action_just_pressed("attack"):
 		take_damage(10, global_position + Vector2(-50, 0))
-		print("Ennemi a subi un test de dégâts")
+		print("Ennemi a subi un dégâts")
 
 func die():
 	queue_free()

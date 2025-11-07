@@ -169,7 +169,7 @@ text = "Master"
 layout_mode = 2
 size_flags_vertical = 3
 max_value = 1.0
-step = 0.05
+step = 0.01
 
 [node name="SFXLabel" type="Label" parent="AudioOptions/VBoxContainer" unique_id=838968265]
 layout_mode = 2
@@ -180,7 +180,7 @@ text = "SFX"
 layout_mode = 2
 size_flags_vertical = 3
 max_value = 1.0
-step = 0.05
+step = 0.01
 
 [node name="MusicLabel" type="Label" parent="AudioOptions/VBoxContainer" unique_id=671838279]
 layout_mode = 2
@@ -191,7 +191,7 @@ text = "Music"
 layout_mode = 2
 size_flags_vertical = 3
 max_value = 1.0
-step = 0.05
+step = 0.01
 
 [node name="confirm" type="Button" parent="." unique_id=1914845906]
 layout_mode = 0
