@@ -64,3 +64,4 @@ func _die() -> void:
 func _on_stomp_area_body_entered(body: Node3D) -> void:
 	if body is Player:
 		body.velocity.y *= -1
+	_die()
