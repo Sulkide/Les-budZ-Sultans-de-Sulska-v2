@@ -1,13 +1,8 @@
 extends Control
 
-
-@onready var input_button_scene = preload("res://ethan/input_button.tscn")
-@onready var action_list = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList
-
 var is_remapping = false
-var action_to_remap : StringName = ""
+var action_to_remap: StringName = ""
 var remapping_button = null
-
 var input_actions = {
 	"move_away": "MOVE AWAY",
 	"move_approach": "MOVE APPROACH",
@@ -18,8 +13,30 @@ var input_actions = {
 	"fast_fall": "FAST FALL",
 }
 
+@onready var input_button_scene = preload("res://ethan/input_button.tscn")
+@onready var action_list = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList
+
+
 func _ready():
 	_create_action_list()
+
+
+func _input(event):
+	if is_remapping:
+		if event is InputEventKey or (event is InputEventMouseButton and event.pressed):
+			if event is InputEventMouseButton and event.double_click:
+				event.double_click = false
+
+			InputMap.action_erase_events(action_to_remap)
+			InputMap.action_add_event(action_to_remap, event)
+			_update_action_list(remapping_button, event)
+
+			is_remapping = false
+			action_to_remap = ""
+			remapping_button = null
+
+			accept_event()
+
 
 func _create_action_list():
 	InputMap.load_from_project_settings()
@@ -43,6 +60,7 @@ func _create_action_list():
 		action_list.add_child(button)
 		button.pressed.connect(_on_input_button_pressed.bind(button, action))
 
+
 func _on_input_button_pressed(button, action):
 	if !is_remapping:
 		is_remapping = true
@@ -50,25 +68,10 @@ func _on_input_button_pressed(button, action):
 		remapping_button = button
 		button.find_child("LabelInput").text = "Press key to bind..."
 
-func _input(event):
-	if is_remapping:
-		if event is InputEventKey or (event is InputEventMouseButton and event.pressed):
-
-			if event is InputEventMouseButton and event.double_click:
-				event.double_click = false
-
-			InputMap.action_erase_events(action_to_remap)
-			InputMap.action_add_event(action_to_remap, event)
-			_update_action_list(remapping_button, event)
-
-			is_remapping = false
-			action_to_remap = ""
-			remapping_button = null
-
-			accept_event()
 
 func _update_action_list(button, event):
 	button.find_child("LabelInput").text = event.as_text().trim_suffix(" (Physical)")
+
 
 func _on_reset_button_pressed():
 	_create_action_list()

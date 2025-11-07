@@ -174,3 +174,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 63.63693, 24.245707, -11.8974
 [node name="Door" parent="." unique_id=760786149 instance=ExtResource("6_brxtv")]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 147.168, 31.002487, -74.118004)
 next_level = ExtResource("7_tv7cl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1350370238]
+transform = Transform3D(0.89608395, -0.18407597, -0.40391785, 0.44388464, 0.37159997, 0.8154017, 0, -0.9099613, 0.41469327, 0, 0, 0)
+light_color = Color(0.6179135, 0.4478248, 0.43281695, 1)

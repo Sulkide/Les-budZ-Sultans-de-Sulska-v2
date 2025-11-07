@@ -1,6 +1,5 @@
 extends Area3D
 
-
 @export var next_level: PackedScene
 
 
@@ -11,4 +10,5 @@ func _go_to_next_level() -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player:
-		_go_to_next_level()
+		if next_level:
+			call_deferred("_go_to_next_level")

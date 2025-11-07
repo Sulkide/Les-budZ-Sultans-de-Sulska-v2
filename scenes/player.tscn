@@ -13,6 +13,8 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tuyoq"]
 resource_local_to_scene = true
+radius = 0.74072266
+height = 4.433838
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fjrip"]
 resource_local_to_scene = true
@@ -50,6 +52,7 @@ characterVisuals = NodePath("Node3D/Character")
 [node name="PlayerUI" parent="." unique_id=581209682 instance=ExtResource("2_fjrip")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=110083878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.216919, 0)
 shape = SubResource("CapsuleShape3D_tuyoq")
 
 [node name="CollisionShape2D" type="CollisionShape3D" parent="." unique_id=975230936]

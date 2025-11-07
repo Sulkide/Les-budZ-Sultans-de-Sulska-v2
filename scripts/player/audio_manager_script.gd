@@ -4,28 +4,39 @@ extends Node
 @export_category("Bibliothèques audio")
 @export var music_streams: Array[AudioStream] = []
 @export var sfx_streams: Array[AudioStream] = []
-
 @export_category("SFX Pool")
 @export var sfx_pool_size: int = 16
 
-var _music_map: Dictionary = {}
-var _sfx_map: Dictionary = {}
-
+var _music_map: Dictionary = { }
+var _sfx_map: Dictionary = { }
 var _music_player: AudioStreamPlayer
 var _music_loop := false
-
 var _sfx_players: Array[AudioStreamPlayer] = []
 var _sfx_loops: Array[bool] = []
+
 
 func _ready() -> void:
 	_build_maps()
 	_setup_players()
 
+
+func stop_music() -> void:
+	_music_loop = false
+	if is_instance_valid(_music_player):
+		_music_player.stop()
+
+
+func stop_all_sfx() -> void:
+	for i in _sfx_players.size():
+		_sfx_loops[i] = false
+		_sfx_players[i].stop()
+
+
 # -----
-func _play_music(name: String, volume: float = 1.0, pitch_min: float = 1.0, pitch_max: float = 1.0, loop: bool = false) -> void:
-	var stream: AudioStream = _music_map.get(name, null)
+func _play_music(music_name: String, volume: float = 1.0, pitch_min: float = 1.0, pitch_max: float = 1.0, loop: bool = false) -> void:
+	var stream: AudioStream = _music_map.get(music_name, null)
 	if stream == null:
-		push_warning("AudioManager: musique '%s' introuvable." % name)
+		push_warning("AudioManager: musique '%s' introuvable." % music_name)
 		return
 
 	if pitch_min > pitch_max:
@@ -44,10 +55,11 @@ func _play_music(name: String, volume: float = 1.0, pitch_min: float = 1.0, pitc
 
 	_music_player.play()
 
-func _play_sfx(name: String, volume: float = 1.0, pitch_min: float = 1.0, pitch_max: float = 1.0, loop: bool = false) -> void:
-	var stream: AudioStream = _sfx_map.get(name, null)
+
+func _play_sfx(sfx_name: String, volume: float = 1.0, pitch_min: float = 1.0, pitch_max: float = 1.0, loop: bool = false) -> void:
+	var stream: AudioStream = _sfx_map.get(sfx_name, null)
 	if stream == null:
-		push_warning("AudioManager: sfx '%s' introuvable." % name)
+		push_warning("AudioManager: sfx '%s' introuvable." % sfx_name)
 		return
 
 	if pitch_min > pitch_max:
@@ -65,15 +77,6 @@ func _play_sfx(name: String, volume: float = 1.0, pitch_min: float = 1.0, pitch_
 	_sfx_loops[idx] = loop
 	p.play()
 
-func stop_music() -> void:
-	_music_loop = false
-	if is_instance_valid(_music_player):
-		_music_player.stop()
-
-func stop_all_sfx() -> void:
-	for i in _sfx_players.size():
-		_sfx_loops[i] = false
-		_sfx_players[i].stop()
 
 func _build_maps() -> void:
 	_music_map.clear()
@@ -91,6 +94,7 @@ func _build_maps() -> void:
 		var key := _stream_key(s)
 		_sfx_map[key] = s
 
+
 func _setup_players() -> void:
 	_music_player = AudioStreamPlayer.new()
 	_music_player.name = "MusicPlayer"
@@ -107,21 +111,25 @@ func _setup_players() -> void:
 		if not p.finished.is_connected(Callable(self, "_on_sfx_finished")):
 			p.finished.connect(Callable(self, "_on_sfx_finished").bind(i))
 
+
 func _on_music_finished() -> void:
 	if _music_loop and is_instance_valid(_music_player):
 		_music_player.play()
+
 
 func _on_sfx_finished(index: int) -> void:
 	if index < 0 or index >= _sfx_players.size():
 		return
 	if _sfx_loops[index]:
-		_sfx_players[index].play() 
+		_sfx_players[index].play()
+
 
 func _get_free_sfx_player_index() -> int:
 	for i in _sfx_players.size():
 		if not _sfx_players[i].playing:
 			return i
 	return 0
+
 
 func _stream_key(stream: AudioStream) -> String:
 	var p := stream.resource_path

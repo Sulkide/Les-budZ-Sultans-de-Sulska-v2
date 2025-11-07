@@ -1,7 +1,6 @@
 class_name Checkpoint
 extends Area3D
 
-
 @export var untouched_color: Color = Color.WHITE
 @export var touched_color: Color = Color.YELLOW
 

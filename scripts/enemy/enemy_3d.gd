@@ -9,7 +9,6 @@ extends CharacterBody3D
 ## Chance for the enemy to jump each time its jump timer ticks.
 @export_range(0, 1) var jump_chance: float
 @export var gravity: float = 200
-
 @export var max_distance_from_home: float = 5.
 
 var _direction: Vector3 = Vector3.RIGHT
@@ -24,14 +23,14 @@ func _process(_delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	_move = _direction * move_speed * delta
-	
+
 	var collision: KinematicCollision3D = move_and_collide(_move)
-	
+
 	if collision or (is_on_floor() and _check_for_ledge()):
 		_direction *= -1
-	
+
 	velocity.y -= gravity * delta
-	
+
 	move_and_slide()
 
 
@@ -39,7 +38,7 @@ func _physics_process(delta: float) -> void:
 func _check_for_ledge() -> bool:
 	if ledge_check_distance == -1: # Disable ledge checking if -1
 		return false
-	
+
 	var space_state = get_world_3d().direct_space_state
 
 	var origin = global_position + _direction * ledge_check_distance
@@ -48,7 +47,7 @@ func _check_for_ledge() -> bool:
 	query.collide_with_areas = true
 
 	var result = space_state.intersect_ray(query)
-	
+
 	return result.is_empty()
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://m24otvmpq0dd"]
+[gd_scene load_steps=9 format=3 uid="uid://m24otvmpq0dd"]
 
 [ext_resource type="PackedScene" uid="uid://0cmbkq0esdcu" path="res://scenes/level_grid_map.tscn" id="1_0ljxa"]
 [ext_resource type="PackedScene" uid="uid://s0jp0sp5duga" path="res://scenes/player.tscn" id="2_0qepi"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bjta6q5ccyj5c" path="res://scenes/coin.tscn" id="5_fmg3e"]
 [ext_resource type="PackedScene" uid="uid://b1runnlcu4st6" path="res://scenes/diamond.tscn" id="6_ftfob"]
 [ext_resource type="PackedScene" uid="uid://f4lwc7whbtlo" path="res://scenes/door.tscn" id="7_fkk1g"]
+[ext_resource type="PackedScene" uid="uid://c4yj6epmxgfv2" path="res://scenes/levels/level_5.tscn" id="8_ugcn1"]
 
 [node name="Level3" type="Node3D" unique_id=1021538075]
 
@@ -38,26 +39,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.17713, -1.5039351, 2.57988
 [node name="Enemy3D5" parent="Enemies" unique_id=1543539682 instance=ExtResource("3_fmg3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.87999, -1.504023, -2.1449618)
 
-[node name="Enemy3D6" parent="Enemies" unique_id=15606550 instance=ExtResource("3_fmg3e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.614914, -1.5040497, -1.7909808)
-
 [node name="Enemy3D7" parent="Enemies" unique_id=1393299468 instance=ExtResource("3_fmg3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.44577, -1.5040077, 3.5539975)
-
-[node name="Enemy3D8" parent="Enemies" unique_id=570319983 instance=ExtResource("3_fmg3e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.92258, -1.504023, -63.495174)
 
 [node name="Enemy3D9" parent="Enemies" unique_id=1298528004 instance=ExtResource("3_fmg3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.90556, -1.5040497, -63.141193)
 
-[node name="Enemy3D10" parent="Enemies" unique_id=1546917480 instance=ExtResource("3_fmg3e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 127.73642, -1.5040077, -57.796215)
-
 [node name="Enemy3D11" parent="Enemies" unique_id=534625834 instance=ExtResource("3_fmg3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.73842, -1.5040191, -60.810528)
-
-[node name="Enemy3D12" parent="Enemies" unique_id=1107023899 instance=ExtResource("3_fmg3e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.47334, -1.5040458, -60.456547)
 
 [node name="Enemy3D13" parent="Enemies" unique_id=174794742 instance=ExtResource("3_fmg3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.3042, -1.5040039, -55.111572)
@@ -70,9 +59,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.15306, 28.378826, -18.340
 
 [node name="Enemy3D16" parent="Enemies" unique_id=359301783 instance=ExtResource("3_fmg3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.72676, 18.416645, -33.912334)
-
-[node name="Enemy3D17" parent="Enemies" unique_id=233849671 instance=ExtResource("3_fmg3e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.3042, 33.837166, -58.430443)
 
 [node name="Enemy3D18" parent="Enemies" unique_id=109363007 instance=ExtResource("3_fmg3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.43877, 33.837166, -52.210007)
@@ -132,3 +118,8 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 108.70622, 54.99892, -41.7696
 
 [node name="Door" parent="." unique_id=760786149 instance=ExtResource("7_fkk1g")]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -3, 41, -48)
+next_level = ExtResource("8_ugcn1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1254205384]
+transform = Transform3D(0.89608395, -0.18407597, -0.40391785, 0.44388464, 0.37159997, 0.8154017, 0, -0.9099613, 0.41469327, 0, 0, 0)
+light_color = Color(0.6179135, 0.4478248, 0.43281695, 1)

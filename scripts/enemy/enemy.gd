@@ -15,22 +15,26 @@ var _direction: Vector3 = Vector3.RIGHT
 
 func _physics_process(delta: float) -> void:
 	var move: Vector3 = _direction * move_speed * delta
-	
+
 	var collision: KinematicCollision3D = move_and_collide(move)
-	
+
 	if collision or (is_on_floor() and _check_for_ledge()):
 		_direction *= -1
-	
+
 	velocity.y -= gravity * delta
-	
+
 	move_and_slide()
+
+
+func die() -> void:
+	queue_free()
 
 
 ## Returns true if a ledge is detected.
 func _check_for_ledge() -> bool:
 	if ledge_check_distance == -1: # Disable ledge checking if -1
 		return false
-	
+
 	var space_state = get_world_3d().direct_space_state
 
 	var origin = global_position + _direction * ledge_check_distance
@@ -39,7 +43,7 @@ func _check_for_ledge() -> bool:
 	query.collide_with_areas = true
 
 	var result = space_state.intersect_ray(query)
-	
+
 	return result.is_empty()
 
 
@@ -50,10 +54,6 @@ func _jump() -> void:
 func _on_try_jump() -> void:
 	if randf() <= jump_chance and is_on_floor():
 		_jump()
-
-
-func die() -> void:
-	queue_free()
 
 
 func _on_stomp_area_body_entered(body: Node3D) -> void:

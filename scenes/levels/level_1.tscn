@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://bnyjaodrtlk4d"]
 
 [ext_resource type="MeshLibrary" uid="uid://bcsqfvlw0ijmd" path="res://assets/tiles/tiles_col.tres" id="1_bswci"]
-[ext_resource type="PackedScene" uid="uid://bkay62k8fatoy" path="res://scenes/level_test.tscn" id="2_15mv3"]
 [ext_resource type="PackedScene" uid="uid://s0jp0sp5duga" path="res://scenes/player.tscn" id="2_bswci"]
 [ext_resource type="PackedScene" uid="uid://bjta6q5ccyj5c" path="res://scenes/coin.tscn" id="3_rus8k"]
 [ext_resource type="PackedScene" uid="uid://b1runnlcu4st6" path="res://scenes/diamond.tscn" id="4_5xbjy"]
 [ext_resource type="PackedScene" uid="uid://bmtabnxfpt73t" path="res://scenes/spikes.tscn" id="5_4nkto"]
+[ext_resource type="PackedScene" uid="uid://4cycl8dxpn41" path="res://scenes/levels/level_2.tscn" id="7_oc4kc"]
 [ext_resource type="PackedScene" uid="uid://f4lwc7whbtlo" path="res://scenes/door.tscn" id="7_pa8r4"]
 
 [node name="Level 1" type="Node3D" unique_id=491929741]
@@ -100,4 +100,4 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -167.05396, -5.6304603, -13.8
 
 [node name="Door" parent="." unique_id=760786149 instance=ExtResource("7_pa8r4")]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -255.02376, -3.6886144, -29.078611)
-next_level = ExtResource("2_15mv3")
+next_level = ExtResource("7_oc4kc")

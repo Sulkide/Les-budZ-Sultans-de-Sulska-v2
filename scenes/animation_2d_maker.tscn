@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://c7ai31k8ncode"]
+[gd_scene load_steps=54 format=3 uid="uid://2qadm2ujeys6"]
 
 [ext_resource type="Texture2D" uid="uid://bo2mpfaomq1qi" path="res://assets/textures/Player/Character Sprites/Sulkide/bras d 1.png" id="1_lkx7x"]
 [ext_resource type="Texture2D" uid="uid://cbocu5iyjcpsv" path="res://assets/textures/Player/Character Sprites/Sulkide/bras d 2.png" id="2_mjg6w"]
@@ -2582,27 +2582,27 @@ bones = ["Pelvis", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Pelvis/HancheG",
 [node name="Skeleton2D" type="Skeleton2D" parent="CharacterContainer/Bones" unique_id=1867578716]
 
 [node name="Pelvis" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D" unique_id=1696795559]
-position = Vector2(348, 462.27005)
+position = Vector2(348, 485.33615)
 rest = Transform2D(1, 0, 0, 1, 457, 484)
 
 [node name="HancheG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis" unique_id=1953284319]
 position = Vector2(-101, 78)
-rotation = -0.18667732
-scale = Vector2(0.99999976, 0.99999976)
+rotation = -0.23532155
+scale = Vector2(0.9999997, 0.9999997)
 rest = Transform2D(1, 0, 0, 1, -182, 81)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="RotuleG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheG" unique_id=610297756]
 position = Vector2(-40.09275, 982.38513)
-rotation = 0.36319968
+rotation = 0.48393562
 scale = Vector2(0.9999995, 0.9999995)
 rest = Transform2D(1, 0, 0, 1, 48, 898)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="ChevilleG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheG/RotuleG" unique_id=284195945]
 position = Vector2(-65, 683)
-rotation = -0.21046317
-scale = Vector2(0.99999934, 0.99999934)
+rotation = -0.2825549
+scale = Vector2(0.9999993, 0.9999993)
 rest = Transform2D(1, 0, 0, 1, -65, 683)
 metadata/_local_pose_override_enabled_ = true
 
@@ -2612,19 +2612,19 @@ rest = Transform2D(1, 0, 0, 1, 363, 14)
 
 [node name="Ventre" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis" unique_id=172291701]
 position = Vector2(-10, -71)
-rotation = 0.026474953
+rotation = 0.026416183
 scale = Vector2(0.9999981, 0.9999981)
 rest = Transform2D(1, 0, 0, 1, -1, -79)
 
 [node name="Corps" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre" unique_id=1662093301]
 position = Vector2(-9, -380)
-rotation = -0.046317466
-scale = Vector2(0.99999964, 0.99999964)
+rotation = -0.046317335
+scale = Vector2(0.9999996, 0.9999996)
 rest = Transform2D(1, 0, 0, 1, -9, -380)
 
 [node name="Coup" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps" unique_id=760155264]
 position = Vector2(12, -530)
-rotation = 0.0075558485
+rotation = 0.0004929257
 scale = Vector2(0.99999833, 0.99999833)
 rest = Transform2D(1, 0, 0, 1, 12, -530)
 metadata/_local_pose_override_enabled_ = true
@@ -2643,14 +2643,14 @@ rest = Transform2D(1, 0, 0, 1, 58, -37)
 
 [node name="EpauleG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps" unique_id=2119825397]
 position = Vector2(-255, -365)
-rotation = 0.027389651
+rotation = 0.03912056
 scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(1, 0, 0, 1, -255, -365)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="CoudeG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/EpauleG" unique_id=1296798908]
 position = Vector2(-60, 756)
-rotation = 0.07169462
+rotation = 0.0716944
 rest = Transform2D(1, 0, 0, 1, -60, 756)
 metadata/_local_pose_override_enabled_ = true
 
@@ -2660,15 +2660,15 @@ rest = Transform2D(1, 0, 0, 1, -4, 533)
 
 [node name="EpauleD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps" unique_id=1301679589]
 position = Vector2(253, -378)
-rotation = -0.11053277
+rotation = -0.121431954
 scale = Vector2(0.9999996, 0.9999996)
 rest = Transform2D(1, 0, 0, 1, 253, -378)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="CoudeD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/EpauleD" unique_id=1380560513]
 position = Vector2(-17, 728)
-rotation = 0.1263739
-scale = Vector2(0.9999995, 0.9999995)
+rotation = 0.12637378
+scale = Vector2(0.99999946, 0.99999946)
 rest = Transform2D(1, 0, 0, 1, -17, 728)
 metadata/_local_pose_override_enabled_ = true
 
@@ -2678,22 +2678,22 @@ rest = Transform2D(1, 0, 0, 1, 64, 619)
 
 [node name="HancheD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis" unique_id=508922488]
 position = Vector2(13.999991, 61)
-rotation = -0.10722243
+rotation = -0.15540329
 scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(1, 0, 0, 1, 105, 75)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="RotuleD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheD" unique_id=706922907]
 position = Vector2(103.94249, 974.17706)
-rotation = 0.24686503
+rotation = 0.3627491
 scale = Vector2(0.99999934, 0.99999934)
 rest = Transform2D(1, 0, 0, 1, 18, 886)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="ChevilleD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheD/RotuleD" unique_id=383973388]
 position = Vector2(-57, 698)
-rotation = -0.19287226
-scale = Vector2(0.99999833, 0.99999833)
+rotation = -0.2605762
+scale = Vector2(0.9999984, 0.9999984)
 rest = Transform2D(1, 0, 0, 1, -57, 698)
 metadata/_local_pose_override_enabled_ = true
 

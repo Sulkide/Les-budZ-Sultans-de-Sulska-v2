@@ -11,11 +11,9 @@ extends CharacterBody3D
 
 #Systeme de Vie
 @export var max_health: int = 100
-var current_health: int
 var is_bumped: bool = false
 var bump_velocity: Vector3 = Vector3.ZERO
 var bump_timer: float = 0.0
-@onready var health_bar: ProgressBar = $CanvasLayer/HealthBar
 var tween: Tween
 const COLOR_HIGH := Color(0.2, 1.0, 0.2) # vert
 const COLOR_MED := Color(1.0, 0.8, 0.1)  # jaune
@@ -69,12 +67,13 @@ var dash_timer : Timer
 var coyote_jump_available := true
 var is_dashing := false
 var can_dash := false
-var dash_dir :Vector3
+var dash_dir: Vector3
 var hasJumped := false
 var hasDashed := false
 var wallOnLeft := false
 var wallOnRight := false
-var lastWall : Vector3
+var lastWall: Vector3
+var switching_dimension: bool = false
 
 @onready var bow: Bow = $WeaponBow
 
@@ -87,7 +86,7 @@ func _ready():
 	
 	animator.set("parameters/conditions/idle", true)
 	animator.set("parameters/conditions/jump", false)
-	animator.set("parameters/conditions/damaged", false)
+	#animator.set("parameters/conditions/damaged", false)
 	animator.set("parameters/conditions/isWalking", false)
 	animator.set("parameters/conditions/shoot", false)
 	animator.set("parameters/conditions/dash", false)
@@ -137,16 +136,14 @@ func _process(_delta: float) -> void:
 			AudioManager._play_sfx("bongo1", 1, 0.9, 1.1, false)
 		bow.angle_bow_2d(direction, shoot)
 
-func take_damage(amount: int, position=null):
-	
-	current_health = max(current_health - amount, 0)
-	update_health_bar()
-	if current_health <= 0:
+func take_damage(amount: int):
+	health = max(health - amount, 0)
+	if health <= 0:
 		return
 		
-	current_health -= amount
+	health -= amount
 	
-	if current_health <= 0:
+	if health <= 0:
 		die()
 	else:
 		apply_bump(Vector3.DOWN * 1)
@@ -158,36 +155,6 @@ func apply_bump(from_position: Vector3):
 	var direction = (from_position - global_position).normalized()
 	bump_velocity = direction * bump_force 
 
-
-func update_health_bar(immediate: bool = false):
-	if not health_bar:
-		return
-		
-	var ratio := float(current_health) / float(max_health)
-	var target_value := ratio * 100.0
-	var target_color := get_color_from_health_ratio(ratio)
-
-	if immediate:
-		health_bar.value = target_value
-	else:
-		if tween and tween.is_running():
-			tween.kill()
-		tween = create_tween()
-		tween.tween_property(health_bar, "value", target_value, 0.25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-
-	var fill_style := health_bar.get_theme_stylebox("fill")
-	if fill_style:
-		var new_style := fill_style.duplicate() as StyleBoxFlat
-		new_style.bg_color = target_color
-		new_style.corner_radius_top_left = 10
-		new_style.corner_radius_top_right = 10
-		new_style.corner_radius_bottom_left = 10
-		new_style.corner_radius_bottom_right = 10
-		new_style.content_margin_left = 1
-		new_style.content_margin_right = 1
-		new_style.content_margin_top = 1
-		new_style.content_margin_bottom = 1
-		health_bar.add_theme_stylebox_override("fill", new_style)
 
 func get_color_from_health_ratio(ratio: float) -> Color:
 	if ratio > 0.5:
@@ -406,16 +373,22 @@ func _on_wall_detect_right_body_exited(body: Node3D) -> void:
 
 
 func _toggle_dimension():
-	if is3D:
-		flip_cam.to_2D()
+	if switching_dimension:
+		return
+	
+	switching_dimension = true
+	is3D = !is3D
+	
+	if not is3D:
+		await flip_cam.to_2D()
 		_set_base_collision()
 
 		_full_collision = false
 	else:
-		flip_cam.to_3D()
+		await flip_cam.to_3D()
 		_set_base_collision()
-
-	is3D = !is3D
+	
+	switching_dimension = false
 
 
 
@@ -466,7 +439,7 @@ var health: int:
 	set(value):
 		health = value
 		ui.update_health_ui(health)
-		state_machine.travel("damaged", true)
+		#state_machine.travel("damaged", true)
 		if health <= 0:
 			_respawn()
 
@@ -489,7 +462,6 @@ func set_checkpoint(checkpoint: Checkpoint) -> void:
 	
 	_current_checkpoint = checkpoint
 	_respawn_point = _current_checkpoint.global_position
-
 
 
 #endregion

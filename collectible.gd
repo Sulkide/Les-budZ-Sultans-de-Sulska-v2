@@ -3,10 +3,11 @@ extends Area3D
 
 enum Type {
 	COIN,
-	DIAMOND
+	DIAMOND,
 }
 
 @export var type: Type = Type.COIN
+
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player:
