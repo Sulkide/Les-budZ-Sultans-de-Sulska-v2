@@ -1,0 +1,1 @@
+uniform float auto_mesh_normal_flip = 0.0;

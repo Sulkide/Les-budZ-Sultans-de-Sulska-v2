@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b64tvpgtwl6do"]
+
+[ext_resource type="Script" uid="uid://demn5hqjyc10r" path="res://scripts/player/audio_manager_script.gd" id="1_5rhui"]
+[ext_resource type="AudioStream" uid="uid://udu7sigklkgm" path="res://assets/music/Bourée (Steven Wilson Remix).mp3" id="2_sqbo6"]
+
+[node name="AudioManager" type="Node3D" unique_id=1116577980]
+script = ExtResource("1_5rhui")
+music_streams = Array[AudioStream]([ExtResource("2_sqbo6")])

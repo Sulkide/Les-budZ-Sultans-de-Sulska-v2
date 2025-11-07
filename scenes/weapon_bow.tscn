@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cajyuqh7f5bx4"]
+
+[ext_resource type="Script" uid="uid://cmufltc7m2x18" path="res://scripts/weapon/bow.gd" id="1_b43bh"]
+[ext_resource type="PackedScene" uid="uid://c46meqqqpj686" path="res://scenes/arrow.tscn" id="2_4mybl"]
+[ext_resource type="Texture2D" uid="uid://bjijjpkrljmoy" path="res://assets/textures/bow/Hit-Marker-PNG-Images.png" id="3_4mybl"]
+
+[node name="WeaponBow" type="Node3D" unique_id=731021370]
+script = ExtResource("1_b43bh")
+spawn_at_reticle = null
+spawn_offset_back = null
+reticle_is_screen_space = null
+arrow_scene = ExtResource("2_4mybl")
+reticle_texture = ExtResource("3_4mybl")
+reticle_distance = 2.0
+force_layer_1 = null
+shoot_pivot_path = NodePath("ShoootPivot")
+reticle_path = NodePath("Sprite3D")
+invert_x_3d = null
+invert_y_3d = null
+invert_x_2d = null
+invert_y_2d = null
+forward_is_positive_z = null
+
+[node name="ShoootPivot" type="Node3D" parent="." unique_id=1517834006]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=661386080]
+transform = Transform3D(-1.3113416e-07, 0, -3, 0, 3, 0, 3, 0, -1.3113416e-07, 0, 0, 0)

@@ -2,9 +2,8 @@ class_name Player
 extends CharacterBody3D
 
 @export_category("parametre flip")
-@export var startOn2D: bool = true
+@export var is3D: bool
 @export var timeToFlip: float = 1
-var is3D: bool
 
 @export var bump_force: float = 100.0
 @export var bump_duration: float = 5
@@ -43,14 +42,22 @@ const COLOR_LOW := Color(1.0, 0.2, 0.2)  # rouge
 @export var INPUT_BUFFER_PATIENCE: float = 0.1
 @export var COYOTE_TIME: float = 0.08
 
-@export var lock_z_plane := true
+
 @export var ray : RayCast3D
 @export var rayLength : float
+
+@export var characterVisuals : Node3D
+
+var model : Node3D
+var animator : AnimationTree
+var state_machine : AnimationNodeStateMachinePlayback
 
 @onready var flip_cam: CameraFlip = get_node_or_null("Camera3D") # adapte le chemin si besoin
 
 
 @onready var collision: PlayerCollision2D = $CollisionShape2D
+@onready var collision2dRaycasts: PlayerCollision2DRaycasts = $PlayerCollision2DRaycasts
+
 
 
 
@@ -67,15 +74,28 @@ var hasJumped := false
 var hasDashed := false
 var wallOnLeft := false
 var wallOnRight := false
-var wallOnFront := false
-var wallOnBack := false
 var lastWall : Vector3
 
+@onready var bow: Bow = $WeaponBow
+
+
 func _ready():
-	current_health = max_health
-	update_health_bar(true)
+	animator = $"Node3D/Character/CharacterContainer/IK Targets/AnimationTree"
+	model = $"Node3D"
+	state_machine = animator.get("parameters/playback")
+	print(animator)
 	
-	collision.set_collision_bounds(1, -1)
+	animator.set("parameters/conditions/idle", true)
+	animator.set("parameters/conditions/jump", false)
+	animator.set("parameters/conditions/damaged", false)
+	animator.set("parameters/conditions/isWalking", false)
+	animator.set("parameters/conditions/shoot", false)
+	animator.set("parameters/conditions/dash", false)
+	animator.set("parameters/conditions/falling", false)
+	
+	
+	health = max_heatlh
+	_set_base_collision()
 	
 	z_plane_value = global_position.z
 
@@ -96,13 +116,20 @@ func _ready():
 	coyote_timer.timeout.connect(_on_coyote_timeout)
 	if flip_cam:
 		flip_cam.target_plane_z = z_plane_value    # aligne le plan d'appariement
-		if startOn2D:
-			is3D = false
-			flip_cam.snap_to_2D()
-		else:
-			is3D = true
-			flip_cam.snap_to_3D()
-	
+		_toggle_dimension()
+
+
+func _process(_delta: float) -> void:
+	var direction: Vector2 = Input.get_vector("target_left", "target_right", "target_up", "target_down")
+	var shoot := Input.is_action_just_pressed("shoot")
+	if is3D: 
+		if shoot:
+			state_machine.travel("Shoot", true)
+		bow.angle_bow_3d(direction, shoot)
+	else:
+		if shoot:
+			state_machine.travel("Shoot", true)
+		bow.angle_bow_2d(direction, shoot)
 
 func take_damage(amount: int, position=null):
 	
@@ -170,9 +197,21 @@ func die():
 @warning_ignore("unused_parameter")
 
 func _physics_process(delta):
-	if lock_z_plane:
-		velocity.z = 0.0
+	_set_collision()
 
+		
+	if velocity.x < 0:
+		model.scale.x = -1
+	elif velocity.x > 0:
+		model.scale.x = 1
+	
+	if hasJumped:
+		if velocity.y < 0:
+			animator.set("parameters/conditions/falling", true)
+		animator.set("parameters/conditions/jump", true)
+		animator.set("parameters/conditions/isWalking", false)
+		animator.set("parameters/conditions/idle", false)
+	
 	var horizontal_input := Input.get_axis("move_left", "move_right")
 	var vertical_input := Input.get_axis("move_away", "move_approach")
 	var dash_multiplier := 1
@@ -184,13 +223,7 @@ func _physics_process(delta):
 	if switch_dimension_pressed:
 		print_debug("switched dimension")
 		if flip_cam:
-			if is3D:
-				flip_cam.to_2D()
-				lock_z_plane = true
-			else:
-				flip_cam.to_3D()
-				lock_z_plane = false
-			is3D = !is3D
+			_toggle_dimension()
 	
 	if Input.is_action_just_pressed("dash") && can_dash:
 		dash_timer.start()
@@ -211,6 +244,9 @@ func _physics_process(delta):
 		can_dash = true
 	
 	if is_on_floor():
+		animator.set("parameters/conditions/jump", false)
+		animator.set("parameters/conditions/falling", false)
+			
 		hasJumped = false
 		if(not hasDashed):coyote_jump_available = true
 		coyote_timer.stop()
@@ -236,21 +272,21 @@ func _physics_process(delta):
 				velocity.z = WALL_JUMP_PUSHBACK * n.z
 				coyote_jump_available = false
 				input_buffer.stop()
+		elif wallOnLeft and not is3D:
+			velocity.y = -WALL_JUMP_VELOCITY
+			velocity.x = WALL_JUMP_PUSHBACK
+			coyote_jump_available = false
+			input_buffer.stop()
+		elif wallOnRight and not is3D:
+			velocity.y = -WALL_JUMP_VELOCITY
+			velocity.x = -WALL_JUMP_PUSHBACK
+			coyote_jump_available = false
+			input_buffer.stop()
 		elif lastWall != Vector3.ZERO:
 			velocity = Vector3(lastWall.x * WALL_JUMP_PUSHBACK, -WALL_JUMP_VELOCITY, lastWall.z * WALL_JUMP_PUSHBACK)
 			coyote_jump_available = false
 			input_buffer.stop()
 			lastWall = Vector3.ZERO
-		#elif wallOnLeft:
-			#velocity.y = -WALL_JUMP_VELOCITY
-			#velocity.x = WALL_JUMP_PUSHBACK
-			#coyote_jump_available = false
-			#input_buffer.stop()
-		#elif wallOnRight:
-			#velocity.y = -WALL_JUMP_VELOCITY
-			#velocity.x = -WALL_JUMP_PUSHBACK
-			#coyote_jump_available = false
-			#input_buffer.stop()
 		elif jump_pressed:
 			input_buffer.start()
 	
@@ -269,18 +305,26 @@ func _physics_process(delta):
 	var floor_damping := 1.0 if is_on_floor() else 0.0
 	if is3D:
 		if (horizontal_input != 0 or vertical_input != 0) and not is_dashing:
+			if is_on_floor():
+				animator.set("parameters/conditions/isWalking", true)
+				animator.set("parameters/conditions/idle", false)
 			var targetz := vertical_input * SPEED
 			var targetx := horizontal_input * SPEED
 			velocity.x = move_toward(velocity.x, targetx, ACCELERATION * delta)
 			velocity.z = move_toward(velocity.z, targetz, ACCELERATION * delta)
 		else:
+			animator.set("parameters/conditions/isWalking", false)
 			velocity.x = move_toward(velocity.x, 0.0, FRICTION * delta * floor_damping)
 			velocity.z = move_toward(velocity.z, 0.0, FRICTION * delta * floor_damping)
 	else:
 		if horizontal_input != 0.0 && not is_dashing:
+			if is_on_floor():
+				animator.set("parameters/conditions/isWalking", true)
+				animator.set("parameters/conditions/idle", false)
 			var target := horizontal_input * SPEED * dash_multiplier
 			velocity.x = move_toward(velocity.x, target, ACCELERATION * delta)
 		else:
+			animator.set("parameters/conditions/isWalking", false)
 			velocity.x = move_toward(velocity.x, 0.0, FRICTION * delta * floor_damping)
 
 	# annule la composante qui pousse dans le mur pour éviter le "rebond"
@@ -288,22 +332,16 @@ func _physics_process(delta):
 		var wn := get_wall_normal()
 		if abs(wn.x) > 0.1 and sign(velocity.x) == -sign(wn.x):
 			velocity.x = 0.0
-
+	
 	move_and_slide()
+	
+	# Die if below death barrier
+	if global_position.y < death_barrier:
+		_respawn()
+	
+	if velocity == Vector3.ZERO and not hasJumped and not is_dashing:
+		animator.set("parameters/conditions/idle", true)
 
-	if lock_z_plane:
-		global_position.z = z_plane_value
-		
-	if is_bumped:
-		velocity = bump_velocity
-		move_and_slide()
-		bump_timer -= delta
-		bump_velocity = bump_velocity.lerp(Vector3.ZERO, delta * 5.0)
-		if bump_timer <= 0:
-			is_bumped = false
-	else:
-		velocity = Vector3.ZERO
-		move_and_slide()
 
 func _gravity_2d(input_dir: float) -> float:
 	if is_dashing: return 0
@@ -314,6 +352,7 @@ func _gravity_2d(input_dir: float) -> float:
 	return GRAVITY if velocity.y > 0.0 else FALL_GRAVITY
 
 func _dash():
+	animator.set("parameters/conditions/dash", true)
 	hasDashed = true
 	coyote_jump_available = false
 	hasJumped = false
@@ -332,6 +371,7 @@ func _dash():
 		dash_dir = dir3D
 		
 func _dash_stop():
+	animator.set("parameters/conditions/dash", false)
 	velocity *= 0.8
 	velocity.y *= 0.7
 	is_dashing = false
@@ -342,18 +382,109 @@ func _on_coyote_timeout():
 func _get_dash_dir():
 	Input.get_vector("move_left", "move_right","move_approach","move_away")
 
+
+func _on_wall_detect_left_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Wall"):
+		wallOnLeft = true
+
+func _on_wall_detect_left_body_exited(body: Node3D) -> void:
+	if body.is_in_group("Wall"):
+		wallOnLeft = false
+
+func _on_wall_detect_right_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Wall"):
+		wallOnRight = true
+
+func _on_wall_detect_right_body_exited(body: Node3D) -> void:
+	if body.is_in_group("Wall"):
+		wallOnRight = false
+
+
+func _toggle_dimension():
+	if is3D:
+		flip_cam.to_2D()
+		_set_base_collision()
+
+		_full_collision = false
+	else:
+		flip_cam.to_3D()
+		_set_base_collision()
+
+	is3D = !is3D
+
+
+
+
 #region 3D/2D Collision transitions
 
-@export var max_level_depth: float = 50
+@export var max_level_depth: float = 100
 
-func _check_collision(front: float, back: float) -> bool:
-	collision.set_collision_bounds(front, back)
-	return move_and_collide(Vector3.ZERO, true) != null
+const START_COLLISION_FRONT: float = 1
+const START_COLLISION_BACK: float = -1
+
+var _collision_front: float = 1
+var _collision_back: float = 1
+
+var _full_collision: bool = false
+
+
+func _set_base_collision() -> void:
+	collision.set_collision_bounds(START_COLLISION_FRONT, START_COLLISION_BACK)
+	collision2dRaycasts.setup_raycasts(max_level_depth)
+
+
+func _set_collision() -> void:
+	if _full_collision or is3D:
+		return
 	
+	_collision_front = collision2dRaycasts.get_max_depth(global_position.z, true, max_level_depth)
+	_collision_back = -collision2dRaycasts.get_max_depth(global_position.z, false, max_level_depth)
+	
+	collision.set_collision_bounds(_collision_front, _collision_back)
+	
+	if _collision_front == max_level_depth and _collision_back == -max_level_depth:
+		_full_collision = true
 
-#func _process(_delta: float) -> void:
-	#if Input.is_action_pressed("ui_down"):
-		#print(_check_collision(50, -50))
+
+#endregion
+
+#region Health and death
+
+@onready var ui: PlayerUI = $PlayerUI
+var _respawn_point: Vector3
+
+@export_category("Health")
+@export var max_heatlh: int = 5
+@export var death_barrier: float = -20.
+
+var _current_checkpoint: Checkpoint
+
+var health: int:
+	set(value):
+		health = value
+		ui.update_health_ui(health)
+		if health <= 0:
+			_respawn()
+
+var points: int = 0:
+	set(value):
+		points = value
+		ui.update_points_display(points)
+
+
+func _respawn() -> void:
+	velocity = Vector3.ZERO
+	health = max_heatlh
+	global_position = _respawn_point
+
+
+func set_checkpoint(checkpoint: Checkpoint) -> void:
+	if _current_checkpoint and _current_checkpoint != checkpoint:
+			_current_checkpoint.untouch_checkpoint()
+	
+	_current_checkpoint = checkpoint
+	_respawn_point = _current_checkpoint.global_position
+
 
 
 #endregion

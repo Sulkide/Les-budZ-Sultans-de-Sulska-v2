@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7g51jcxxljv2"]
+
+[ext_resource type="Texture2D" uid="uid://dqjndtl7diipw" path="res://assets/textures/enemy/character_squarePurple.png" id="1_ige6g"]
+[ext_resource type="Script" uid="uid://dea4xiedrl382" path="res://scripts/enemy/enemy_3d.gd" id="1_j3yqb"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_j3yqb"]
+height = 1.5039063
+radius = 0.68408203
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2teg2"]
+height = 0.92352295
+radius = 0.64160156
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bjlx0"]
+height = 1.2713623
+radius = 1.0043945
+
+[node name="Enemy3D" type="CharacterBody3D" unique_id=1467177909]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_j3yqb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1528017104]
+shape = SubResource("CylinderShape3D_j3yqb")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1097811882]
+transform = Transform3D(4.05, 0, 0, 0, 2.954, 0, 0, 0, 1, 0, 0, 0)
+texture = ExtResource("1_ige6g")
+
+[node name="TryJumpTimer" type="Timer" parent="." unique_id=1968298827]
+autostart = true
+
+[node name="StompArea" type="Area3D" parent="." unique_id=647996140]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StompArea" unique_id=1783886002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0999451, 0)
+shape = SubResource("CylinderShape3D_2teg2")
+debug_color = Color(1, 0.17254902, 0.5058824, 1)
+
+[node name="DamageArea" type="Area3D" parent="." unique_id=146150419]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea" unique_id=67602874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12335205, 0)
+shape = SubResource("CylinderShape3D_bjlx0")
+debug_color = Color(0.67058825, 0.50980395, 0, 1)
+
+[connection signal="timeout" from="TryJumpTimer" to="." method="_on_try_jump"]
+[connection signal="body_entered" from="StompArea" to="." method="_on_stomp_area_body_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

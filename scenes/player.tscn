@@ -1,58 +1,44 @@
-[gd_scene load_steps=9 format=3 uid="uid://s0jp0sp5duga"]
+[gd_scene load_steps=11 format=3 uid="uid://s0jp0sp5duga"]
 
 [ext_resource type="Script" uid="uid://dmli2hik7mqkn" path="res://scripts/player/player.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://7i0mf14xk2hr" path="res://assets/textures/Player/1f344.png" id="1_v0iea"]
+[ext_resource type="PackedScene" uid="uid://c7r4grv8xspdq" path="res://scenes/player_ui.tscn" id="2_fjrip"]
 [ext_resource type="Script" uid="uid://dqj7llsipyuva" path="res://scripts/player/player_collision_2d.gd" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://dufiy0gv33ywb" path="res://scripts/player/camera.gd" id="4_vgqql"]
-[ext_resource type="PackedScene" uid="uid://bl3c50gx1yb70" path="res://ethan/pause_menu.tscn" id="5_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://dfo5h2ytn3qq0" path="res://scenes/collision_2d_raycasts.tscn" id="5_3smsa"]
+[ext_resource type="PackedScene" uid="uid://cajyuqh7f5bx4" path="res://scenes/weapon_bow.tscn" id="7_f1ek2"]
+[ext_resource type="PackedScene" uid="uid://bqiy83nwntkcr" path="res://scenes/character_base_model.tscn" id="8_smehm"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tuyoq"]
 resource_local_to_scene = true
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cvnsp"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fjrip"]
 resource_local_to_scene = true
 points = PackedVector3Array(0.355, 0.855, 50, -0.355, -0.855, 50, 0.355, -0.855, 50, -0.355, 0.855, 50, 0.5, -0.5, 50, -0.5, 0.5, 50, 0.5, 0.5, 50, -0.5, -0.5, 50, 0, 1, 50, 0, -1, 50, 0.19, 0.96, 50, -0.19, -0.96, 50, -0.19, 0.96, 50, 0.19, -0.96, 50, 0.355, 0.855, 50, -0.355, -0.855, -50, 0.355, -0.855, -50, -0.355, 0.855, -50, 0, 1, -50, 0, -1, -50, 0.5, 0.5, -50, -0.5, -0.5, -50, -0.5, 0.5, -50, 0.5, -0.5, -50, 0.19, 0.96, -50, -0.19, -0.96, -50, -0.19, 0.96, -50, 0.19, -0.96, -50)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqkch"]
-bg_color = Color(0, 1, 0, 1)
-draw_center = false
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-corner_detail = 20
-expand_margin_left = 6.0
-expand_margin_top = 6.0
-expand_margin_right = 6.0
-expand_margin_bottom = 6.0
-shadow_size = 5
+[sub_resource type="BoxShape3D" id="BoxShape3D_tuyoq"]
+size = Vector3(0.67211914, 1, 99.06976)
 
-[node name="Player" type="CharacterBody3D" unique_id=598794534 node_paths=PackedStringArray("ray")]
+[node name="Player" type="CharacterBody3D" unique_id=598794534 node_paths=PackedStringArray("ray", "characterVisuals")]
 script = ExtResource("1_cvnsp")
-startOn2D = false
-bump_force = 10.0
-damage_amount = 10
+SPEED = 10.0
 GRAVITY = 75.0
 FALL_GRAVITY = 150.0
+JUMP_VELOCITY = 35.0
+WALL_JUMP_VELOCITY = -30.0
 WALL_JUMP_PUSHBACK = 35.0
-lock_z_plane = false
+DASH_DURATION = 0.03
+DASH_SPEED = 100.0
 ray = NodePath("RayCast3D")
-rayLength = 2.0
+rayLength = 1.3
+characterVisuals = NodePath("Node3D/Character")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=2131796268]
-transform = Transform3D(0.41, 0, 0, 0, 0.41, 0, 0, 0, 0.41, 0, 0, 0)
-texture = ExtResource("1_v0iea")
+[node name="PlayerUI" parent="." unique_id=581209682 instance=ExtResource("2_fjrip")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=110083878]
-shape = SubResource("CapsuleShape3D_cvnsp")
+shape = SubResource("CapsuleShape3D_tuyoq")
 
 [node name="CollisionShape2D" type="CollisionShape3D" parent="." unique_id=975230936]
-shape = SubResource("ConvexPolygonShape3D_cvnsp")
+shape = SubResource("ConvexPolygonShape3D_fjrip")
 script = ExtResource("3_6t5aa")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=361799049]
@@ -68,19 +54,37 @@ preset_rot_3d_deg = Vector3(-15, 0, 0)
 target_position = Vector3(0, 0, 0)
 collision_mask = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=604289965]
+[node name="PlayerCollision2DRaycasts" parent="." unique_id=280672917 instance=ExtResource("5_3smsa")]
 
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=111651374]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 60.0
-offset_top = -75.0
-offset_right = 254.0
-offset_bottom = -53.0
-grow_vertical = 0
-theme_override_styles/background = SubResource("StyleBoxFlat_dqkch")
-show_percentage = false
+[node name="WeaponBow" parent="." unique_id=731021370 instance=ExtResource("7_f1ek2")]
+spawn_at_reticle = true
+spawn_offset_back = 0.15
+reticle_is_screen_space = false
+force_layer_1 = true
+invert_x_3d = false
+invert_y_3d = true
+invert_x_2d = false
+invert_y_2d = true
+forward_is_positive_z = false
 
-[node name="pauseMenu" parent="." unique_id=928723895 instance=ExtResource("5_qlg0r")]
-visible = false
+[node name="WallDetectLeft" type="Area3D" parent="." unique_id=146639093]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallDetectLeft" unique_id=111278060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6265869, 0, -0.27426147)
+shape = SubResource("BoxShape3D_tuyoq")
+
+[node name="WallDetectRight" type="Area3D" parent="." unique_id=895907360]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallDetectRight" unique_id=88621326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.627, 0, -0.274)
+shape = SubResource("BoxShape3D_tuyoq")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=847452535]
+
+[node name="Character" parent="Node3D" unique_id=404871862 instance=ExtResource("8_smehm")]
+transform = Transform3D(0.15520221, 0, 0, 0, 0.15520221, 0, 0, 0, 0.15520221, -0.5882974, 2.5059812, 0)
+
+[connection signal="body_entered" from="WallDetectLeft" to="." method="_on_wall_detect_left_body_entered"]
+[connection signal="body_exited" from="WallDetectLeft" to="." method="_on_wall_detect_left_body_exited"]
+[connection signal="body_entered" from="WallDetectRight" to="." method="_on_wall_detect_right_body_entered"]
+[connection signal="body_exited" from="WallDetectRight" to="." method="_on_wall_detect_right_body_exited"]
