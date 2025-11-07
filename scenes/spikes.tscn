@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmtabnxfpt73t"]
+
+[ext_resource type="Texture2D" uid="uid://b8v75h6jdtl6s" path="res://assets/textures/tile_spikes.png" id="1_5pg7g"]
+[ext_resource type="Script" uid="uid://5c32jmivantk" path="res://scripts/spikes.gd" id="1_xbcdo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xbcdo"]
+size = Vector3(0.8496094, 0.43139648, 0.657959)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bflj7"]
+size = Vector3(0.10571289, 0.33129883, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kd5gq"]
+size = Vector3(1.0701904, 0.31178284, 0.10961914)
+
+[node name="Spikes" type="Area3D" unique_id=1271879504]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+script = ExtResource("1_xbcdo")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=446696602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.33)
+pixel_size = 0.02
+texture = ExtResource("1_5pg7g")
+
+[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=1703764464]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3)
+pixel_size = 0.02
+texture = ExtResource("1_5pg7g")
+
+[node name="Sprite3D3" type="Sprite3D" parent="." unique_id=1310733057]
+pixel_size = 0.02
+texture = ExtResource("1_5pg7g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=920381656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28430176, 0)
+shape = SubResource("BoxShape3D_xbcdo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=991328118]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1609726374]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52770996, -0.3343506, 0)
+shape = SubResource("BoxShape3D_bflj7")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=1874968981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0886974, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=367794230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52770996, -0.3343506, 0)
+shape = SubResource("BoxShape3D_bflj7")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=1224824779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49317902, 0, 0.42552173)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3" unique_id=1610476680]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49261484, -0.3646469, 0.029907227)
+shape = SubResource("BoxShape3D_kd5gq")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="." unique_id=1944894919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49317902, 0, 0.42552173)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4" unique_id=620000819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49261484, -0.3646469, -0.8784854)
+shape = SubResource("BoxShape3D_kd5gq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

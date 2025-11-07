@@ -13,15 +13,19 @@ extends CharacterBody3D
 @export var max_distance_from_home: float = 5.
 
 var _direction: Vector3 = Vector3.RIGHT
-@onready var _home: Vector3 = global_position
+var _move: Vector3
+
+@onready var sprite: Sprite3D = $Sprite3D
+
+
+func _process(_delta: float) -> void:
+	sprite.flip_h = _move.x <= 0
 
 
 func _physics_process(delta: float) -> void:
+	_move = _direction * move_speed * delta
 	
-	
-	var move: Vector3 = _direction * move_speed * delta
-	
-	var collision: KinematicCollision3D = move_and_collide(move)
+	var collision: KinematicCollision3D = move_and_collide(_move)
 	
 	if collision or (is_on_floor() and _check_for_ledge()):
 		_direction *= -1
@@ -63,5 +67,11 @@ func _die() -> void:
 
 func _on_stomp_area_body_entered(body: Node3D) -> void:
 	if body is Player:
-		body.velocity.y *= -1
-	_die()
+		if body.velocity.y < 0:
+			body.velocity.y *= -1
+		_die()
+
+
+func _on_damage_area_body_entered(body: Node3D) -> void:
+	if body is Player:
+		body.health -= 1
