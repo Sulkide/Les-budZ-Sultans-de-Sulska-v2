@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://5ntmnbyumw1c"]
+[gd_scene load_steps=74 format=4 uid="uid://bqiy83nwntkcr"]
 
 [ext_resource type="Texture2D" uid="uid://bo2mpfaomq1qi" path="res://assets/textures/Player/Character Sprites/Sulkide/bras d 1.png" id="1_hu5q1"]
 [ext_resource type="Texture2D" uid="uid://cbocu5iyjcpsv" path="res://assets/textures/Player/Character Sprites/Sulkide/bras d 2.png" id="2_u5hm5"]
@@ -239,6 +239,54 @@ tracks/17/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath(".:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath(".:rotation")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5707964]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("../Bones/Skeleton2D/Pelvis:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-408.00003, 527)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("../Bones/Skeleton2D/Pelvis:rotation")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5707964]
 }
 
 [sub_resource type="Animation" id="Animation_yku22"]
@@ -688,6 +736,7 @@ tracks/17/keys = {
 
 [sub_resource type="Animation" id="Animation_foir6"]
 resource_name = "dash"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -907,7 +956,7 @@ tracks/17/keys = {
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("..:position")
+tracks/18/path = NodePath(".:position")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
@@ -919,10 +968,34 @@ tracks/18/keys = {
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("..:rotation")
+tracks/19/path = NodePath(".:rotation")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5707964]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("../Bones/Skeleton2D/Pelvis:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-408.00003, 527)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("../Bones/Skeleton2D/Pelvis:rotation")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -1151,26 +1224,50 @@ tracks/17/keys = {
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("..:position")
+tracks/18/path = NodePath(".:position")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(0, 0)]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("..:rotation")
+tracks/19/path = NodePath(".:rotation")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-0.40142572, 0.0, 0.30194196]
+"values": [0.5235988, 0.6981317]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("../Bones/Skeleton2D/Pelvis:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-101.133286, -240.83202), Vector2(-222.34343, -139.6188)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("../Bones/Skeleton2D/Pelvis:rotation")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5235988, 0.6981317]
 }
 
 [sub_resource type="Animation" id="Animation_ujy3y"]
@@ -1611,30 +1708,6 @@ tracks/17/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 0.0, 0.0, 0.0]
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("..:position")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"times": PackedFloat32Array(0.047622576, 0.1736054),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0)]
-}
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("..:rotation")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
-"times": PackedFloat32Array(0.047622576, 0.1736054),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -0.40142572]
 }
 
 [sub_resource type="Animation" id="Animation_mjg6w"]
@@ -2406,9 +2479,9 @@ states/Start/position = Vector2(63, 85)
 "states/Sulkide Animation_shoot/node" = SubResource("AnimationNodeAnimation_ujy3y")
 "states/Sulkide Animation_shoot/position" = Vector2(505, -31)
 transitions = ["Start", "Sulkide Animation_idle", SubResource("AnimationNodeStateMachineTransition_v67ej"), "Sulkide Animation_idle", "Sulkide Animation_dash", SubResource("AnimationNodeStateMachineTransition_7d5s4"), "Sulkide Animation_dash", "Sulkide Animation_idle", SubResource("AnimationNodeStateMachineTransition_ujy3y"), "Sulkide Animation_idle", "Sulkide Animation_damage", SubResource("AnimationNodeStateMachineTransition_jehrx"), "Sulkide Animation_damage", "Sulkide Animation_idle", SubResource("AnimationNodeStateMachineTransition_2pxas"), "Sulkide Animation_idle", "BlendTree", SubResource("AnimationNodeStateMachineTransition_j4j08"), "BlendTree", "Sulkide Animation_idle", SubResource("AnimationNodeStateMachineTransition_2a001"), "Sulkide Animation_idle", "Sulkide Animation_jump", SubResource("AnimationNodeStateMachineTransition_wdmx4"), "Sulkide Animation_jump", "Sulkide Animation_fall", SubResource("AnimationNodeStateMachineTransition_x0ick"), "Sulkide Animation_fall", "Sulkide Animation_idle", SubResource("AnimationNodeStateMachineTransition_8wnh6"), "Sulkide Animation_idle", "Sulkide Animation_shoot", SubResource("AnimationNodeStateMachineTransition_01yyp"), "Sulkide Animation_shoot", "Sulkide Animation_idle", SubResource("AnimationNodeStateMachineTransition_vl6ww")]
-graph_offset = Vector2(-214, -184)
+graph_offset = Vector2(-332, -141)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_slawb"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_vkbkw"]
 _surfaces = [{
 "aabb": AABB(1.7192557, -5.3372583, 0, 9.945387, 11.981243, 1e-05),
 "attribute_data": PackedByteArray("gB4ORL++h0Q0Sb5Ev76HRDRJvkReqwxFMHYgRKEYDEU="),
@@ -2423,7 +2496,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("Mn0IQIWb1EAAAAAAYKI6QVmwyUAAAAAAtPczQdLKqsAAAAAAkhDcP9LwnMAAAAAA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AIA=")
 }]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_oh8ui"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_slawb"]
 _surfaces = [{
 "aabb": AABB(0.5770032, -12.554669, 0, 13.25833, 12.330502, 1e-05),
 "attribute_data": PackedByteArray("WPU4RNSfOEUaENVEFA45RbL5wkRT/uNEmI4DRNQh40Q="),
@@ -2438,7 +2511,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("IrqIQO3fSMEAAAAAh11dQeeCNMEAAAAA1CYtQSmMZb4AAAAAe7YTP1Lcy78AAAAA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AIA=")
 }]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_yku22"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_oh8ui"]
 _surfaces = [{
 "aabb": AABB(2.9282532, -22.18809, 0, 4.738938, 8.595967, 1e-05),
 "attribute_data": PackedByteArray("+IbcQy2ZdkXoL1dELZl2RSC3Y0QYGERFVLcQREv2QEU="),
@@ -2453,7 +2526,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("gGg7QKtVscEAAAAAJgHkQDWBscEAAAAAoVn1QMvCYcEAAAAAmzGLQFV5WcEAAAAA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AIA=")
 }]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_o2gdc"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_yku22"]
 _surfaces = [{
 "aabb": AABB(4.4394865, -22.341492, 0, 6.7213697, 2.4675522, 1e-05),
 "attribute_data": PackedByteArray("WZATRGIpdUWSnI5EcNJ2RSIanUT04GdF0YEqRD0uaEU="),
@@ -2468,7 +2541,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("RhCOQFJmr8EAAAAA6fseQWC7ssEAAAAA3pIyQbDdn8EAAAAA+D2tQNT9nsEAAAAA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AIA=")
 }]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ev0d4"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_o2gdc"]
 _surfaces = [{
 "aabb": AABB(1.0606592, -16.955519, 0, 9.967201, 15.034895, 1e-05),
 "attribute_data": PackedByteArray("ELPqQ6xnUUVwnOBDFzjtRGR4lUSbb+lEyPOvRLTWSUU="),
@@ -2483,7 +2556,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("E6nXP+ekh8EAAAAArsOHP1wtHMAAAAAAvzkIQQDX9b8AAAAAHnIwQZyPd8EAAAAA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AIA=")
 }]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_4netu"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ev0d4"]
 _surfaces = [{
 "aabb": AABB(1.742702, -22.23542, 0, 3.216875, 8.331356, 1e-05),
 "attribute_data": PackedByteArray("vHsJRIMldkWoIRVEuw1CRXxuWES7DUJF5BNORIc0dEU="),
@@ -2498,7 +2571,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("3BDfPyTiscEAAAAABSERQAx3XsEAAAAA27SeQCTFXsEAAAAAqqKPQM+Nr8EAAAAA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AIA=")
 }]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_olma5"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_4netu"]
 _surfaces = [{
 "aabb": AABB(0.977959, -22.450478, 0, 8.449035, 3.0475159, 1e-05),
 "attribute_data": PackedByteArray("4OrpQ9q7dkVUP4xEutZ3RfzhpURUYWZFKp8dRHrSZkU="),
@@ -2513,7 +2586,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("hVt6P5Sas8EAAAAAnKPwQBJfssEAAAAA99QWQUQ5m8EAAAAAdlEeQPaansEAAAAA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AIA=")
 }]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_11gsq"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_olma5"]
 _surfaces = [{
 "aabb": AABB(-4.0907693, -17.444004, 0, 14.092344, 13.68729, 1e-05),
 "attribute_data": PackedByteArray("gOttQhrRU0VIs8BDF3EARRwUnkQX/f5E2Ki3REhlUkU="),
@@ -2528,7 +2601,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("leeCwFKNi8EAAAAAx3qGvw+tgcAAAAAAnp33QABucMAAAAAAcwYgQYTih8EAAAAA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AIA=")
 }]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_dgbvb"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_11gsq"]
 _surfaces = [{
 "aabb": AABB(-0.45015898, -6.01255, 0, 9.933462, 9.762716, 1e-05),
 "attribute_data": PackedByteArray("GLjbQz2ZEEUMbZ1EPZkQRQAKpkQM5KZEWAqoQwTIrUQ="),
@@ -2543,7 +2616,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("HsisPitsucAAAAAATYwIQc9mwMAAAAAAnLsXQbgCcEAAAAAAPXvmvleiXUAAAAAA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AIA=")
 }]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_u1fxt"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_dgbvb"]
 _surfaces = [{
 "aabb": AABB(0.80333495, -5.840876, 0, 6.765215, 3.1946847, 1e-05),
 "attribute_data": PackedByteArray("dC0HRIBAD0XaRolEZ9EQRVwbkURs9/9EsCryQ9Cz+UQ="),
@@ -2558,7 +2631,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("M/2uP9fjssAAAAAABSbeQHXousAAAAAAjzHyQK5tScAAAAAAXKdNPzNbKcAAAAAA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AIA=")
 }]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_m3nvv"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_u1fxt"]
 _surfaces = [{
 "aabb": AABB(-1.8195703, -6.5563135, 0, 6.8082323, 11.766409, 1e-05),
 "attribute_data": PackedByteArray("0KRxQxraFEVwN19ErBMSRdhdXUSyn5ZEAAtUQ/jynkQ="),
@@ -2573,7 +2646,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("FATDv1LN0cAAAAAAHqOfQOuXw8AAAAAA60SdQBm5pkAAAAAArufovwppkUAAAAAA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AIA=")
 }]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_3ra3n"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_m3nvv"]
 _surfaces = [{
 "aabb": AABB(-2.4013867, -12.564951, 0, 7.803909, 9.754885, 1e-05),
 "attribute_data": PackedByteArray("gNwbQzaA+0T8j1dEflf8RCQQakTiFzZFsGhYQ+y3OkU="),
@@ -2588,7 +2661,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("UrAZwB7YM8AAAAAALjOVQFwmOMAAAAAAduGsQOYyPcEAAAAAZuDlvwoKScEAAAAA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AIA=")
 }]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_d08wa"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_3ra3n"]
 _surfaces = [{
 "aabb": AABB(-1.9890088, -3.453386, 0, 13.026894, 10.45821, 1e-05),
 "attribute_data": PackedByteArray("PGuMQ2uVAkU7ebpEa5UCRU3Fr0SQcIJEYBk9Q7G7hEQ="),
@@ -2603,7 +2676,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("6yqJv0cEXcAAAAAALZswQUcEXcAAAAAAEOgiQYUn4EAAAAAA15f+v3hI2kAAAAAA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AIA=")
 }]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_rdhk7"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_d08wa"]
 _surfaces = [{
 "aabb": AABB(-6.75998, 4.3062, 0, 27.331448, 14.76507, 1e-05),
 "attribute_data": PackedByteArray("oBd2wxQbokSQzYjD0Lkzw9m2GUWIZfnCd4EERRQbokQ="),
@@ -2618,7 +2691,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("VXvOwGTMiUAAAAAAwlHYwPaRmEEAAAAAXpKkQWallEEAAAAAcqyJQUV0i0AAAAAA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AIA=")
 }]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_xjgdm"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_rdhk7"]
 _surfaces = [{
 "aabb": AABB(5.711864, 6.0138125, 0, 0.2682953, 0.2515254, 1e-05),
 "attribute_data": PackedByteArray("AKnRQDKgykEUkLZBKPPMQaQg0EG6CY1BKPfOQYAPqUBkOpFBgBMWP7AdAUGAsO4+AEZQv2oy4kDA910/Pk4EQQC9L7+Kr19BwBmJP1EGmkE="),
@@ -2633,7 +2706,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("+CK5QPOIwEAAAAAAr1e+QCdxwEAAAAAAd12/QJz/wkAAAAAAkFG/QAvzxkAAAAAAYNm8QNBzyEAAAAAAUJ+5QKZ9yEAAAAAAl8e2QMZgxkAAAAAARVG3QG/+xUAAAAAAAdK2QJIqxEAAAAAA/GG3QKB6wkAAAAAA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AIA=")
 }]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_87m2c"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_xjgdm"]
 _surfaces = [{
 "aabb": AABB(4.981864, 6.023813, 0, 0.2682953, 0.2515254, 1e-05),
 "attribute_data": PackedByteArray("AKnRQDKgykEUkLZBKPPMQaQg0EG6CY1BKPfOQYAPqUBkOpFBgBMWP7AdAUGAsO4+AEZQv2oy4kDA910/Pk4EQQC9L7+Kr19BwBmJP1EGmkE="),
@@ -2648,7 +2721,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("z8ahQN7awEAAAAAAhvumQBPDwEAAAAAATgGoQIdRw0AAAAAAZ/WnQPdEx0AAAAAAN32lQLzFyEAAAAAAJ0OiQJLPyEAAAAAAbmufQLKyxkAAAAAAHPWfQFtQxkAAAAAA2HWfQH18xEAAAAAA0wWgQIvMwkAAAAAA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AIA=")
 }]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_pdwuq"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_87m2c"]
 _surfaces = [{
 "aabb": AABB(4.040891, 4.9165277, 0, 1.2977257, 0.44706345, 1e-05),
 "attribute_data": PackedByteArray("SFsgQjdDoEIYSXdCL9O8QowW0ELFsdBC/EUkQ0aVu0KW3ClDgjKqQoDhAEO7A3ZC1MyvQkOQbkIoKT5CEi+GQg=="),
@@ -2891,30 +2964,31 @@ script = ExtResource("2_vkbkw")
 [node name="Skeleton2D" type="Skeleton2D" parent="CharacterContainer/Bones" unique_id=856820419]
 
 [node name="Pelvis" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D" unique_id=527390964]
-position = Vector2(348, 422.62958)
+position = Vector2(-408.00003, 527)
+rotation = 1.5707964
 rest = Transform2D(1, 0, 0, 1, 457, 484)
 script = ExtResource("16_slawb")
 
 [node name="HancheG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis" unique_id=1015640692]
 position = Vector2(-101, 78)
-rotation = -0.016292453
-scale = Vector2(0.99999994, 0.99999994)
+rotation = -0.072094694
+scale = Vector2(0.9999998, 0.9999998)
 rest = Transform2D(1, 0, 0, 1, -182, 81)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
 
 [node name="RotuleG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheG" unique_id=828415333]
 position = Vector2(-40.09275, 982.38513)
-rotation = -0.054093942
-scale = Vector2(0.99999994, 0.99999994)
+rotation = 0.92147624
+scale = Vector2(0.9999998, 0.9999998)
 rest = Transform2D(1, 0, 0, 1, 48, 898)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
 
 [node name="ChevilleG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheG/RotuleG" unique_id=990598074]
 position = Vector2(-65, 683)
-rotation = 0.047006648
-scale = Vector2(0.99999934, 0.99999934)
+rotation = -0.88332164
+scale = Vector2(0.9999993, 0.9999993)
 rest = Transform2D(1, 0, 0, 1, -65, 683)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
@@ -2926,22 +3000,22 @@ script = ExtResource("16_slawb")
 
 [node name="Ventre" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis" unique_id=143761971]
 position = Vector2(-10, -71)
-rotation = 0.026582118
+rotation = 0.23461998
 scale = Vector2(0.9999987, 0.9999987)
 rest = Transform2D(1, 0, 0, 1, -1, -79)
 script = ExtResource("16_slawb")
 
 [node name="Corps" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre" unique_id=1192961258]
 position = Vector2(-9, -380)
-rotation = -0.046317335
-scale = Vector2(0.9999999, 0.9999999)
+rotation = -0.046317447
+scale = Vector2(0.9999997, 0.9999997)
 rest = Transform2D(1, 0, 0, 1, -9, -380)
 script = ExtResource("16_slawb")
 
 [node name="Coup" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps" unique_id=1277728798]
 position = Vector2(12, -530)
-rotation = 0.016350506
-scale = Vector2(0.99999857, 0.99999857)
+rotation = -0.05686019
+scale = Vector2(0.99999833, 0.99999833)
 rest = Transform2D(1, 0, 0, 1, 12, -530)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
@@ -2963,14 +3037,14 @@ script = ExtResource("16_slawb")
 
 [node name="EpauleG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps" unique_id=801004939]
 position = Vector2(-255, -365)
-rotation = 0.0078061814
+rotation = 0.8561509
 rest = Transform2D(1, 0, 0, 1, -255, -365)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
 
 [node name="CoudeG" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/EpauleG" unique_id=337656715]
 position = Vector2(-60, 756)
-rotation = 0.07169462
+rotation = -0.9153225
 rest = Transform2D(1, 0, 0, 1, -60, 756)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
@@ -2982,16 +3056,16 @@ script = ExtResource("16_slawb")
 
 [node name="EpauleD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps" unique_id=1943680749]
 position = Vector2(253, -378)
-rotation = -0.09232224
-scale = Vector2(0.99999994, 0.99999994)
+rotation = -0.14586769
+scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(1, 0, 0, 1, 253, -378)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
 
 [node name="CoudeD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/Ventre/Corps/EpauleD" unique_id=850968131]
 position = Vector2(-17, 728)
-rotation = 0.12637402
-scale = Vector2(0.9999995, 0.9999995)
+rotation = -0.7736622
+scale = Vector2(0.99999946, 0.99999946)
 rest = Transform2D(1, 0, 0, 1, -17, 728)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
@@ -3003,24 +3077,24 @@ script = ExtResource("16_slawb")
 
 [node name="HancheD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis" unique_id=1562286361]
 position = Vector2(13.999991, 61)
-rotation = 0.07417083
-scale = Vector2(0.99999994, 0.99999994)
+rotation = -0.55311716
+scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(1, 0, 0, 1, 105, 75)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
 
 [node name="RotuleD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheD" unique_id=590006153]
 position = Vector2(103.94249, 974.17706)
-rotation = -0.1877767
-scale = Vector2(0.9999999, 0.9999999)
+rotation = 1.0387608
+scale = Vector2(0.99999964, 0.99999964)
 rest = Transform2D(1, 0, 0, 1, 18, 886)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
 
 [node name="ChevilleD" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Pelvis/HancheD/RotuleD" unique_id=929926005]
 position = Vector2(-57, 698)
-rotation = 0.06376333
-scale = Vector2(0.99999857, 0.99999857)
+rotation = -0.5388732
+scale = Vector2(0.99999875, 0.99999875)
 rest = Transform2D(1, 0, 0, 1, -57, 698)
 script = ExtResource("16_slawb")
 metadata/_local_pose_override_enabled_ = true
@@ -3112,6 +3186,7 @@ bone_node = NodePath("../../../Pelvis")
 metadata/_custom_type_script = "uid://b5uiivwxcoics"
 
 [node name="IK Targets" type="Node2D" parent="CharacterContainer" unique_id=1117824555]
+rotation = 1.5707964
 
 [node name="Hip Target" type="Node2D" parent="CharacterContainer/IK Targets" unique_id=315284678]
 position = Vector2(348, 416)
@@ -3161,23 +3236,23 @@ parameters/BlendTree/TimeScale/scale = 4.0
 script = ExtResource("21_oh8ui")
 polygon_group = NodePath("../CharacterContainer/Body")
 stored_meshes = Dictionary[StringName, ArrayMesh]({
-&"Body": SubResource("ArrayMesh_d08wa"),
-&"BrasD1": SubResource("ArrayMesh_slawb"),
-&"BrasD2": SubResource("ArrayMesh_oh8ui"),
-&"BrasG1": SubResource("ArrayMesh_3ra3n"),
-&"BrasG2": SubResource("ArrayMesh_m3nvv"),
-&"Corps1": SubResource("ArrayMesh_dgbvb"),
-&"Dent": SubResource("ArrayMesh_pdwuq"),
-&"HautJambeD": SubResource("ArrayMesh_ev0d4"),
-&"HautJambeG": SubResource("ArrayMesh_11gsq"),
-&"OeilD": SubResource("ArrayMesh_xjgdm"),
-&"OeilG": SubResource("ArrayMesh_87m2c"),
-&"Pelvis": SubResource("ArrayMesh_u1fxt"),
-&"PiedD1": SubResource("ArrayMesh_yku22"),
-&"PiedD2": SubResource("ArrayMesh_o2gdc"),
-&"PiedG1": SubResource("ArrayMesh_4netu"),
-&"PiedG2": SubResource("ArrayMesh_olma5"),
-&"Tete": SubResource("ArrayMesh_rdhk7")
+&"Body": SubResource("ArrayMesh_3ra3n"),
+&"BrasD1": SubResource("ArrayMesh_vkbkw"),
+&"BrasD2": SubResource("ArrayMesh_slawb"),
+&"BrasG1": SubResource("ArrayMesh_m3nvv"),
+&"BrasG2": SubResource("ArrayMesh_u1fxt"),
+&"Corps1": SubResource("ArrayMesh_11gsq"),
+&"Dent": SubResource("ArrayMesh_87m2c"),
+&"HautJambeD": SubResource("ArrayMesh_o2gdc"),
+&"HautJambeG": SubResource("ArrayMesh_olma5"),
+&"OeilD": SubResource("ArrayMesh_rdhk7"),
+&"OeilG": SubResource("ArrayMesh_xjgdm"),
+&"Pelvis": SubResource("ArrayMesh_dgbvb"),
+&"PiedD1": SubResource("ArrayMesh_oh8ui"),
+&"PiedD2": SubResource("ArrayMesh_yku22"),
+&"PiedG1": SubResource("ArrayMesh_ev0d4"),
+&"PiedG2": SubResource("ArrayMesh_4netu"),
+&"Tete": SubResource("ArrayMesh_d08wa")
 })
 stored_skeleton_2d_path = NodePath("../CharacterContainer/Bones/Skeleton2D")
 stored_polygon_bone_data = Dictionary[NodePath, Dictionary]({
