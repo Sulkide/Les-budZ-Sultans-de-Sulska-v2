@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7g51jcxxljv2"]
+
+[ext_resource type="Texture2D" uid="uid://dqjndtl7diipw" path="res://assets/textures/enemy/character_squarePurple.png" id="1_ige6g"]
+[ext_resource type="Script" uid="uid://dea4xiedrl382" path="res://scripts/enemy/enemy_3d.gd" id="1_j3yqb"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_j3yqb"]
+height = 1.5039063
+radius = 0.68408203
+
+[node name="Enemy3D" type="CharacterBody3D" unique_id=1467177909]
+script = ExtResource("1_j3yqb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1528017104]
+shape = SubResource("CylinderShape3D_j3yqb")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1097811882]
+transform = Transform3D(3.2098243, 0, 0, 0, 2.9540305, 0, 0, 0, 1, 0, 0, 0)
+texture = ExtResource("1_ige6g")
+
+[node name="TryJumpTimer" type="Timer" parent="." unique_id=1968298827]
+autostart = true
+
+[connection signal="timeout" from="TryJumpTimer" to="." method="_on_try_jump"]

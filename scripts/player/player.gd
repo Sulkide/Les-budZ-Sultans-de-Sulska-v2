@@ -202,10 +202,8 @@ func _physics_process(delta):
 		var wn := get_wall_normal()
 		if abs(wn.x) > 0.1 and sign(velocity.x) == -sign(wn.x):
 			velocity.x = 0.0
-	print(velocity.z)
+	
 	move_and_slide()
-
-
 
 
 func _gravity_2d(input_dir: float) -> float:
