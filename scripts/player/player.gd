@@ -56,6 +56,7 @@ var lastWall : Vector3
 
 
 func _ready():
+	health = max_heatlh
 	_set_base_collision()
 	
 	z_plane_value = global_position.z
@@ -90,8 +91,6 @@ func _process(_delta: float) -> void:
 
 func _physics_process(delta):
 	_set_collision()
-	
-
 
 	var horizontal_input := Input.get_axis("move_left", "move_right")
 	var vertical_input := Input.get_axis("move_away", "move_approach")
@@ -204,6 +203,10 @@ func _physics_process(delta):
 			velocity.x = 0.0
 	
 	move_and_slide()
+	
+	# Die if below death barrier
+	if global_position.y < death_barrier:
+		_respawn()
 
 
 func _gravity_2d(input_dir: float) -> float:
@@ -278,7 +281,7 @@ func _toggle_dimension():
 
 #region 3D/2D Collision transitions
 
-@export var max_level_depth: float = 50
+@export var max_level_depth: float = 100
 
 const START_COLLISION_FRONT: float = 1
 const START_COLLISION_BACK: float = -1
@@ -306,5 +309,30 @@ func _set_collision() -> void:
 	if _collision_front == max_level_depth and _collision_back == -max_level_depth:
 		_full_collision = true
 
+
+#endregion
+
+#region Health and death
+
+@onready var ui: PlayerUI = $PlayerUI
+var _respawn_point: Vector3
+
+@export_category("Health")
+@export var max_heatlh: int = 5
+@export var death_barrier: float = -20.
+
+var health: int:
+	set(value):
+		health = value
+		ui.update_health_ui(value)
+
+
+func _set_respawn_point() -> void:
+	_respawn_point = global_position
+
+
+func _respawn() -> void:
+	health = max_heatlh
+	global_position = _respawn_point
 
 #endregion
