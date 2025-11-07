@@ -40,7 +40,7 @@ var state_machine : AnimationNodeStateMachinePlayback
 
 @onready var collision: PlayerCollision2D = $CollisionShape2D
 @onready var collision2dRaycasts: PlayerCollision2DRaycasts = $PlayerCollision2DRaycasts
-
+@onready var AudioManager: AudioManagerClass = $AudioManager
 
 
 
@@ -100,6 +100,7 @@ func _ready():
 	if flip_cam:
 		flip_cam.target_plane_z = z_plane_value    # aligne le plan d'appariement
 		_toggle_dimension()
+
 
 
 func _process(_delta: float) -> void:
