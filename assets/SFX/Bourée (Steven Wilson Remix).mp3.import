@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cv37wub8h2n10"
+path="res://.godot/imported/Bourée (Steven Wilson Remix).mp3-1547f5481b857d0ff37883f88d1796de.mp3str"
+
+[deps]
+
+source_file="res://assets/SFX/Bourée (Steven Wilson Remix).mp3"
+dest_files=["res://.godot/imported/Bourée (Steven Wilson Remix).mp3-1547f5481b857d0ff37883f88d1796de.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

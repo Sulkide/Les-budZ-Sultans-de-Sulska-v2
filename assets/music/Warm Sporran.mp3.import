@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://o0eibg0qy3we"
+path="res://.godot/imported/Warm Sporran.mp3-bc5e3956a4ae6107adb08dee24d51d70.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Warm Sporran.mp3"
+dest_files=["res://.godot/imported/Warm Sporran.mp3-bc5e3956a4ae6107adb08dee24d51d70.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
