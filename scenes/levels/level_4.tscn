@@ -1,0 +1,245 @@
+[gd_scene load_steps=9 format=3 uid="uid://dx1ixuyj2elhi"]
+
+[ext_resource type="PackedScene" uid="uid://s0jp0sp5duga" path="res://Scenes/player.tscn" id="1_w6h2s"]
+[ext_resource type="PackedScene" path="res://scenes/level_grid_map.tscn" id="2_ogj6a"]
+[ext_resource type="PackedScene" uid="uid://sa1fbhptpj1d" path="res://scenes/moving_platform.tscn" id="3_anwe6"]
+[ext_resource type="PackedScene" path="res://scenes/coin.tscn" id="4_rej77"]
+[ext_resource type="PackedScene" path="res://scenes/diamond.tscn" id="5_5vn0v"]
+[ext_resource type="PackedScene" uid="uid://b7g51jcxxljv2" path="res://scenes/enemy_3d.tscn" id="6_ts8eg"]
+[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="7_5vn0v"]
+[ext_resource type="PackedScene" uid="uid://cr1at07yu1iqt" path="res://scenes/checkpoint.tscn" id="8_ts8eg"]
+
+[node name="level_4" type="Node3D" unique_id=117874038]
+
+[node name="Player" parent="." unique_id=598794534 instance=ExtResource("1_w6h2s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.6651468, 0)
+SPEED = 20.0
+death_barrier = -40.0
+
+[node name="LevelGridMap" parent="." unique_id=1167730956 instance=ExtResource("2_ogj6a")]
+data = {
+"cells": PackedInt32Array(-65537, 65535, 17, -131072, 65535, 17, -131072, 0, 17, -65537, 0, 17, -131066, 65535, 17, -131066, 0, 17, -131065, 65535, 17, -131065, 0, 17, -131065, 65534, 17, -131066, 65534, 17, -131066, 65533, 17, -131065, 65533, 17, -131064, 65533, 17, -131062, 65533, 17, -131061, 65533, 17, -131060, 65533, 17, -131059, 65533, 17, -131058, 65533, 17, -131057, 65533, 17, -131056, 65533, 17, -131056, 0, 17, -131056, 65535, 17, -131056, 65534, 17, -131055, 65533, 1441809, -131055, 65534, 1441809, -131055, 65535, 1441809, -131055, 0, 1441809, -131063, 65533, 655377, -65523, 65533, 1048593, -65522, 65533, 1048593, -65521, 65533, 1048593, 13, 65533, 1048593, 14, 65533, 1048593, 15, 65533, 1048593, 65549, 65533, 1048593, 65550, 65533, 1048593, 65551, 65533, 1048593, 131086, 65533, 17, 131087, 65533, 17, 131085, 65533, 17, -131046, 0, 655377, 13, 1, 1441809, 65549, 1, 1441809, 65549, 2, 1441809, 131085, 2, 1441809, -65523, 1, 1441809, -65523, 2, 1441809, -131059, 2, 1441809, 131085, 1, 1441809, -131066, 1, 17, -131065, 1, 17, -131064, 1, 17, -131063, 1, 17, -131062, 1, 17, -131061, 1, 17, -131060, 1, 17, -131059, 1, 17, -131058, 1, 17, -131057, 1, 17, -131056, 1, 17, -131055, 1, 655377, 13, 2, 1441809, -131055, 2, 655377, 196621, 1, 655377, -65530, 65533, 17, -65528, 1, 17, -65527, 1, 17, 8, 1, 17, 9, 1, 17, 65545, 1, 17, 196607, 65535, 17, 131072, 65535, 1441809, 196607, 0, 1441809, 131072, 0, 1441809, -131058, 2, 1441809, -131057, 2, 1441809, -131056, 2, 1441809, -131054, 2, 655377, -131054, 1, 655377, -131054, 65535, 655377, -131054, 65534, 655377, -131054, 65533, 655377, -131054, 0, 655377, -65518, 2, 655377, -65518, 1, 655377, -65518, 65535, 655377, -65518, 65534, 655377, -65518, 65533, 655377, -65518, 0, 655377, 18, 2, 655377, 18, 1, 655377, 18, 0, 655377, 18, 65535, 655377, 18, 65534, 655377, 18, 65533, 655377, 65554, 2, 655377, 65554, 1, 655377, 65554, 0, 655377, 65554, 65535, 655377, 65554, 65534, 655377, 65554, 65533, 655377, 131090, 2, 655377, 131090, 0, 655377, 131090, 1, 655377, 131090, 65535, 655377, 131090, 65534, 655377, 131090, 65533, 655377, 196607, 1, 1048593, 131072, 1, 1048593, 131073, 1, 1048593, 131077, 65533, 1048593, 131078, 65533, 1048593, -65537, 65534, 655377, -131072, 65534, 655377, -65537, 65533, 655377, -131072, 65533, 655377, 131074, 1, 1441809, 131075, 1, 1441809, 131076, 65533, 1441809, 262143, 65535, 1441809, 196608, 65535, 1441809, -131047, 0, 1048593, 262175, 65530, 655377, 262175, 65531, 655377, 327711, 65530, 655377, 327711, 65531, 655377, 393247, 65530, 655377, 393247, 65531, 655377, 458783, 65530, 655377, 458783, 65531, 655377, 196640, 65531, 17, 196640, 65530, 17, 196641, 65530, 17, 196641, 65531, 17, 196642, 65530, 17, 196642, 65531, 17, 196643, 65531, 17, 196643, 65530, 17, 196644, 65530, 17, 196644, 65531, 17, 196626, 0, 17, 262162, 0, 17, 327698, 0, 1048593, 393234, 0, 1048593, 393234, 65535, 17, 327698, 65535, 17, 262162, 65535, 17, 196626, 65535, 17, 196637, 3, 17, 196638, 3, 17, 196639, 3, 17, 196640, 3, 17, 196641, 3, 17, 196642, 3, 17, 196643, 3, 17, 196644, 3, 17, 393246, 65530, 17, 393246, 65531, 17, 393245, 65530, 17, 393245, 65531, 17, 196645, 3, 655377, 196645, 2, 655377, 196645, 1, 655377, 196646, 1, 655377, 196647, 1, 655377, 196648, 1, 655377, 524319, 65530, 655377, 524319, 65531, 655377, 589855, 65530, 655377, 589855, 65531, 655377, 655391, 65530, 655377, 655391, 65531, 655377, 196639, 65530, 1441809, 196639, 65531, 1441809, 393245, 3, 655377, 393246, 3, 655377, 262175, 3, 655377, 327711, 3, 655377, 393247, 3, 655377, 393245, 65532, 1441809, 393245, 65533, 1441809, 393245, 65534, 1441809, 393245, 65535, 1441809, 393245, 0, 1441809, 393245, 1, 1441809, 393245, 2, 1441809)
+}
+metadata/_editor_floor_ = Vector3(0, 6, 0)
+
+[node name="Moving Platform" parent="." unique_id=1999263113 instance=ExtResource("3_anwe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.553658, -5.145976, -0.3675766)
+block_size = Vector3(10.91, 3.57, 15.11)
+points = Array[NodePath]([NodePath("/root/@EditorNode@20375/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10754/@VSplitContainer@10399/@HSplitContainer@10401/@HSplitContainer@10403/@Control@10404/@SubViewportContainer@10405/@SubViewport@10406/level_4/Moving Platform/PathPoint_00")])
+travel_time = 5.0
+
+[node name="PathPoint_00" type="Marker3D" parent="Moving Platform" unique_id=948263398]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.553429, 0, 0)
+
+[node name="Moving Platform2" parent="." unique_id=70889544 instance=ExtResource("3_anwe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, -5, -4)
+block_size = Vector3(14.54, 3.055, 19.235)
+points = Array[NodePath]([NodePath("/root/@EditorNode@20375/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10754/@VSplitContainer@10399/@HSplitContainer@10401/@HSplitContainer@10403/@Control@10404/@SubViewportContainer@10405/@SubViewport@10406/level_4/Moving Platform2/PathPoint_00")])
+travel_time = 5.0
+
+[node name="PathPoint_00" type="Marker3D" parent="Moving Platform2" unique_id=508227517]
+transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 50.894737, 0, 0)
+
+[node name="Moving Platform3" parent="." unique_id=1170601316 instance=ExtResource("3_anwe6")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 179, -7, 0)
+block_size = Vector3(2.375, 1, 2.52)
+points = Array[NodePath]([NodePath("/root/@EditorNode@20375/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10754/@VSplitContainer@10399/@HSplitContainer@10401/@HSplitContainer@10403/@Control@10404/@SubViewportContainer@10405/@SubViewport@10406/level_4/Moving Platform3/PathPoint_00"), NodePath("/root/@EditorNode@20375/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10754/@VSplitContainer@10399/@HSplitContainer@10401/@HSplitContainer@10403/@Control@10404/@SubViewportContainer@10405/@SubViewport@10406/level_4/Moving Platform3/PathPoint_01"), NodePath("/root/@EditorNode@20375/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10754/@VSplitContainer@10399/@HSplitContainer@10401/@HSplitContainer@10403/@Control@10404/@SubViewportContainer@10405/@SubViewport@10406/level_4/Moving Platform3/PathPoint_02")])
+travel_time = 5.0
+pause_time = 2.0
+
+[node name="PathPoint_00" type="Marker3D" parent="Moving Platform3" unique_id=471170070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5999985, 0, -9.8)
+
+[node name="PathPoint_01" type="Marker3D" parent="Moving Platform3" unique_id=1744951685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.200003, 0, -9.8)
+
+[node name="PathPoint_02" type="Marker3D" parent="Moving Platform3" unique_id=540682968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.200003, 5, -7)
+
+[node name="Moving Platform4" parent="." unique_id=1187159709 instance=ExtResource("3_anwe6")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 25, 15, 0)
+block_size = Vector3(2.47, 0.255, 2.045)
+points = Array[NodePath]([NodePath("/root/@EditorNode@20375/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10754/@VSplitContainer@10399/@HSplitContainer@10401/@HSplitContainer@10403/@Control@10404/@SubViewportContainer@10405/@SubViewport@10406/level_4/Moving Platform4/PathPoint_00")])
+
+[node name="PathPoint_00" type="Marker3D" parent="Moving Platform4" unique_id=2013513314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.2000003)
+
+[node name="Coin" parent="." unique_id=1622282080 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 49, -1, 6)
+
+[node name="Coin2" parent="." unique_id=1776211247 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -6, -1, -18)
+
+[node name="Coin3" parent="." unique_id=2090733108 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, -1, -18)
+
+[node name="Coin4" parent="." unique_id=1041736529 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -4, -1, -13)
+
+[node name="Coin5" parent="." unique_id=26012297 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 3, -1, -13)
+
+[node name="Coin6" parent="." unique_id=682682325 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 6, -1, -18)
+
+[node name="Coin7" parent="." unique_id=961664423 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -6, 19, 5)
+
+[node name="Coin8" parent="." unique_id=482979094 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -2, 19, 5)
+
+[node name="Coin9" parent="." unique_id=159972002 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 2, 19, 5)
+
+[node name="Coin10" parent="." unique_id=360965224 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 5, 19, 5)
+
+[node name="Coin11" parent="." unique_id=738044978 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -4, 19, 8)
+
+[node name="Coin12" parent="." unique_id=293661641 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 19, 8)
+
+[node name="Coin13" parent="." unique_id=1545730847 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 3, 19, 8)
+
+[node name="Coin14" parent="." unique_id=272281938 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -2, 19, 11)
+
+[node name="Coin15" parent="." unique_id=1414134783 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 1, 19, 11)
+
+[node name="Coin16" parent="." unique_id=1164068365 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -1, 19, 14)
+
+[node name="Coin17" parent="." unique_id=959776513 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 12, 19, 12)
+
+[node name="Coin18" parent="." unique_id=157004576 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 18, 19, 12)
+
+[node name="Coin19" parent="." unique_id=534208430 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 26, 19, 12)
+
+[node name="Coin20" parent="." unique_id=565979543 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 33, 19, -18)
+
+[node name="Coin21" parent="." unique_id=1460552371 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 40, 19, -18)
+
+[node name="Coin22" parent="." unique_id=201820292 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 48, 19, -18)
+
+[node name="Coin23" parent="." unique_id=322901772 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 63, 9, 12)
+
+[node name="Coin24" parent="." unique_id=1102435845 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 66, 22, 13)
+
+[node name="Coin25" parent="." unique_id=209249101 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 71, 14, 13)
+
+[node name="Coin26" parent="." unique_id=1902998670 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 113, 19, -20)
+
+[node name="Coin27" parent="." unique_id=1572322057 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 109, 19, -20)
+
+[node name="Coin28" parent="." unique_id=953373427 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 119, 19, -20)
+
+[node name="Coin29" parent="." unique_id=458811010 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 136, 19, 18)
+
+[node name="Coin30" parent="." unique_id=1173158240 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 142, 19, 18)
+
+[node name="Coin31" parent="." unique_id=155131752 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 136, 19, 22)
+
+[node name="Coin32" parent="." unique_id=1123278419 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 142, 19, 22)
+
+[node name="Coin33" parent="." unique_id=635528893 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 139, 19, 20)
+
+[node name="Diamond" parent="." unique_id=1503206033 instance=ExtResource("5_5vn0v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101, 18, 20)
+
+[node name="Enemy3D" parent="." unique_id=1467177909 instance=ExtResource("6_ts8eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 23, -4)
+
+[node name="Enemy3D2" parent="." unique_id=1779724782 instance=ExtResource("6_ts8eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, -2, -19)
+
+[node name="Enemy3D3" parent="." unique_id=1077526120 instance=ExtResource("6_ts8eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 3, -18)
+
+[node name="Moving Platform5" parent="." unique_id=689746827 instance=ExtResource("3_anwe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 211, -5, -37)
+block_size = Vector3(15.01, 1, 8.32)
+points = Array[NodePath]([NodePath("/root/@EditorNode@20375/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10754/@VSplitContainer@10399/@HSplitContainer@10401/@HSplitContainer@10403/@Control@10404/@SubViewportContainer@10405/@SubViewport@10406/level_4/Moving Platform5/PathPoint_00")])
+travel_time = 5.0
+
+[node name="PathPoint_00" type="Marker3D" parent="Moving Platform5" unique_id=1754122647]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 41, 0)
+
+[node name="Coin34" parent="." unique_id=1740480370 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 190, -1, 4)
+
+[node name="Coin35" parent="." unique_id=12277902 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 197, -1, 3)
+
+[node name="Coin36" parent="." unique_id=1458707373 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 211, 10, -14)
+
+[node name="Coin37" parent="." unique_id=189964772 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 211, 4, -6)
+
+[node name="Coin38" parent="." unique_id=1771396618 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 211, 0, 3)
+
+[node name="Coin39" parent="." unique_id=927346691 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 220, 40, -42)
+
+[node name="Coin40" parent="." unique_id=1596789224 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 229, 40, -42)
+
+[node name="Coin41" parent="." unique_id=1450815537 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 224, 40, -37)
+
+[node name="Coin42" parent="." unique_id=192385306 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 219, 40, -32)
+
+[node name="Coin43" parent="." unique_id=2091042029 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 229, 40, -32)
+
+[node name="Coin44" parent="." unique_id=2126418578 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 249, 24, -35)
+
+[node name="Coin45" parent="." unique_id=1308641035 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 256, 24, -34)
+
+[node name="Coin46" parent="." unique_id=1689645828 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 264, 24, -36)
+
+[node name="Coin47" parent="." unique_id=83626649 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 272, 24, -34)
+
+[node name="Coin48" parent="." unique_id=1852786802 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 139, 19, -19)
+
+[node name="Door" parent="." unique_id=760786149 instance=ExtResource("7_5vn0v")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 303, 26, 13)
+
+[node name="Checkpoint" parent="." unique_id=871455397 instance=ExtResource("8_ts8eg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 125, 0, 0)
+
+[node name="Checkpoint2" parent="." unique_id=1965919048 instance=ExtResource("8_ts8eg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 195, 0, 3)
+
+[node name="Coin49" parent="." unique_id=1525663233 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 219, 24, 27)
+
+[node name="Coin50" parent="." unique_id=606748632 instance=ExtResource("4_rej77")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 228, 24, 27)
